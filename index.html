@@ -134,40 +134,10 @@
 
     /* ═══ ABOUT ═══ */
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-    .about-img-box { width: 100%; aspect-ratio: 4/5; background: linear-gradient(145deg, var(--teal-pale), #c8e8f5); border-radius: 24px 80px 24px 24px; display: flex; align-items: center; justify-content: center; color: var(--teal); box-shadow: var(--shadow-md); }
-    .about-img-box i { font-size: 6rem; opacity: 0.25; }
-    .about-img-wrap {
-  display: flex;
-  justify-content: center;
-  position: relative;
-}
-
-.about-img-box {
-  width: 380px;
-  height: 500px;
-  overflow: hidden;
-
-  /* Smooth professional curve */
-  border-radius: 60px 20px 60px 20px;
-
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
-  transition: all 0.4s ease;
-  background: #f4f6f9;
-}
-
-.about-img-box:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
-}
-
-.about-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  display: block;
-}
-
+    .about-img-wrap { display: flex; justify-content: center; position: relative; }
+    .about-img-box { width: 380px; height: 500px; overflow: hidden; border-radius: 60px 20px 60px 20px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15); transition: all 0.4s ease; background: #f4f6f9; }
+    .about-img-box:hover { transform: translateY(-6px); box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2); }
+    .about-img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
     .about-accent-box { position: absolute; bottom: -20px; left: -20px; background: var(--navy); color: white; border-radius: var(--radius); padding: 20px 24px; box-shadow: var(--shadow-md); }
     .about-accent-num { font-family: 'Poppins', sans-serif; font-size: 2rem; font-weight: 800; color: var(--accent); }
     .about-accent-label { font-size: 0.78rem; color: rgba(255,255,255,0.7); margin-top: 2px; }
@@ -181,24 +151,255 @@
       .about-img-wrap { display: none; }
     }
 
-    /* ═══ COMPETENCIES ═══ */
-    .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
-    .comp-col-title { display: flex; align-items: center; gap: 10px; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-light); margin-bottom: 20px; }
-    .comp-col-title .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--teal); }
-    .comp-col-title .dot.gold { background: var(--accent); }
-    .comp-card { display: flex; align-items: center; gap: 16px; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; margin-bottom: 12px; transition: var(--transition); cursor: default; }
-    .comp-card:hover { border-color: var(--teal); box-shadow: var(--shadow-sm); transform: translateX(4px); }
-    .comp-icon { width: 42px; height: 42px; border-radius: 10px; background: var(--teal-pale); color: var(--teal); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; transition: var(--transition); }
-    .comp-card:hover .comp-icon { background: var(--teal); color: var(--white); }
-    .comp-icon.gold-bg { background: #fff7e6; color: var(--accent); }
-    .comp-card:hover .comp-icon.gold-bg { background: var(--accent); color: var(--white); }
-    .comp-text { flex: 1; }
-    .comp-name { font-weight: 600; font-size: 0.9rem; color: var(--text-dark); }
-    .comp-bar-wrap { margin-top: 6px; background: var(--border); border-radius: 3px; height: 3px; }
-    .comp-bar { height: 3px; border-radius: 3px; background: linear-gradient(90deg, var(--teal), var(--teal-light)); transition: width 1s ease; width: 0%; }
-    .comp-bar.gold-bar { background: linear-gradient(90deg, var(--accent), #f5c842); }
+    /* ═══════════════════════════════════════════════════════════
+       NEW EDUCATION SECTION
+    ═══════════════════════════════════════════════════════════ */
+    .education-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      display: flex;
+      gap: 28px;
+      align-items: flex-start;
+      transition: var(--transition);
+      margin-bottom: 24px;
+    }
+    .education-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: var(--teal);
+      transform: translateY(-4px);
+    }
+    .edu-logo-wrap {
+      flex-shrink: 0;
+      width: 80px;
+      height: 80px;
+      border-radius: var(--radius);
+      background: var(--off-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .edu-logo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 8px;
+    }
+    .edu-logo-placeholder {
+      font-size: 2rem;
+      color: var(--teal);
+      opacity: 0.4;
+    }
+    .edu-content { flex: 1; }
+    .edu-institution {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: -5px;
+    }
+    .edu-degree {
+      font-size: 0.95rem;
+      color: var(--text-mid);
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+    .edu-year {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: var(--teal-pale);
+      color: var(--teal);
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+    }
+    .edu-highlight {
+      font-size: 0.88rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+      padding-left: 14px;
+      border-left: 2px solid var(--teal-pale);
+    }
 
-    @media (max-width: 680px) { .comp-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 640px) {
+      .education-card { flex-direction: column; gap: 20px; padding: 24px; }
+      .edu-logo-wrap { width: 70px; height: 70px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       NEW ORGANIZATION SECTION
+    ═══════════════════════════════════════════════════════════ */
+    .org-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+    }
+    .org-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      transition: var(--transition);
+    }
+    .org-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: var(--teal);
+      transform: translateY(-4px);
+    }
+    .org-header {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .org-logo-wrap {
+      flex-shrink: 0;
+      width: 64px;
+      height: 64px;
+      border-radius: var(--radius);
+      background: var(--off-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .org-logo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 6px;
+    }
+    .org-logo-placeholder {
+      font-size: 1.8rem;
+      color: var(--teal);
+      opacity: 0.4;
+    }
+    .org-info { flex: 1; }
+    .org-role {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+    .org-period {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-light);
+    }
+    .org-bullets {
+      list-style: none;
+    }
+    .org-bullets li {
+      font-size: 0.88rem;
+      color: var(--text-mid);
+      padding-left: 16px;
+      position: relative;
+      margin-bottom: 8px;
+      line-height: 1.65;
+    }
+    .org-bullets li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+      font-size: 0.7rem;
+      top: 2px;
+    }
+
+    @media (max-width: 720px) {
+      .org-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       UPDATED SKILLS SECTION (NO BARS)
+    ═══════════════════════════════════════════════════════════ */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .skill-category {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      transition: var(--transition);
+    }
+    .skill-category:hover {
+      box-shadow: var(--shadow-md);
+      border-color: var(--teal);
+    }
+    .skill-cat-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--teal-pale);
+    }
+    .skill-cat-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--teal-pale);
+      color: var(--teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+    .skill-cat-icon.soft { background: #fff7e6; color: var(--accent); }
+    .skill-cat-icon.tools { background: #f0f4f8; color: var(--navy); }
+    .skill-cat-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .skill-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .skill-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      transition: var(--transition);
+    }
+    .skill-item:hover {
+      background: var(--teal-pale);
+      border-color: var(--teal);
+      color: var(--teal);
+    }
+    .skill-item i {
+      font-size: 1rem;
+      color: var(--teal);
+    }
+    .skill-item.soft-skill i { color: var(--accent); }
+    .skill-item.tool-skill i { color: var(--navy); }
+
+    @media (max-width: 680px) {
+      .skills-grid { grid-template-columns: 1fr; }
+    }
 
     /* ═══ TIMELINE ═══ */
     .timeline { position: relative; max-width: 820px; margin: 0 auto; }
@@ -239,7 +440,7 @@
     .project-more i { font-size: 0.7rem; transition: var(--transition); }
     .project-card:hover .project-more i { transform: translateX(3px); }
 
-    /* ─── MODAL ─── */
+    /* ─── PROJECT MODAL ─── */
     .modal-overlay { position: fixed; inset: 0; background: rgba(13,31,60,0.65); backdrop-filter: blur(6px); z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 24px; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
     .modal-overlay.open { opacity: 1; pointer-events: all; }
     .modal-box { background: var(--white); border-radius: var(--radius-lg); max-width: 600px; width: 100%; max-height: 90vh; overflow-y: auto; box-shadow: var(--shadow-lg); transform: scale(0.94) translateY(20px); transition: transform 0.3s ease; }
@@ -255,10 +456,349 @@
     .modal-section p  { font-size: 0.9rem; color: var(--text-mid); line-height: 1.7; }
     .modal-outcome { background: var(--teal-pale); border-left: 3px solid var(--teal); border-radius: 0 8px 8px 0; padding: 12px 16px; font-size: 0.88rem; color: var(--teal); font-weight: 500; }
 
+    /* ═══ CERTIFICATE MODAL ═══ */
+    .cert-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(13, 31, 60, 0.75);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 3000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    .cert-modal-overlay.active { opacity: 1; visibility: visible; }
+    .cert-modal-container {
+      background: var(--white);
+      border-radius: 16px;
+      max-width: 900px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      position: relative;
+      transform: scale(0.9) translateY(20px);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .cert-modal-overlay.active .cert-modal-container { transform: scale(1) translateY(0); }
+    .cert-modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid var(--border);
+      color: var(--text-mid);
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      z-index: 10;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+    .cert-modal-close:hover { background: var(--white); color: var(--navy); transform: rotate(90deg); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); }
+    .cert-modal-content { padding: 24px; }
+    .cert-modal-image { width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1); margin-bottom: 24px; display: block; background: var(--off-white); }
+    .cert-modal-info { text-align: center; padding: 0 16px 8px; }
+    .cert-modal-title { font-family: 'Poppins', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; line-height: 1.3; }
+    .cert-modal-org { font-size: 1rem; color: var(--text-mid); font-weight: 500; margin-bottom: 4px; }
+    .cert-modal-year { font-size: 0.9rem; font-weight: 600; color: var(--teal); background: var(--teal-pale); display: inline-block; padding: 4px 14px; border-radius: 20px; margin-top: 8px; }
+
+    @media (max-width: 640px) {
+      .cert-modal-container { max-width: 100%; border-radius: 12px; max-height: 95vh; }
+      .cert-modal-content { padding: 20px 16px; }
+      .cert-modal-title { font-size: 1.25rem; }
+      .cert-modal-org { font-size: 0.9rem; }
+      .cert-modal-close { width: 36px; height: 36px; font-size: 1rem; }
+    }
+      
+    .cert-slider-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(13, 31, 60, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.cert-slider-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Modal Container */
+.cert-slider-container {
+  background: var(--white, #ffffff);
+  border-radius: 16px;
+  max-width: 1000px;
+  width: 100%;
+  max-height: 90vh;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  position: relative;
+  transform: scale(0.9) translateY(20px);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cert-slider-overlay.active .cert-slider-container {
+  transform: scale(1) translateY(0);
+}
+
+/* Close Button */
+.cert-slider-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid var(--border, #e2e8f0);
+  color: var(--text-mid, #4a5568);
+  font-size: 1.3rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.cert-slider-close:hover {
+  background: var(--white, #ffffff);
+  color: var(--navy, #0d1f3c);
+  transform: rotate(90deg);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Slider Content */
+.cert-slider-content {
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* Image Container */
+.cert-slider-images {
+  position: relative;
+  background: var(--off-white, #f8fafc);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+}
+
+.cert-slider-image {
+  max-width: 100%;
+  max-height: 70vh;
+  width: auto;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 0;
+  box-shadow: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Navigation Arrows */
+.cert-slider-prev,
+.cert-slider-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid var(--border, #e2e8f0);
+  color: var(--navy, #0d1f3c);
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  z-index: 5;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.cert-slider-prev {
+  left: 20px;
+}
+
+.cert-slider-next {
+  right: 20px;
+}
+
+.cert-slider-prev:hover,
+.cert-slider-next:hover {
+  background: var(--teal, #0a7ea4);
+  color: white;
+  border-color: var(--teal, #0a7ea4);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.cert-slider-prev:active,
+.cert-slider-next:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+/* Hide arrows when only one image */
+.cert-slider-single .cert-slider-prev,
+.cert-slider-single .cert-slider-next {
+  display: none;
+}
+
+/* Certificate Info */
+.cert-slider-info {
+  text-align: center;
+  padding: 32px 24px;
+  background: var(--white, #ffffff);
+}
+
+.cert-slider-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--navy, #0d1f3c);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.cert-slider-org {
+  font-size: 1rem;
+  color: var(--text-mid, #4a5568);
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.cert-slider-year {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--teal, #0a7ea4);
+  background: var(--teal-pale, #e8f6fb);
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+
+/* Image Counter */
+.cert-slider-counter {
+  font-size: 0.85rem;
+  color: var(--text-light, #718096);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+/* Dot Indicators */
+.cert-slider-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.cert-slider-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border, #e2e8f0);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cert-slider-dot:hover {
+  background: var(--text-light, #718096);
+}
+
+.cert-slider-dot.active {
+  background: var(--teal, #0a7ea4);
+  width: 24px;
+  border-radius: 4px;
+}
+
+/* Prevent body scroll when modal is open */
+body.cert-slider-open {
+  overflow: hidden;
+}
+
+/* Mobile Responsive */
+@media (max-width: 640px) {
+  .cert-slider-container {
+    max-width: 100%;
+    border-radius: 12px;
+    max-height: 95vh;
+  }
+
+  .cert-slider-images {
+    min-height: 200px;
+  }
+
+  .cert-slider-image {
+    max-height: 20vh;
+  }
+
+  .cert-slider-info {
+    padding: 24px 16px;
+  }
+
+  .cert-slider-title {
+    font-size: 1.2rem;
+  }
+
+  .cert-slider-org {
+    font-size: 0.9rem;
+  }
+
+  .cert-slider-close {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+  }
+
+  .cert-slider-prev,
+  .cert-slider-next {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .cert-slider-prev {
+    left: 10px;
+  }
+
+  .cert-slider-next {
+    right: 10px;
+  }
+}
+    body.cert-modal-open { overflow: hidden; }
+
     /* ═══ CERTIFICATIONS ═══ */
     .certs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
-    .cert-card  { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: var(--transition); cursor: pointer; }
+    .cert-card  { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: var(--transition); cursor: pointer; user-select: none; }
     .cert-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--teal); }
+    .cert-card:active { transform: translateY(-3px); }
     .cert-thumb { height: 130px; background: linear-gradient(145deg, var(--teal-pale), #c8e8f5); display: flex; align-items: center; justify-content: center; font-size: 2.8rem; color: var(--teal); opacity: 0.75; transition: var(--transition); position: relative; overflow: hidden; }
     .cert-thumb::after { content: '\f00e'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(10,126,164,0.85); color: white; font-size: 1.6rem; opacity: 0; transition: opacity var(--transition); }
     .cert-card:hover .cert-thumb::after { opacity: 1; }
@@ -315,13 +855,14 @@
       <ul class="nav-links" id="navLinks">
         <li><a href="#hero"           class="nav-link">Home</a></li>
         <li><a href="#about"          class="nav-link">About</a></li>
-        <li><a href="#competencies"   class="nav-link">Skills</a></li>
+        <li><a href="#education"      class="nav-link">Education</a></li>
+        <li><a href="#skills"         class="nav-link">Skills</a></li>
         <li><a href="#experience"     class="nav-link">Experience</a></li>
         <li><a href="#projects"       class="nav-link">Projects</a></li>
         <li><a href="#certifications" class="nav-link">Certifications</a></li>
         <li><a href="#contact"        class="nav-link">Contact</a></li>
       </ul>
-      <a href="#" class="btn btn-primary nav-cta" style="padding:9px 20px;font-size:0.82rem;">
+      <a href="https://drive.google.com/file/d/14UgbDBkcpicb9aoI_NiibYJvjqP2ufVf/view?usp=sharing" class="btn btn-primary nav-cta" style="padding:9px 20px;font-size:0.82rem;" target="_blank" rel="noopener">
         <i class="fa-solid fa-download"></i> Download CV
       </a>
       <button class="nav-hamburger" id="hamburger" aria-label="Toggle navigation">
@@ -339,20 +880,20 @@
       <div class="fade-in">
         <div class="hero-badge">
           <div class="hero-badge-dot"></div>
-          Open to Opportunities — Data & Corporate Roles
+          Open to Opportunities — Data Analytics & Corporate Management Roles
         </div>
 
         <h1 class="hero-name">
           Dimas Rizky<br><span class="highlight">Ramadhani</span>
         </h1>
-        <p class="hero-tagline">Data-Driven Professional &nbsp;·&nbsp; Business Intelligence &nbsp;·&nbsp; Leadership-Oriented</p>
+        <p class="hero-tagline">Profesional Berbasis Data &nbsp;|&nbsp; Kecerdasan Bisnis &nbsp;|&nbsp;  Data Analytics &nbsp;|&nbsp; Machine Learning &nbsp;|&nbsp;Statistika &nbsp;|&nbsp; Berfikir Analitis</p>
 
         <p class="hero-statement">
-          I combine data analysis, structured thinking, and leadership experience to deliver measurable impact — bridging analytical rigour with corporate execution.
+          Mengintegrasikan analisis data dan kepemimpinan untuk menghasilkan dampak terukur yang selaras dengan kebutuhan strategis industri di bidang data analytics dan machine learning
         </p>
 
         <div class="hero-actions">
-          <a href="https://drive.google.com/file/d/14UgbDBkcpicb9aoI_NiibYJvjqP2ufVf/view?usp=sharing" class="btn btn-primary"><i class="fa-solid fa-download"></i> Download CV</a>
+          <a href="https://drive.google.com/file/d/14UgbDBkcpicb9aoI_NiibYJvjqP2ufVf/view?usp=sharing" class="btn btn-primary" target="_blank" rel="noopener"><i class="fa-solid fa-download"></i> Download CV</a>
           <a href="#projects" class="btn btn-outline"><i class="fa-solid fa-folder-open"></i> View Projects</a>
           <a href="#contact" class="btn" style="background:var(--navy);color:white;border-color:var(--navy);">
             <i class="fa-solid fa-paper-plane"></i> Contact Me
@@ -365,8 +906,8 @@
             <div class="hero-stat-label">Internship & Lab<br>Experiences</div>
           </div>
           <div>
-            <div class="hero-stat-num">5<span>+</span></div>
-            <div class="hero-stat-label">Org Leadership<br>Roles</div>
+            <div class="hero-stat-num">4<span>+</span></div>
+            <div class="hero-stat-label">Organization<br>Roles</div>
           </div>
           <div>
             <div class="hero-stat-num">10<span>+</span></div>
@@ -375,31 +916,26 @@
         </div>
       </div>
 
-      <!-- Photo Column -->
       <div class="hero-photo-wrap fade-in" style="transition-delay:0.2s">
         <div class="hero-photo-deco2"></div>
         <div class="hero-photo-frame">
-            <img src="assets/Profile_Porto.jpg" alt="Dimas Rizky Ramadhani"
-                 style="width:110%;height:125%;object-fit:cover;object-position:bottom;">
-          <div class="hero-photo-placeholder">
-            <i class="fa-solid fa-user"></i>
-            <p>Replace with your photo</p>
-          </div>
+          <img src="assets/Profile_Porto.jpg" alt="Dimas Rizky Ramadhani"
+               style="width:110%;height:125%;object-fit:cover;object-position:bottom;">
         </div>
         <div class="hero-photo-deco"></div>
 
         <div class="hero-float-card card-1">
           <i class="fa-solid fa-chart-line"></i>
           <div>
-            <div style="font-size:0.7rem;color:var(--text-light);font-weight:500;">Expertise</div>
-            Business Intelligence
+            <div style="font-size:0.7rem;color:var(--text-light);font-weight:500;">Keahlian</div>
+            Data Analyst, Statistik<br>and Machine Learning
           </div>
         </div>
         <div class="hero-float-card card-2">
           <i class="fa-solid fa-location-dot"></i>
           <div>
-            <div style="font-size:0.7rem;color:var(--text-light);font-weight:500;">Based in</div>
-            South Tangerang, Indonesia
+            <div style="font-size:0.7rem;color:var(--text-light);font-weight:500;">Berbasis di</div>
+            Tangerang Selatan, Indonesia
           </div>
         </div>
       </div>
@@ -414,10 +950,10 @@
     <div class="about-grid">
 
       <div class="about-img-wrap fade-in">
-  <div class="about-img-box">
-    <img alt="Dimas Rizky Ramadhani"
-                 style="width:150%;height:190%;object-fit:cover;object-position:center;" src="assets/Sidang_Photo.jpeg">
-  </div>
+        <div class="about-img-box">
+          <img class="about-img" alt="Dimas Rizky Ramadhani"
+               style="width:350%;height:130%;object-fit:cover;object-position:center;" src="assets/Sidang_Photo.jpeg">
+        </div>
         <div class="about-accent-box">
           <div class="about-accent-num">2025</div>
           <div class="about-accent-label">Fresh Graduate<br>Data Science</div>
@@ -425,16 +961,14 @@
       </div>
 
       <div class="about-content fade-in" style="transition-delay:0.15s">
-        <div class="section-label">About Me</div>
+        <div class="section-label">Tentang Saya</div>
         <h2>Analytical Mindset.<br>Leadership Backbone.</h2>
         <p>
-          I am a fresh graduate in Data Science with hands-on experience across government statistics, academic laboratory environments, and organizational leadership. My academic journey equipped me with strong quantitative foundations, while my practical experiences sharpened my ability to communicate data insights in professional and decision-making contexts.
+        Lulusan Sains Data dengan pengalaman akademik dan praktis dalam pengolahan serta analisis data. Melalui program magang di <strong>Badan Pusat Statistik (BPS) Kota Bandar Lampung</strong>, terlibat dalam pengelolaan dan validasi data berskala resmi serta memahami tata kelola pelaporan pada bidang neraca dan analitik secara terstruktur.
         </p>
+
         <p>
-          As a former intern at <strong>Badan Pusat Statistik (BPS)</strong>, Indonesia's national statistics body, I was exposed to large-scale data workflows, government reporting structures, and the discipline required in public-sector data governance. Concurrently, my dual roles as a <strong>Deep Learning</strong> and <strong>Spatial Data Analysis Lab Assistant</strong> strengthened my technical depth and ability to mentor peers effectively.
-        </p>
-        <p>
-          Beyond technical work, I have consistently taken on leadership responsibilities within student organizations — building collaboration frameworks, managing cross-functional teams, and driving initiatives from planning to execution. I am now eager to bring this combination of analytical capability and leadership readiness into a high-impact corporate or BI environment.
+        Selama menempuh pendidikan di Institut Teknologi Sumatera, aktif sebagai asisten praktikum untuk mata kuliah <strong>Analisis Data Spasial</strong> dan <strong>Deep Learning</strong>, yang memperkuat kompetensi teknis sekaligus mengembangkan kemampuan komunikasi dan pendampingan akademik. Terbiasa menggunakan Python, R, SQL, dan Tableau dalam mengeksplorasi, membersihkan, serta menganalisis data secara sistematis guna menghasilkan rekomendasi yang terukur dan bernilai strategis.
         </p>
         <div class="about-tags">
           <span class="about-tag">Data Science Graduate</span>
@@ -450,96 +984,214 @@
   </div>
 </section>
 
-<!-- COMPETENCIES -->
-<section id="competencies" class="section section-alt">
+<!-- ═══════════════════════════════════════════════════════════
+     NEW EDUCATION SECTION
+═══════════════════════════════════════════════════════════ -->
+<section id="education" class="section section-alt">
   <div class="container">
     <div class="section-header fade-in">
-      <div class="section-label">Core Competencies</div>
-      <h2 class="section-title">Skills That Drive <span>Results</span></h2>
+      <div class="section-label">Pendidikan</div>
+      <h2 class="section-title">Landasan <span>Akademis</span></h2>
       <div class="divider"></div>
-      <p class="section-sub">A balanced blend of analytical expertise and leadership capability for both BI and corporate environments.</p>
+      <p class="section-sub">Pendidikan formal yang memberikan dasar kuat dalam ilmu statistik, metode kuantitatif, dan pemikiran analitis.</p>
     </div>
 
-    <div class="comp-grid fade-in">
-      <div>
-        <div class="comp-col-title"><div class="dot"></div> Analytical &amp; Technical</div>
+    <div class="fade-in">
+      <!-- Education Card 1 -->
+      <div class="education-card">
+        <div class="edu-logo-wrap">
+          <!-- Replace with actual university logo -->
+          <img src="assets/Logo-ITERA.png" alt="University Logo" />
+          <!-- If no logo available, use placeholder: -->
+          <!-- <i class="fa-solid fa-graduation-cap edu-logo-placeholder"></i> -->
+        </div>
+        <div class="edu-content">
+          <div class="edu-institution">Institut Teknologi Sumatera </div>
 
-        <div class="comp-card">
-          <div class="comp-icon"><i class="fa-solid fa-chart-column"></i></div>
-          <div class="comp-text">
-            <div class="comp-name">Data Analysis &amp; Reporting</div>
-            <div class="comp-bar-wrap"><div class="comp-bar" data-width="90%"></div></div>
-          </div>
-        </div>
-        <div class="comp-card">
-          <div class="comp-icon"><i class="fa-solid fa-layer-group"></i></div>
-          <div class="comp-text">
-            <div class="comp-name">Business Intelligence</div>
-            <div class="comp-bar-wrap"><div class="comp-bar" data-width="85%"></div></div>
-          </div>
-        </div>
-        <div class="comp-card">
-          <div class="comp-icon"><i class="fa-solid fa-wave-square"></i></div>
-          <div class="comp-text">
-            <div class="comp-name">Statistical Modeling</div>
-            <div class="comp-bar-wrap"><div class="comp-bar" data-width="82%"></div></div>
-          </div>
-        </div>
-        <div class="comp-card">
-          <div class="comp-icon"><i class="fa-solid fa-chart-pie"></i></div>
-          <div class="comp-text">
-            <div class="comp-name">Data Visualization</div>
-            <div class="comp-bar-wrap"><div class="comp-bar" data-width="88%"></div></div>
-          </div>
-        </div>
-        <div class="comp-card">
-          <div class="comp-icon"><i class="fa-solid fa-code"></i></div>
-          <div class="comp-text">
-            <div class="comp-name">Python · R · Excel</div>
-            <div class="comp-bar-wrap"><div class="comp-bar" data-width="80%"></div></div>
+          <div class="edu-degree">S1 - Sains Data</div>
+          <span class="edu-year">2021 – 2025</span>
+          <span class="edu-year">IPK: 3.07/4.00</span>
+          <div class="edu-highlight">
+            Menyelesaikan mata kuliah yang relevan, seperti: Analisis Big Data, Komputasi Statistik, Analisis Deret Waktu, Analisis Multivariat, Metode Survei Sampel, Data Mining, Visualisasi Data dan Informasi, serta Kecerdasan Bisnis. Menghasilkan Tugas Akhir yang berjudul “Pendugaan Tingkat Kemiskinan Di Provinsi Bengkulu Pada Tahun 2024 Menggunakan Metode Small Area Estimation (SAE) Dengan Pendekatan Empirical Best Linear Unbiased Predictor (EBLUP)”.
           </div>
         </div>
       </div>
 
-      <div>
-        <div class="comp-col-title"><div class="dot gold"></div> Leadership &amp; Corporate</div>
+      <!-- Add more education entries if needed -->
+      <!-- <div class="education-card">...</div> -->
+    </div>
+  </div>
+</section>
 
-        <div class="comp-card">
-          <div class="comp-icon gold-bg"><i class="fa-solid fa-diagram-project"></i></div>
-          <div class="comp-text">
-            <div class="comp-name">Project Coordination</div>
-            <div class="comp-bar-wrap"><div class="comp-bar gold-bar" data-width="87%"></div></div>
+<!-- ═══════════════════════════════════════════════════════════
+     NEW ORGANIZATION SECTION
+═══════════════════════════════════════════════════════════ -->
+<section id="organizations" class="section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-label">Kepemimpinan & Organisasi</div>
+      <h2 class="section-title">Memberikan <span>Dampak</span> di Luar Ruang Kelas</h2>
+      <div class="divider"></div>
+      <p class="section-sub">Berpengalaman dalam membangun tim, mengelola proyek, dan memimpin inisiatif di organisasi maupun kepanitian internal kampus.</p>
+    </div>
+
+    <div class="org-grid fade-in">
+
+      <!-- Organization Card 1 -->
+      <div class="org-card">
+        <div class="org-header">
+          <div class="org-logo-wrap">
+            <!-- Replace with actual org logo -->
+            <img src="assets/logo_angkatan.jpg" alt="Organization Logo" />
+            <!-- If no logo: -->
+            <!-- <i class="fa-solid fa-users org-logo-placeholder"></i> -->
+          </div>
+          <div class="org-info">
+            <div class="org-role">Ketua Angkatan Sains Data 2021</div>
+            <div class="org-period">2022 – Sekarang</div>
           </div>
         </div>
-        <div class="comp-card">
-          <div class="comp-icon gold-bg"><i class="fa-solid fa-chess"></i></div>
-          <div class="comp-text">
-            <div class="comp-name">Strategic Planning</div>
-            <div class="comp-bar-wrap"><div class="comp-bar gold-bar" data-width="80%"></div></div>
+        <ul class="org-bullets">
+          <li>
+            Memimpin mahasiswa/i Program Studi Sains Data angkatan 2021 ITERA yang terdiri dari 143 mahasiswa/i, berkontribusi dalam memberikan akses dalam sesi berbagi pengetahuan baik akademik maupun non-akademik untuk mempermudah diskusi akademis dalam lingkup angkatan.
+          </li>
+          <li>
+            Secara rutin mengadakan sesi berbagi pengetahuan melalui media online selama periode Tahap Persiapan Bersama (TPB) dan membimbing kelompok tersebut untuk bergabung dan berpartisipasi dalam organisasi mahasiswa Program Studi Sains Data.
+          </li>
+        </ul>
+      </div>
+
+      <!-- Organization Card 2 -->
+      <div class="org-card">
+        <div class="org-header">
+          <div class="org-logo-wrap">
+            <img src="assets/LOGO_HMSD2.png" alt="Organization Logo" />
+            <!-- <i class="fa-solid fa-handshake org-logo-placeholder"></i> -->
+          </div>
+          <div class="org-info">
+            <div class="org-role">Kepala Departemen Internal - Himpunan Mahasiswa Sains Data (HMSD) Adyatama ITERA</div>
+            <div class="org-period">Februari 2024 – 2025</div>
           </div>
         </div>
-        <div class="comp-card">
-          <div class="comp-icon gold-bg"><i class="fa-solid fa-people-group"></i></div>
-          <div class="comp-text">
-            <div class="comp-name">Team Leadership</div>
-            <div class="comp-bar-wrap"><div class="comp-bar gold-bar" data-width="85%"></div></div>
+        <ul class="org-bullets">
+          <li>Mengelola pelaksanaan program kegiatan internal riuh wisuda (Juli & November) dan sharing session bagi mahasiswa terkait aspek akademik dan non-akademik, serta program kerohanian. Seperti pelaksanaan ibadah bersama lintas agama, serta memastikan kegiatan berjalan tertib dan berkelanjutan.</li>
+          <li>Mampu berkoordinasi dengan kurang lebih 600 mahasiswa/I Sains Data, pengurus himpunan, dan dosen dalam upaya meningkatkan angka partisipasi kegiatan yang diselenggarakan oleh internal program studi.</li>
+        </ul>
+      </div>
+
+      <!-- Organization Card 3 -->
+      <div class="org-card">
+        <div class="org-header">
+          <div class="org-logo-wrap">
+            <img src="assets/Logo_PEMIRA.png" alt="Organization Logo" />
+            <!-- <i class="fa-solid fa-chart-line org-logo-placeholder"></i> -->
+          </div>
+          <div class="org-info">
+            <div class="org-role">Ketua Pelaksana — PEMIRA KM-ITERA 2023</div>
+            <div class="org-period">September - November 2023</div>
           </div>
         </div>
-        <div class="comp-card">
-          <div class="comp-icon gold-bg"><i class="fa-solid fa-comments"></i></div>
-          <div class="comp-text">
-            <div class="comp-name">Stakeholder Communication</div>
-            <div class="comp-bar-wrap"><div class="comp-bar gold-bar" data-width="83%"></div></div>
+        <ul class="org-bullets">
+          <li>Memimpin dan mengoordinasikan kepanitian bersama kesekretariatan, 6 kepala divisi dan 13 subdivisidengan total 126 staf, untuk memastikan tugas pokok dan fungsi berjalan efektif. Dengan menyelaraskan komunikasi dan kerja sama antar 41 Himpunan Mahasiswa Program Studi (HMPS) yang mewakili 18.454 mahasiswa/I aktif dalam penyelenggaraan PEMIRA KM-ITERA 2023.</li>
+          <li>Berkoordinasi dengan 2 pasangan calon Presiden Mahasiswa serta pihak dosen untuk memastikan proses pemilihan berjalan sesuai asas Langusng, Umum, Bebas, Jujur, dan Adil (LUBER JURDIL), sehingga menghasilkan angka partisipasi pemilih sebanyak 8397 mahasiswa/I aktif Institut Teknologi Sumatera.</li>
+        </ul>
+      </div>
+
+      <!-- Organization Card 4-->
+      <div class="org-card">
+        <div class="org-header">
+          <div class="org-logo-wrap">
+            <img src="assets/Logo_KRTI.png" alt="Organization Logo" />
+            <!-- <i class="fa-solid fa-chart-line org-logo-placeholder"></i> -->
+          </div>
+          <div class="org-info">
+            <div class="org-role">Koordinator Komisi Disiplin — KRTI 2023 ITERA</div>
+            <div class="org-period">September 2023</div>
           </div>
         </div>
-        <div class="comp-card">
-          <div class="comp-icon gold-bg"><i class="fa-solid fa-lightbulb"></i></div>
-          <div class="comp-text">
-            <div class="comp-name">Problem Solving &amp; Decision Making</div>
-            <div class="comp-bar-wrap"><div class="comp-bar gold-bar" data-width="88%"></div></div>
+        <ul class="org-bullets">
+          <li>Mengoordinasikan pengawasan disiplin peserta dan pendukung pada ajang nasional yang diikuti 102 tim finalis dari 40 perguruan tinggi, mencakup 4 divisi lomba ( <i>Racing Plane, Fixed Wing, VTOL, dan Technology Development</i> ).</li>
+          <li>Memastikan kegiatan berjalan aman dan kondusif sesuai Standar Operasional Prosedur (SOP), kepada panitia, peserta, dan instansi terkait selama pelaksanaan lomba yang diselenggarakan oleh BPTI–Puspresnas Kemdikbudristek di Lanud TNI AU Pangeran M. Bunyamin, Lampung.</li>
+        </ul>
+      </div>
+    
+      <!-- Add more organization cards as needed -->
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     UPDATED SKILLS SECTION (NO BARS)
+═══════════════════════════════════════════════════════════ -->
+<section id="skills" class="section section-alt">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-label">Keterampilan Teknis</div>
+      <h2 class="section-title">Keterampilan Teknis yang <span>Berdampak</span></h2>
+      <div class="divider"></div>
+      <p class="section-sub">Perpaduan terstruktur antara keahlian teknis, <i>soft skills</i>, dan <i>profesional skills</i> untuk dampak yang didorong dalam bidang data dan kepemimpinan.</p>
+    </div>
+
+    <div class="skills-grid fade-in">
+
+      <!-- Hard Skills Category -->
+      <div class="skill-category">
+        <div class="skill-cat-header">
+          <div class="skill-cat-icon">
+            <i class="fa-solid fa-code"></i>
           </div>
+          <div class="skill-cat-title">Hard Skills</div>
+        </div>
+        <div class="skill-items">
+          <div class="skill-item"><i class="fa-solid fa-chart-column"></i> Data Analysis</div>
+          <div class="skill-item"><i class="fa-solid fa-square-root-alt"></i> Statistical Modeling</div>
+          <div class="skill-item"><i class="fa-solid fa-chart-pie"></i> Data Visualization</div>
+          <div class="skill-item"><i class="fa-solid fa-brain"></i> Machine Learning</div>
+          <div class="skill-item"><i class="fa-solid fa-map"></i> Spatial Analysis</div>
+          <div class="skill-item"><i class="fa-solid fa-file-alt"></i> Report Writing</div>
         </div>
       </div>
+
+      <!-- Soft Skills Category -->
+      <div class="skill-category">
+        <div class="skill-cat-header">
+          <div class="skill-cat-icon soft">
+            <i class="fa-solid fa-lightbulb"></i>
+          </div>
+          <div class="skill-cat-title">Soft Skills</div>
+        </div>
+        <div class="skill-items">
+          <div class="skill-item soft-skill"><i class="fa-solid fa-people-group"></i> Team Leadership</div>
+          <div class="skill-item soft-skill"><i class="fa-solid fa-comments"></i> Communication</div>
+          <div class="skill-item soft-skill"><i class="fa-solid fa-lightbulb"></i> Problem Solving</div>
+          <div class="skill-item soft-skill"><i class="fa-solid fa-handshake"></i> Stakeholder Engagement</div>
+          <div class="skill-item soft-skill"><i class="fa-solid fa-chess"></i> Analytical Thinking</div>
+          <div class="skill-item soft-skill"><i class="fa-solid fa-users-viewfinder"></i> Collaboration</div>
+          <div class="skill-item soft-skill"><i class="fa-solid fa-bullseye"></i> Attention to Detail</div>
+        </div>
+      </div>
+
+      <!-- Software & Tools Category -->
+      <div class="skill-category">
+        <div class="skill-cat-header">
+          <div class="skill-cat-icon tools">
+            <i class="fa-solid fa-wrench"></i>
+          </div>
+          <div class="skill-cat-title">Software & Tools</div>
+        </div>
+        <div class="skill-items">
+          <div class="skill-item tool-skill"><i class="fa-brands fa-python"></i> Python</div>
+          <div class="skill-item tool-skill"><i class="fa-brands fa-r-project"></i> R</div>
+          <div class="skill-item tool-skill"><i class="fa-solid fa-database"></i> SQL(Database)</div>
+          <div class="skill-item tool-skill"><i class="fa-solid fa-file-excel"></i> Excel</div>
+          <div class="skill-item tool-skill"><i class="fa-solid fa-chart-area"></i> Tableau</div>
+          <div class="skill-item tool-skill"><i class="fa-brands fa-github"></i> GitHub</div>
+          <div class="skill-item tool-skill"><i class="fa-solid fa-map-location-dot"></i> QGIS</div>
+          <div class="skill-item tool-skill"><i class="fa-solid fa-file-alt"></i> Microsoft Office</div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -548,41 +1200,23 @@
 <section id="experience" class="section">
   <div class="container">
     <div class="section-header fade-in">
-      <div class="section-label">Professional Experience</div>
-      <h2 class="section-title">Where I've Made an <span>Impact</span></h2>
+      <div class="section-label">Pengalaman Profesional</div>
+      <h2 class="section-title">Implementasai Profesional yang <span>Berdampak</span></h2>
       <div class="divider"></div>
     </div>
 
     <div class="timeline">
 
-      <div class="timeline-item fade-in">
-        <div class="tl-dot"><div class="tl-dot-inner"><i class="fa-solid fa-building-columns"></i></div></div>
-        <div class="tl-card">
-          <div class="tl-header">
-            <div class="tl-role">Data Analyst Intern</div>
-            <div class="tl-period">2023</div>
-          </div>
-          <div class="tl-org"><i class="fa-solid fa-building"></i> Badan Pusat Statistik (BPS) — Statistics Indonesia</div>
-          <ul class="tl-bullets">
-            <li>Processed and validated national-scale socioeconomic datasets, ensuring accuracy for government statistical publications used by policymakers across multiple provinces.</li>
-            <li>Developed structured data reporting templates that streamlined cross-departmental data handoffs, reducing review cycles by an estimated 20%.</li>
-            <li>Collaborated with senior statisticians to produce visualized summaries of regional economic indicators for internal briefing packages and executive reports.</li>
-          </ul>
-        </div>
-      </div>
-
       <div class="timeline-item fade-in" style="transition-delay:0.1s">
         <div class="tl-dot"><div class="tl-dot-inner"><i class="fa-solid fa-brain"></i></div></div>
         <div class="tl-card">
           <div class="tl-header">
-            <div class="tl-role">Deep Learning Lab Assistant</div>
-            <div class="tl-period">2022 – 2023</div>
+            <div class="tl-role">Asisten Praktikum Deep Learning</div>
+            <div class="tl-period">September - Desember 2025</div>
           </div>
-          <div class="tl-org"><i class="fa-solid fa-university"></i> Department of Data Science — University</div>
+          <div class="tl-org"><i class="fa-solid fa-university"></i> Program Studi Sains Data — Institut Teknologi Sumatera</div>
           <ul class="tl-bullets">
-            <li>Facilitated practical lab sessions for undergraduate students covering neural network architectures, model training, and evaluation using Python and TensorFlow.</li>
-            <li>Developed structured learning modules and assessment rubrics, improving student assignment completion rates and reducing error rates in submitted work by 30%.</li>
-            <li>Provided one-on-one mentoring for final-year project students on deep learning topics including image classification and natural language processing.</li>
+            <li>Melakukan pendampingi serta mengevaluasi pelaksanaan praktikum Deep Learning dengan mengimplementasikan model berbasis Python (CNN, RNN, Transformer, GAN) serta proses end-to-end mulai dari data preprocessing, perancangan arsitektur, tuning hyperparameter, hingga evaluasi performa model. Membantu troubleshooting kode dan memastikan pemahaman alur pengembangan model secara sistematis</li>
           </ul>
         </div>
       </div>
@@ -591,30 +1225,27 @@
         <div class="tl-dot"><div class="tl-dot-inner"><i class="fa-solid fa-map-location-dot"></i></div></div>
         <div class="tl-card">
           <div class="tl-header">
-            <div class="tl-role">Spatial Data Analysis Lab Assistant</div>
-            <div class="tl-period">2022 – 2023</div>
+            <div class="tl-role">Asisten Praktikum Analisis Data Spasial</div>
+            <div class="tl-period">Februari - Mei 2025</div>
           </div>
-          <div class="tl-org"><i class="fa-solid fa-university"></i> Department of Data Science — University</div>
+          <div class="tl-org"><i class="fa-solid fa-university"></i> Program Studi Sains Data — Institut Teknologi Sumatera</div>
           <ul class="tl-bullets">
-            <li>Guided students in GIS-based analysis and spatial regression techniques using R and ArcGIS, ensuring conceptual understanding and practical application skills.</li>
-            <li>Prepared lab exercise datasets and standardized documentation, ensuring consistency across multiple cohorts of 40+ students per session.</li>
-            <li>Assisted in ongoing spatial research projects involving regional infrastructure mapping and land-use classification using government-sourced datasets.</li>
+            <li>Memberikan pemaparan serta mendukung pelaksanaan praktikum Analisis Data Spasial, termasuk menyiapkan 10 modul praktikum dan mendampingi satu kelompok mahasiswa dalam pengolahan tugas besar hingga menghasilkan publikasi pada seminar nasional. Selain itu, melakukan evaluasi hasil praktikum serta pengembangan modul pembelajaran untuk memastikan kegiatan berjalan terstruktur dan selaras dengan capaian pembelajaran.</li>
           </ul>
         </div>
       </div>
 
-      <div class="timeline-item fade-in" style="transition-delay:0.3s">
-        <div class="tl-dot"><div class="tl-dot-inner"><i class="fa-solid fa-star"></i></div></div>
+      <div class="timeline-item fade-in">
+        <div class="tl-dot"><div class="tl-dot-inner"><i class="fa-solid fa-building-columns"></i></div></div>
         <div class="tl-card">
           <div class="tl-header">
-            <div class="tl-role">Head of Division — Student Organization</div>
-            <div class="tl-period">2021 – 2023</div>
+            <div class="tl-role">Internship Data Analyst dan Entry</div>
+            <div class="tl-period">Juli - Agustus 2024</div>
           </div>
-          <div class="tl-org"><i class="fa-solid fa-users"></i> Multiple Student Organizations — University</div>
+          <div class="tl-org"><i class="fa-solid fa-building"></i> Badan Pusat Statistik (BPS) — Bandar Lampung, Indonesia </div>
           <ul class="tl-bullets">
-            <li>Led cross-functional committees of 15–30 members across academic, social, and professional programs, delivering 10+ events annually with measurable engagement outcomes.</li>
-            <li>Coordinated budgeting, stakeholder communication, and logistical execution for large-scale campus initiatives, strengthening organizational process discipline.</li>
-            <li>Mentored junior members and facilitated structured feedback sessions to develop internal talent pipelines and sustain organizational continuity.</li>
+            <li>Menyelesaikan penyusunan dan validasi data neraca keuangan daerah untuk pelaporan statistik ekonomi regional melalui koordinasi lintas unit, termasuk Subbagian Umum (perencanaan anggaran), Statistik Sosial (data kependudukan), Statistik Produksi (data pertanian), serta Subdirektorat IPDS dalam pengelolaan sistem informasi statistik</li>
+            <li>Menyelesaikan input, pengecekan, dan rekonsiliasi data menggunakan sistem resmi BPS. Dengan menghasilkan publikasi statistik daerah, termasuk Publikasi <i>Hasil Pencacahan Lengkap Sensus Pertanian 2023 Kota Bandar Lampung</i> dan laporan akhir <i>Analisis Regresi Linear Dalam Menganalisis Pengaruhi Diare Di Provinsi Lampung Pada Tahun 2022</i>.</li>
           </ul>
         </div>
       </div>
@@ -633,20 +1264,31 @@
       <p class="section-sub">A selection of analytical, BI, and leadership-driven projects demonstrating end-to-end problem-solving ability.</p>
     </div>
 
-    <div class="projects-grid fade-in">
+<div class="projects-grid fade-in">
 
-      <div class="project-card" onclick="openModal('p1')">
-        <div class="project-thumb t1"><i class="fa-solid fa-chart-bar"></i></div>
-        <div class="project-body">
-          <div class="project-type">Business Intelligence</div>
-          <div class="project-title">Regional Sales Performance Dashboard</div>
-          <div class="project-desc">Interactive BI dashboard visualizing multi-region sales KPIs for executive decision-making.</div>
-          <div class="project-tools">
-            <span class="tool-tag">Power BI</span><span class="tool-tag">SQL</span><span class="tool-tag">Excel</span>
-          </div>
-          <div class="project-more">View Details <i class="fa-solid fa-arrow-right"></i></div>
-        </div>
+  <div class="project-card" onclick="openModal('p1')">
+    <div class="project-thumb t1">
+      <img src="assets/Netflix Dashboard.jpg" alt="Netflix BI Dashboard">
+    </div>
+
+    <div class="project-body">
+      <div class="project-type">Business Intelligence</div>
+      <div class="project-title">
+        Perencanaan dan Implementasi Sistem Intelijen Bisnis Skala Besar pada Platform Netflix
       </div>
+      <div class="project-desc">
+        Dashboard BI interaktif yang menampilkan implementasi sistem intelijen bisnis skala besar pada platform Netflix.
+      </div>
+      <div class="project-tools">
+        <span class="tool-tag">Tableau</span>
+        <span class="tool-tag">Python</span>
+        <span class="tool-tag">Excel</span>
+      </div>
+      <div class="project-more">
+        View Details <i class="fa-solid fa-arrow-right"></i>
+      </div>
+    </div>
+  </div>
 
       <div class="project-card" onclick="openModal('p2')">
         <div class="project-thumb t2"><i class="fa-solid fa-robot"></i></div>
@@ -691,66 +1333,348 @@
   </div>
 </section>
 
+        <!-- ═══════════════════════════════════════════════════════════
+     CERTIFICATION MODAL WITH SLIDER
+═══════════════════════════════════════════════════════════ -->
+<div class="cert-slider-overlay" id="certSliderModal" onclick="closeCertSliderOnOverlay(event)">
+  <div class="cert-slider-container" onclick="event.stopPropagation()">
+    
+    <!-- Close Button -->
+    <button class="cert-slider-close" onclick="closeCertSlider()" aria-label="Close certificate">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <!-- Main Content -->
+    <div class="cert-slider-content">
+      
+      <!-- Image Container -->
+      <div class="cert-slider-images">
+        <img id="certSliderImg" src="" alt="Certificate" class="cert-slider-image">
+        
+        <!-- Navigation Arrows -->
+        <button class="cert-slider-prev" onclick="certSliderNavigate(-1)" aria-label="Previous image">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button class="cert-slider-next" onclick="certSliderNavigate(1)" aria-label="Next image">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
+
+      <!-- Certificate Info -->
+      <div class="cert-slider-info">
+        <h3 id="certSliderTitle" class="cert-slider-title"></h3>
+        <p id="certSliderOrg" class="cert-slider-org"></p>
+        <p id="certSliderYear" class="cert-slider-year"></p>
+        
+        <!-- Image Counter -->
+        <div class="cert-slider-counter">
+          <span id="certSliderCurrent">1</span> / <span id="certSliderTotal">1</span>
+        </div>
+
+        <!-- Dot Indicators -->
+        <div class="cert-slider-dots" id="certSliderDots"></div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+/* ═══════════════════════════════════════════════════════════
+   CERTIFICATION SLIDER JAVASCRIPT
+═══════════════════════════════════════════════════════════ */
+
+// Global variables for slider
+let certSliderImages = [];
+let certSliderCurrentIndex = 0;
+let certSliderTitle = '';
+let certSliderOrg = '';
+let certSliderYear = '';
+
+/**
+ * Open certification slider modal
+ */
+function openCertSlider(cardElement) {
+  // Get certificate data from card
+  const imagesAttr = cardElement.getAttribute('data-images');
+  certSliderTitle = cardElement.querySelector('.cert-title').textContent;
+  certSliderOrg = cardElement.querySelector('.cert-org').textContent;
+  certSliderYear = cardElement.querySelector('.cert-year').textContent;
+
+  // Parse images (comma-separated)
+  certSliderImages = imagesAttr ? imagesAttr.split(',').map(img => img.trim()) : [];
+  certSliderCurrentIndex = 0;
+
+  // Populate modal with data
+  document.getElementById('certSliderTitle').textContent = certSliderTitle;
+  document.getElementById('certSliderOrg').textContent = certSliderOrg;
+  document.getElementById('certSliderYear').textContent = certSliderYear;
+  document.getElementById('certSliderTotal').textContent = certSliderImages.length;
+
+  // Show first image
+  updateCertSliderImage();
+
+  // Create dot indicators
+  createCertSliderDots();
+
+  // Show/hide arrows based on image count
+  const modal = document.getElementById('certSliderModal');
+  if (certSliderImages.length === 1) {
+    modal.querySelector('.cert-slider-container').classList.add('cert-slider-single');
+  } else {
+    modal.querySelector('.cert-slider-container').classList.remove('cert-slider-single');
+  }
+
+  // Show modal
+  modal.classList.add('active');
+  document.body.classList.add('cert-slider-open');
+}
+
+/**
+ * Close certification slider modal
+ */
+function closeCertSlider() {
+  const modal = document.getElementById('certSliderModal');
+  modal.classList.remove('active');
+  document.body.classList.remove('cert-slider-open');
+}
+
+/**
+ * Close modal when clicking overlay (not the content)
+ */
+function closeCertSliderOnOverlay(event) {
+  if (event.target === document.getElementById('certSliderModal')) {
+    closeCertSlider();
+  }
+}
+
+/**
+ * Navigate to previous or next image
+ */
+function certSliderNavigate(direction) {
+  certSliderCurrentIndex += direction;
+
+  // Loop around
+  if (certSliderCurrentIndex < 0) {
+    certSliderCurrentIndex = certSliderImages.length - 1;
+  } else if (certSliderCurrentIndex >= certSliderImages.length) {
+    certSliderCurrentIndex = 0;
+  }
+
+  updateCertSliderImage();
+}
+
+/**
+ * Go to specific image by index
+ */
+function certSliderGoTo(index) {
+  certSliderCurrentIndex = index;
+  updateCertSliderImage();
+}
+
+/**
+ * Update displayed image and counter
+ */
+function updateCertSliderImage() {
+  const imgElement = document.getElementById('certSliderImg');
+  imgElement.src = certSliderImages[certSliderCurrentIndex];
+  imgElement.alt = certSliderTitle;
+
+  // Update counter
+  document.getElementById('certSliderCurrent').textContent = certSliderCurrentIndex + 1;
+
+  // Update dots
+  updateCertSliderDots();
+}
+
+/**
+ * Create dot indicators
+ */
+function createCertSliderDots() {
+  const dotsContainer = document.getElementById('certSliderDots');
+  dotsContainer.innerHTML = '';
+
+  // Only show dots if more than one image
+  if (certSliderImages.length <= 1) {
+    return;
+  }
+
+  certSliderImages.forEach((img, index) => {
+    const dot = document.createElement('div');
+    dot.className = 'cert-slider-dot';
+    if (index === certSliderCurrentIndex) {
+      dot.classList.add('active');
+    }
+    dot.onclick = () => certSliderGoTo(index);
+    dotsContainer.appendChild(dot);
+  });
+}
+
+/**
+ * Update active dot indicator
+ */
+function updateCertSliderDots() {
+  const dots = document.querySelectorAll('.cert-slider-dot');
+  dots.forEach((dot, index) => {
+    if (index === certSliderCurrentIndex) {
+      dot.classList.add('active');
+    } else {
+      dot.classList.remove('active');
+    }
+  });
+}
+
+/**
+ * Keyboard navigation
+ */
+document.addEventListener('keydown', function(event) {
+  const modal = document.getElementById('certSliderModal');
+  
+  if (modal.classList.contains('active')) {
+    if (event.key === 'Escape' || event.key === 'Esc') {
+      closeCertSlider();
+    } else if (event.key === 'ArrowLeft') {
+      certSliderNavigate(-1);
+    } else if (event.key === 'ArrowRight') {
+      certSliderNavigate(1);
+    }
+  }
+});
+
+/**
+ * Prevent image drag
+ */
+document.addEventListener('DOMContentLoaded', function() {
+  const certImg = document.getElementById('certSliderImg');
+  if (certImg) {
+    certImg.addEventListener('dragstart', function(e) {
+      e.preventDefault();
+    });
+  }
+});
+</script>
+
 <!-- CERTIFICATIONS -->
 <section id="certifications" class="section">
   <div class="container">
     <div class="section-header fade-in">
-      <div class="section-label">Certifications</div>
-      <h2 class="section-title">Credentials &amp; <span>Recognition</span></h2>
+      <div class="section-label">Sertifikat</div>
+      <h2 class="section-title">Sertifikasi &amp; <span>Lisensi</span></h2>
       <div class="divider"></div>
     </div>
-
     <div class="certs-grid fade-in">
-      <div class="cert-card">
-        <div class="cert-thumb"><i class="fa-brands fa-google"></i></div>
+
+      <div class="cert-card" onclick="openCertModal(this, 'assets/Sertif_Course.jpg')" data-cert-img="assets/Sertif_Course.jpg">
+        <div class="cert-thumb"><img src="assets/Sertif_Course.jpg" alt="Certificate Image"></div>
         <div class="cert-body">
-          <div class="cert-title">Google Data Analytics Certificate</div>
-          <div class="cert-org">Google / Coursera</div>
+          <div class="cert-title">Mini Course - Intro to Data Analytics</div>
+          <div class="cert-org">RevoU</div>
+          <div class="cert-year">Januari 2026</div>
+        </div>
+      </div> 
+
+        <div class="cert-card" onclick="openCertModal(this, 'assets/Sertif_Toefl.jpg')" data-cert-img="assets/Sertif_Toefl.jpg">
+        <div class="cert-thumb"><img src="assets/Sertif_Toefl.jpg" alt="Certificate Image"></div>
+        <div class="cert-body">
+          <div class="cert-title">TOEFL Score Report</div>
+          <div class="cert-org">Institut Teknologi Sumatera</div>
+          <div class="cert-year">Desember 2025</div>
+        </div>
+      </div>  
+
+      <div class="cert-card" onclick="openCertModal(this, 'assets/Sertif_Asprak_DL.jpg')" 
+          data-cert-img="assets/Sertif_Asprak_DL.jpg">
+        <div class="cert-thumb"><img src="assets/Sertif_Asprak_DL.jpg" alt="Certificate Image"></div>
+        <div class="cert-body">
+          <div class="cert-title">Asisten Praktikum Deep Learning</div>
+          <div class="cert-org">Program Studi Sains Data ITERA</div>
+          <div class="cert-year">September - Desember 2025</div>
+        </div>
+      </div>
+
+      <div class="cert-card" onclick="openCertModal(this, 'assets/Sertif_Asprak_ADSP.jpg')" 
+          data-cert-img="assets/Sertif_Asprak_ADSP.jpg">
+        <div class="cert-thumb"><img src="assets/Sertif_Asprak_ADSP.jpg" alt="Certificate Image"></div>
+        <div class="cert-body">
+          <div class="cert-title">Asisten Praktikum Analisis Data Spasial</div>
+          <div class="cert-org">Program Studi Sains Data ITERA</div>
+          <div class="cert-year">Februari - Mei 2025</div>
+        </div>
+      </div>
+
+      <!-- Updated Certification Card -->
+      <div class="cert-card" onclick="openCertSlider(this, 'assets/Sertif_HIMARSKAP.jpg,assets/Sertif_HIMATEKIA.jpg,assets/Sertif_Himatika.jpg,assets/Sertif_HMB.jpg,assets/Sertif_HMSD.jpg,assets/Sertif_HMIF.jpg,assets/Sertif_HMTA.jpg')" 
+           data-images="assets/Sertif_HIMARSKAP.jpg,assets/Sertif_HIMATEKIA.jpg,assets/Sertif_Himatika.jpg,assets/Sertif_HMB.jpg,assets/Sertif_HMSD.jpg,assets/Sertif_HMIF.jpg,assets/Sertif_HMTA.jpg">
+        <div class="cert-thumb"><img src="assets/Sertif_HIMARSKAP.jpg" alt="Certificate"></div>
+        <div class="cert-body">
+          <div class="cert-title">Pemateri Dasar-Dasar Kepemimpinan</div>
+          <div class="cert-org">Organisasi Kemahasiswaan ITERA</div>
+          <div class="cert-year">Februari 2024 - Agustus 2025</div>
+        </div>
+      </div>
+
+      <div class="cert-card" onclick="openCertModal(this, 'assets/Sertif_Kadep.jpg')"
+           data-cert-img="assets/Sertif_Kadep.jpg">
+        <div class="cert-thumb"><img src="assets/Sertif_Kadep.jpg" alt="Certificate Image"></div>
+        <div class="cert-body">
+          <div class="cert-title">Kepala Departemen Internal</div>
+          <div class="cert-org">Himpunan Mahasiswa Sains Data (HMSD) Adyatama ITERA</div>
+          <div class="cert-year">Februari 2024 - Februari 2025</div>
+        </div>
+      </div>
+
+      <div class="cert-card" onclick="openCertModal(this, 'assets/Sertif_BPS.jpg')" data-cert-img="assets/Sertif_BPS.jpg">
+        <div class="cert-thumb"><img src="assets/Sertif_BPS.jpg" alt="Certificate Image"></div>
+        <div class="cert-body">
+          <div class="cert-title">Internship Bidang Neraca dan Analisis Statistik</div>
+          <div class="cert-org">Badan Pusat Statistik (BPS) Kota Bandar Lampung</div>
+          <div class="cert-year">Juli - Agustus 2024</div>
+        </div>
+      </div>
+
+     <div class="cert-card" onclick="openCertModal(this, 'assets/Sertif_Pelatihan.jpg')" data-cert-img="assets/Sertif_Pelatihan.jpg">
+        <div class="cert-thumb"><img src="assets/Sertif_Pelatihan.jpg" alt="Certificate Image"></div>
+        <div class="cert-body">
+          <div class="cert-title">Pelatihan Pemanduan LKMM ITERA</div>
+          <div class="cert-org">Institut Teknologi Sumatera</div>
+          <div class="cert-year">Februari 2024</div>
+        </div>
+      </div>
+
+      <div class="cert-card" onclick="openCertModal(this, 'assets/Sertif_Ketuplak.jpg')" data-cert-img="assets/Sertif_Ketuplak.jpg">
+        <div class="cert-thumb"><img src="assets/Sertif_Ketuplak.jpg" alt="Certificate Image"></div>
+        <div class="cert-body">
+          <div class="cert-title">Ketua Pelaksana PEMIRA KM-ITERA 2023</div>
+          <div class="cert-org">SENAT KM-ITERA</div>
+          <div class="cert-year">September - November 2023</div>
+        </div>
+      </div>
+
+      <div class="cert-card" onclick="openCertModal(this, 'assets/Sertif_KRTI.jpg')" data-cert-img="assets/Sertif_KRTI.jpg">
+        <div class="cert-thumb"><img src="assets/Sertif_KRTI.jpg" alt="Certificate Image"></div>
+        <div class="cert-body">
+          <div class="cert-title">Kordinator Komisi Disiplin</div>
+          <div class="cert-org">Balai Pengembangan Talenta Indonesia</div>
+          <div class="cert-year">September 2023</div>
+        </div>
+      </div>
+
+       <!-- Add more certification cards as needed -->
+
+     <div class="cert-card" onclick="openCertModal(this, 'assets/Sertif_Peserta_LKMM.jpg')" data-cert-img="assets/Sertif_Peserta_LKMM.jpg">
+        <div class="cert-thumb"><img src="assets/Sertif_Peserta_LKMM.jpg" alt="Certificate Image"></div>
+        <div class="cert-body">
+          <div class="cert-title">Latihan Keterampilan Manajemen Mahasiswa (LKMM) Tingkat Dasar III</div>
+          <div class="cert-org">Institut Teknologi Sumatera</div>
           <div class="cert-year">2023</div>
         </div>
       </div>
-      <div class="cert-card">
-        <div class="cert-thumb"><i class="fa-solid fa-database"></i></div>
-        <div class="cert-body">
-          <div class="cert-title">SQL for Data Science</div>
-          <div class="cert-org">Coursera / UC Davis</div>
-          <div class="cert-year">2023</div>
-        </div>
-      </div>
-      <div class="cert-card">
-        <div class="cert-thumb"><i class="fa-solid fa-brain"></i></div>
-        <div class="cert-body">
-          <div class="cert-title">Machine Learning Specialization</div>
-          <div class="cert-org">DeepLearning.AI / Coursera</div>
-          <div class="cert-year">2022</div>
-        </div>
-      </div>
-      <div class="cert-card">
-        <div class="cert-thumb"><i class="fa-solid fa-chart-line"></i></div>
-        <div class="cert-body">
-          <div class="cert-title">Business Intelligence Foundations</div>
-          <div class="cert-org">LinkedIn Learning</div>
-          <div class="cert-year">2023</div>
-        </div>
-      </div>
-      <div class="cert-card">
-        <div class="cert-thumb"><i class="fa-brands fa-python"></i></div>
-        <div class="cert-body">
-          <div class="cert-title">Python for Data Science &amp; ML</div>
-          <div class="cert-org">Udemy</div>
-          <div class="cert-year">2022</div>
-        </div>
-      </div>
-      <div class="cert-card">
-        <div class="cert-thumb"><i class="fa-solid fa-medal"></i></div>
-        <div class="cert-body">
-          <div class="cert-title">Add Your Certification</div>
-          <div class="cert-org">Issuing Organization</div>
-          <div class="cert-year">Year</div>
-        </div>
-      </div>
-    </div>
-  </div>
+ 
 </section>
 
 <!-- CONTACT -->
@@ -759,16 +1683,16 @@
     <div class="contact-grid">
 
       <div class="contact-info fade-in">
-        <div class="section-label">Contact</div>
-        <h2>Let's Build Something Together</h2>
-        <p>I'm actively seeking opportunities in Data Analytics, Business Intelligence, and Management Trainee programs. I'd love to connect and explore how I can contribute to your team.</p>
+        <div class="section-label">Kontak</div>
+        <h2>Mari Kita Bangun Kerjasama</h2>
+        <p>Saya sedang aktif mencari peluang di bidang Analisis Data, Finance, dan program Magang Manajemen. Saya sangat tertarik untuk terhubung dan menjajaki cara saya dapat berkontribusi pada tim Anda.</p>
 
         <div class="contact-items">
           <div class="contact-item">
             <div class="contact-item-icon"><i class="fa-solid fa-envelope"></i></div>
             <div class="contact-item-text">
               <div class="contact-item-label">Email</div>
-              <div class="contact-item-value"><a href="mailto:dimas.rizky@email.com">dimas.rizky@email.com</a></div>
+              <div class="contact-item-value"><a href="mailto:dimasrizky.ramadhani011@gmail.com">dimasrizky.ramadhani011@gmail.com</a></div>
             </div>
           </div>
           <div class="contact-item">
@@ -784,51 +1708,61 @@
             <div class="contact-item-icon"><i class="fa-brands fa-github"></i></div>
             <div class="contact-item-text">
               <div class="contact-item-label">GitHub</div>
-              <div class="contact-item-value"><a href="https://github.com/" target="_blank" rel="noopener">github.com/dimas-rizky</a></div>
+              <div class="contact-item-value"><a href="https://github.com/produktifdimas01-spec" target="_blank" rel="noopener">github.com/produktifdimas01</a></div>
             </div>
           </div>
           <div class="contact-item">
             <div class="contact-item-icon"><i class="fa-solid fa-location-dot"></i></div>
             <div class="contact-item-text">
-              <div class="contact-item-label">Location</div>
-              <div class="contact-item-value">Indonesia</div>
+              <div class="contact-item-label">Lokasi</div>
+              <div class="contact-item-value">Tangerang Selatan, Indonesia</div>
             </div>
           </div>
         </div>
 
-        <a href="#" class="btn btn-ghost" style="width:fit-content;">
+        <a href="https://drive.google.com/file/d/14UgbDBkcpicb9aoI_NiibYJvjqP2ufVf/view?usp=sharing" class="btn btn-ghost" style="width:fit-content;" target="_blank" rel="noopener">
           <i class="fa-solid fa-download"></i> Download Full CV
         </a>
       </div>
 
       <div class="fade-in" style="transition-delay:0.15s">
-        <div class="contact-form">
-          <div class="form-row">
-            <div class="form-group">
-              <label>First Name</label>
-              <input type="text" placeholder="Jane" />
+        <form action="https://formsubmit.co/dimasrizky.ramadhani011@gmail.com" method="POST">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_subject" value="New Portfolio Message">
+          <input type="hidden" name="_template" value="table">
+
+          <div class="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label>First Name</label>
+                <input type="text" name="first_name" required />
+              </div>
+              <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" name="last_name" required />
+              </div>
             </div>
+
             <div class="form-group">
-              <label>Last Name</label>
-              <input type="text" placeholder="Doe" />
+              <label>Email Address</label>
+              <input type="email" name="email" required />
             </div>
+
+            <div class="form-group">
+              <label>Subject</label>
+              <input type="text" name="subject" required />
+            </div>
+
+            <div class="form-group">
+              <label>Message</label>
+              <textarea name="message" rows="5" required></textarea>
+            </div>
+
+            <button type="submit" class="form-submit">
+              <i class="fa-solid fa-paper-plane"></i> Send Message
+            </button>
           </div>
-          <div class="form-group">
-            <label>Email Address</label>
-            <input type="email" placeholder="jane@company.com" />
-          </div>
-          <div class="form-group">
-            <label>Subject</label>
-            <input type="text" placeholder="Job Opportunity / Collaboration" />
-          </div>
-          <div class="form-group">
-            <label>Message</label>
-            <textarea rows="5" placeholder="Tell me about the role or opportunity..."></textarea>
-          </div>
-          <button class="form-submit" id="submitBtn">
-            <i class="fa-solid fa-paper-plane"></i> Send Message
-          </button>
-        </div>
+        </form>
       </div>
 
     </div>
@@ -837,7 +1771,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <p>© 2024 <span>Dimas Rizky Ramadhani</span> &nbsp;·&nbsp; Built with purpose &nbsp;·&nbsp; Indonesia</p>
+  <p>© 2025 <span>Dimas Rizky Ramadhani</span> &nbsp;·&nbsp; Built with purpose &nbsp;·&nbsp; Indonesia</p>
 </footer>
 
 <!-- Back to top -->
@@ -845,9 +1779,9 @@
   <i class="fa-solid fa-chevron-up"></i>
 </button>
 
-<!-- MODAL -->
+<!-- PROJECT MODAL -->
 <div class="modal-overlay" id="projectModal" onclick="closeModalOnOverlay(event)">
-  <div class="modal-box" id="modalBox">
+  <div class="modal-box">
     <div class="modal-header">
       <div>
         <div class="modal-type"  id="mType"></div>
@@ -865,16 +1799,36 @@
         <p id="mTools"></p>
       </div>
       <div class="modal-section">
-        <h4>Problem Solved</h4>
-        <p id="mProblem"></p>
+        <h4>Recomendation
+        </h4>
+        <p id="mRecomendation"></p>
       </div>
       <div class="modal-outcome" id="mOutcome"></div>
     </div>
   </div>
 </div>
 
+<!-- CERTIFICATE MODAL -->
+<div class="cert-modal-overlay" id="certModal" onclick="closeCertModalOnOverlay(event)">
+  <div class="cert-modal-container">
+    <button class="cert-modal-close" onclick="closeCertModal()" aria-label="Close certificate">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <div class="cert-modal-content">
+      <img id="certModalImg" src="" alt="Certificate" class="cert-modal-image">
+      <div class="cert-modal-info">
+        <h3 id="certModalTitle" class="cert-modal-title"></h3>
+        <p id="certModalOrg" class="cert-modal-org"></p>
+        <p id="certModalYear" class="cert-modal-year"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
-  /* ─── NAV ─── */
+  /* ═══════════════════════════════════════════════════════════
+     NAVIGATION & SCROLL
+  ═══════════════════════════════════════════════════════════ */
   const navbar  = document.getElementById('navbar');
   const backTop = document.getElementById('back-top');
 
@@ -884,7 +1838,6 @@
     updateActiveNav();
   });
 
-  /* ─── Hamburger ─── */
   document.getElementById('hamburger').addEventListener('click', () => {
     document.getElementById('navLinks').classList.toggle('open');
   });
@@ -892,7 +1845,6 @@
     l.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
   });
 
-  /* ─── Active link ─── */
   const sections = document.querySelectorAll('section[id]');
   const navLinks  = document.querySelectorAll('.nav-link');
   function updateActiveNav() {
@@ -901,42 +1853,32 @@
     navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + current));
   }
 
-  /* ─── Fade-in on scroll ─── */
+  /* ═══════════════════════════════════════════════════════════
+     FADE-IN ANIMATIONS
+  ═══════════════════════════════════════════════════════════ */
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
   }, { threshold: 0.12 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-  /* ─── Skill bars ─── */
-  const barObserver = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.querySelectorAll('.comp-bar').forEach(b => b.style.width = b.dataset.width || '0%');
-        barObserver.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.2 });
-  document.querySelectorAll('.comp-grid').forEach(el => {
-    el.querySelectorAll('.comp-bar').forEach(b => b.style.width = '0%');
-    barObserver.observe(el);
-  });
-
-  /* ─── Project modal data ─── */
+  /* ═══════════════════════════════════════════════════════════
+     PROJECT MODAL
+  ═══════════════════════════════════════════════════════════ */
   const projects = {
     p1: {
       type:    'Business Intelligence',
-      title:   'Regional Sales Performance Dashboard',
-      context: 'Developed an executive-level BI dashboard for a retail scenario encompassing 6 regional branches, enabling real-time visibility into revenue trends, target attainment, and product performance across time periods.',
-      tools:   'Power BI (DAX, data modeling), SQL (data extraction & transformation), Microsoft Excel (data cleaning & validation)',
-      problem: 'Stakeholders lacked a unified view of regional performance, leading to delayed decision-making and inconsistent reporting formats across departments. The dashboard centralized all KPIs into a single interactive interface.',
-      outcome: '⚡ Outcome: Consolidated 6 regional reports into 1 live dashboard — reducing reporting time from 3 days to under 4 hours and enabling faster executive decisions.'
+      title:   'Perencanaan dan Implementasi Sistem Intelijen Bisnis Skala Besar pada platform Netflix',
+      context: 'Mengembangkan sistem Business Intelligence (BI) untuk Netflix dengan mengintegrasikan proses ETL terstruktur, pemodelan data, dan dashboard interaktif menggunakan Python dan Power BI. Sistem ini mengubah data konten mentah menjadi wawasan bisnis yang dapat ditindaklanjuti untuk mendukung pengambilan keputusan strategis dalam perencanaan konten, distribusi, dan ekspansi pasar.',
+      tools:   'Microsoft Excel (Data checking & data preparation), , Python (data extraction & transformation), Tableau (final dashboard design)',
+      recomendation: 'Optimalisasi strategi produksi melalui perencanaan konten berbasis data, perluasan konten internasional untuk mendukung ekspansi pasar, serta pemanfaatan dashboard Business Intelligence guna mendukung keputusan investasi dan distribusi secara terukur serta terintegrasi dalam strategi jangka panjang perusahaan.',
+      outcome: '⚡ Outcome: Hasil analisis menunjukkan dominasi film dalam katalog Netflix, menandakan fokus pada format konten berdurasi singkat. Rating TV-MA dan TV-14 menjadi kategori utama, mencerminkan tingginya permintaan pasar terhadap konten dewasa. Produksi konten masih terpusat di Amerika Serikat, sementara secara global genre International Movies, Drama, dan Komedi mendominasi. Mayoritas film berdurasi 75–125 menit, sejalan dengan pola konsumsi pengguna.'
     },
     p2: {
       type:    'Machine Learning',
       title:   'Customer Churn Prediction Model',
       context: 'Built an end-to-end binary classification pipeline to predict customer churn for a telecommunications dataset with 7,000+ records and 20+ features, including feature engineering, model selection, and business interpretation.',
       tools:   'Python (Pandas, Scikit-learn, Matplotlib, SHAP), Jupyter Notebook, Logistic Regression, Random Forest, XGBoost',
-      problem: 'The business lacked proactive insight into which customers were likely to leave, resulting in reactive retention efforts. The model provided churn probability scores enabling targeted early intervention.',
+      recomendation: 'The business lacked proactive insight into which customers were likely to leave, resulting in reactive retention efforts. The model provided churn probability scores enabling targeted early intervention.',
       outcome: '⚡ Outcome: Achieved 87% AUC-ROC on test data. SHAP analysis identified top 5 churn drivers, enabling actionable retention strategy recommendations.'
     },
     p3: {
@@ -944,7 +1886,7 @@
       title:   'Spatial Analysis of Poverty Indicators',
       context: 'A geospatial research project analyzing the geographic distribution of poverty-related indicators across Indonesian provinces using official BPS data, employing spatial autocorrelation and regression techniques.',
       tools:   'R (spdep, sf, ggplot2), ArcGIS (choropleth mapping), BPS official datasets, Moran\'s I spatial statistics',
-      problem: 'Standard regression models fail to account for spatial dependencies in regional poverty data, leading to biased policy implications. Spatial modeling was applied to identify provincial clustering patterns.',
+      rekomendasi: 'Standard regression models fail to account for spatial dependencies in regional poverty data, leading to biased policy implications. Spatial modeling was applied to identify provincial clustering patterns.',
       outcome: '⚡ Outcome: Identified 3 significant spatial clusters of high-poverty provinces with shared structural factors — providing evidence-based insights for targeted regional policy intervention.'
     },
     p4: {
@@ -952,7 +1894,7 @@
       title:   'Data Literacy Bootcamp Initiative',
       context: 'Conceptualized, designed, and led a structured 3-day data literacy bootcamp for 80+ non-technical students from diverse academic departments, aiming to bridge the gap between raw data and decision-making.',
       tools:   'Curriculum design, Microsoft Excel, Tableau Public, facilitation frameworks, Google Forms (evaluation & feedback)',
-      problem: 'Most students outside data-related programs lacked foundational skills in reading and interpreting data, limiting their effectiveness in data-driven academic and professional environments.',
+      rekomendasi: 'Most students outside data-related programs lacked foundational skills in reading and interpreting data, limiting their effectiveness in data-driven academic and professional environments.',
       outcome: '⚡ Outcome: 85% of participants rated the program "highly effective." 60+ students completed hands-on data projects within 2 weeks. Program was replicated the following semester.'
     }
   };
@@ -964,7 +1906,7 @@
     document.getElementById('mTitle').textContent   = p.title;
     document.getElementById('mContext').textContent = p.context;
     document.getElementById('mTools').textContent   = p.tools;
-    document.getElementById('mProblem').textContent = p.problem;
+    document.getElementById('mRecomendation').textContent = p.recomendation;
     document.getElementById('mOutcome').textContent = p.outcome;
     document.getElementById('projectModal').classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -981,16 +1923,56 @@
 
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-  /* ─── Contact form (demo) ─── */
-  document.getElementById('submitBtn').addEventListener('click', function(e) {
-    e.preventDefault();
-    this.innerHTML = '<i class="fa-solid fa-check"></i> Message Sent!';
-    this.style.background = '#22c55e';
-    setTimeout(() => {
-      this.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send Message';
-      this.style.background = '';
-    }, 3000);
+  /* ═══════════════════════════════════════════════════════════
+     CERTIFICATE MODAL ZOOM FUNCTIONALITY
+  ═══════════════════════════════════════════════════════════ */
+  function openCertModal(cardElement) {
+    const imgSrc = cardElement.getAttribute('data-cert-img');
+    const title = cardElement.querySelector('.cert-title').textContent;
+    const org = cardElement.querySelector('.cert-org').textContent;
+    const year = cardElement.querySelector('.cert-year').textContent;
+
+    document.getElementById('certModalImg').src = imgSrc;
+    document.getElementById('certModalImg').alt = title;
+    document.getElementById('certModalTitle').textContent = title;
+    document.getElementById('certModalOrg').textContent = org;
+    document.getElementById('certModalYear').textContent = year;
+
+    const modal = document.getElementById('certModal');
+    modal.classList.add('active');
+    document.body.classList.add('cert-modal-open');
+  }
+
+  function closeCertModal() {
+    const modal = document.getElementById('certModal');
+    modal.classList.remove('active');
+    document.body.classList.remove('cert-modal-open');
+  }
+
+  function closeCertModalOnOverlay(event) {
+    if (event.target === document.getElementById('certModal')) {
+      closeCertModal();
+    }
+  }
+
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape' || event.key === 'Esc') {
+      const modal = document.getElementById('certModal');
+      if (modal.classList.contains('active')) {
+        closeCertModal();
+      }
+    }
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const certImg = document.getElementById('certModalImg');
+    if (certImg) {
+      certImg.addEventListener('dragstart', function(e) {
+        e.preventDefault();
+      });
+    }
   });
 </script>
+
 </body>
 </html>
