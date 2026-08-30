@@ -438,7 +438,7 @@
     /* ═══════════════════════════════════════════
        TIMELINE / EXPERIENCE
     ═══════════════════════════════════════════ */
-    .timeline { position: relative; max-width: 820px; margin: 0 auto; }
+    .timeline { position: relative; max-width: 900px; margin: 0 auto; }
     .timeline::before {
       content: ''; position: absolute; left: 26px; top: 0; bottom: 0;
       width: 1.5px; background: linear-gradient(to bottom, var(--blue), var(--border));
@@ -451,17 +451,98 @@
       display: flex; align-items: center; justify-content: center;
     }
     .tl-dot-inner i { font-size: 0.55rem; color: white; }
-    .tl-card { flex: 1; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 26px; transition: var(--transition); }
-    .tl-card:hover { box-shadow: var(--shadow-md); border-color: var(--blue-mid); }
+    .tl-card { flex: 1; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 22px 26px; transition: var(--transition); }
+    .tl-card:hover { box-shadow: var(--shadow-md); border-color: var(--blue-mid); transform: translateY(-2px); }
+    .tl-card.latest {
+      padding: 26px 28px; border-left: 4px solid var(--blue);
+      border-color: var(--blue-pale-2);
+      background: linear-gradient(135deg, rgba(238,244,251,0.7) 0%, rgba(255,255,255,1) 40%), var(--white);
+      box-shadow: var(--shadow-md);
+    }
+    /* ═══════════════════════════════════════════
+   EXPERIENCE COMPANY LOGO
+   ═══════════════════════════════════════════ */
+
+.tl-company-row {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-bottom: 18px;
+}
+
+.tl-company-logo {
+  flex-shrink: 0;
+  width: 92px;
+  height: 92px;
+  border-radius: 12px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-xs);
+}
+
+.tl-company-logo img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  padding: 0;
+  margin: 0;
+}
+
+/* Untuk logo yang memang ingin memenuhi seluruh kotak */
+.tl-company-logo.logo-cover img {
+  object-fit: cover;
+}
+
+/* Fallback jika logo gagal dimuat */
+.tl-company-logo.logo-missing::before {
+  content: '\f1ad';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  font-size: 1.8rem;
+  color: var(--text-muted);
+}
+
+/* Latest / PPIC tetap sedikit lebih menonjol */
+.tl-card.latest .tl-company-logo {
+  width: 104px;
+  height: 104px;
+  border-radius: 14px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .tl-company-row {
+    gap: 14px;
+  }
+
+  .tl-company-logo,
+  .tl-card.latest .tl-company-logo {
+    width: 72px;
+    height: 72px;
+    border-radius: 10px;
+  }
+    }
     .tl-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; margin-bottom: 4px; }
-    .tl-role   { font-weight: 700; font-size: 0.98rem; color: var(--navy); font-family: var(--font-display); }
-    .tl-period { font-size: 0.73rem; font-weight: 700; background: var(--blue-pale); color: var(--blue); padding: 3px 10px; border-radius: 20px; border: 1px solid var(--blue-pale-2); }
-    .tl-org    { font-size: 0.83rem; color: var(--text-light); font-weight: 500; margin-bottom: 14px; }
-    .tl-org i  { margin-right: 4px; }
-    .tl-bullets { list-style: none; }
+    .tl-role { font-weight: 700; font-size: 0.98rem; color: var(--navy); font-family: var(--font-display); line-height: 1.35; }
+    .tl-card.latest .tl-role { font-size: 1.12rem; }
+    .tl-period { font-size: 0.73rem; font-weight: 700; background: var(--blue-pale); color: var(--blue); padding: 3px 10px; border-radius: 20px; border: 1px solid var(--blue-pale-2); white-space: nowrap; }
+    .tl-org { font-size: 0.83rem; color: var(--text-light); font-weight: 500; margin-bottom: 0; }
+    .tl-org i { margin-right: 4px; }
+    .tl-bullets { list-style: none; margin-top: 4px; }
+    .tl-card.latest .tl-bullets { padding-top: 16px; border-top: 1px solid var(--border-light); }
     .tl-bullets li { font-size: 0.87rem; color: var(--text-mid); padding-left: 16px; position: relative; margin-bottom: 6px; line-height: 1.65; }
+    .tl-card.latest .tl-bullets li { margin-bottom: 8px; }
     .tl-bullets li::before { content: '▸'; position: absolute; left: 0; color: var(--blue-mid); font-size: 0.68rem; top: 3px; }
-    @media (max-width: 600px) { .timeline::before { left: 16px; } .tl-dot { width: 36px; } }
+    @media (max-width: 700px) {
+      .tl-company-row { grid-template-columns: 56px 1fr; gap: 14px; }
+      .tl-company-logo { width: 56px; height: 56px; border-radius: 10px; }
+    }
+    @media (max-width: 600px) { .timeline::before { left: 16px; } .tl-dot { width: 36px; } .tl-card { padding: 20px; } }
 
     /* ═══════════════════════════════════════════
        PROJECTS
@@ -818,7 +899,7 @@
 
         <div class="hero-stats" aria-label="Key statistics">
           <div>
-            <div class="hero-stat-num" aria-label="3 plus internship and lab experiences">3<span>+</span></div>
+            <div class="hero-stat-num" aria-label="4 plus internship and lab experiences">4<span>+</span></div>
             <div class="hero-stat-label" data-i18n="hero.stat1">Pengalaman Magang<br>&amp; Asisten Lab</div>
           </div>
           <div>
@@ -826,7 +907,7 @@
             <div class="hero-stat-label" data-i18n="hero.stat2">Peran<br>Organisasi</div>
           </div>
           <div>
-            <div class="hero-stat-num" aria-label="7 plus projects completed">7<span>+</span></div>
+            <div class="hero-stat-num" aria-label="10 plus projects completed">7<span>+</span></div>
             <div class="hero-stat-label" data-i18n="hero.stat3">Proyek<br>Selesai</div>
           </div>
         </div>
@@ -855,7 +936,7 @@
         <div class="hero-photo-deco2" aria-hidden="true"></div>
         <div class="hero-photo-frame" role="img" aria-label="Photo of Dimas Rizky Ramadhani">
           <img src="assets/Profile_Porto.jpg" alt="Dimas Rizky Ramadhani"
-               style="width:120%;height:135%;object-fit:cover;object-position:center;">
+               style="width:110%;height:125%;object-fit:cover;object-position:bottom;">
         </div>
         <div class="hero-photo-deco" aria-hidden="true"></div>
 
@@ -869,8 +950,8 @@
         <div class="hero-float-card card-2" aria-hidden="true">
           <i class="fa-solid fa-location-dot"></i>
           <div>
-            <div style="font-size:0.68rem;color:var(--text-light);font-weight:500;" data-i18n="located.label">Berbasis di</div>
-            <div data-i18n="located.value">Tangerang Selatan, Indonesia</div>
+            <div style="font-size:0.68rem;color:var(--text-light);font-weight:500;" data-i18n="located.label">Berbasis di</div> <div data-i18n="located.value">
+            Tangerang Selatan, Indonesia
           </div>
         </div>
       </div>
@@ -887,7 +968,7 @@
       <div class="about-img-wrap fade-in">
         <div class="about-img-box">
           <img class="about-img" alt="Dimas Rizky Ramadhani at thesis defense"
-               style="width:450%;height:125%;object-fit:cover;object-position:center;" src="assets/Wisuda_Photo.jpg">
+               style="width:350%;height:130%;object-fit:cover;object-position:center;" src="assets/Wisuda_Photo.jpeg">
         </div>
         <div class="about-accent-box" aria-label="Fresh Graduate Data Science 2025">
           <div class="about-accent-num">2025</div>
@@ -1100,16 +1181,26 @@
 
     <div class="timeline" role="list" aria-label="Work experience timeline">
 
-            <article class="timeline-item fade-in" style="transition-delay:0.1s" role="listitem">
-        <div class="tl-dot" aria-hidden="true"><div class="tl-dot-inner"><i class="fa-solid fa-brain"></i></div></div>
-        <div class="tl-card">
-          <div class="tl-header">
-            <h3 class="tl-role" data-i18n="exp1.role">Staff<i>Production Planning and Inventory Control</i>(PPIC)</h3>
-            <span class="tl-period" data-i18n="exp1.period">Juni - NOW </span>
+      <article class="timeline-item fade-in" style="transition-delay:0.05s" role="listitem">
+        <div class="tl-dot" aria-hidden="true"><div class="tl-dot-inner"><i class="fa-solid fa-industry"></i></div></div>
+        <div class="tl-card latest">
+          <div class="tl-company-row">
+            <div class="tl-company-logo" aria-label="PT Pratama Abadi Industri logo">
+              <img src="assets/PT_Pratama.jpg" alt="Logo PT Pratama Abadi Industri" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('logo-missing');">
+            </div>
+            <div>
+              <div class="tl-header">
+                <h3 class="tl-role" data-i18n="exp4.role">Staff Production Planning &amp; Inventory Control (PPIC)</h3>
+                <span class="tl-period" data-i18n="exp4.period">June 2026 - Now</span>
+              </div>
+              <p class="tl-org"><i class="fa-solid fa-building" aria-hidden="true"></i> PT Pratama Abadi Industri</p>
+            </div>
           </div>
-          <p class="tl-org"><i class="fa-solid fa-university" aria-hidden="true"></i> <span data-i18n="exp1.org">PT Pratama Abadi Industri</span></p>
           <ul class="tl-bullets">
-            <li data-i18n="exp1.b1">Bertanggung jawab menerjemahkan kebutuhan produksi menjadi rencana produksi yang feasible dengan mempertimbangkan kapasitas, manpower, ketersediaan material, prioritas produksi, dan target delivery. Berfokus pada production monitoring, capacity planning, bottleneck identification, cross-functional coordination, serta penyesuaian schedule untuk mendukung kelancaran produksi dan pencapaian on-time delivery.</li>
+            <li data-i18n="exp4.b1">Menyusun dan mengendalikan Production Plan berdasarkan demand, kapasitas produksi, ketersediaan material, dan target delivery.</li>
+            <li data-i18n="exp4.b2">Melakukan capacity planning, memantau progress produksi, serta melakukan penyesuaian schedule terhadap perubahan demand, kapasitas, dan kendala produksi.</li>
+            <li data-i18n="exp4.b3">Berkoordinasi dengan Production, Warehouse, Material, IE, QA, dan fungsi terkait untuk menjaga kelancaran produksi serta mendukung pencapaian on-time delivery.</li>
+            <li data-i18n="exp4.b4">Menganalisis production achievement, backlog, dan potensi bottleneck sebagai dasar corrective action dan rescheduling untuk meminimalkan risiko keterlambatan.</li>
           </ul>
         </div>
       </article>
@@ -1117,11 +1208,18 @@
       <article class="timeline-item fade-in" style="transition-delay:0.1s" role="listitem">
         <div class="tl-dot" aria-hidden="true"><div class="tl-dot-inner"><i class="fa-solid fa-brain"></i></div></div>
         <div class="tl-card">
-          <div class="tl-header">
-            <h3 class="tl-role" data-i18n="exp1.role">Asisten Praktikum Deep Learning</h3>
-            <span class="tl-period" data-i18n="exp1.period">September - Desember 2025</span>
+          <div class="tl-company-row">
+            <div class="tl-company-logo" aria-label="Institut Teknologi Sumatera logo">
+              <img src="assets/Sains_Data.jpg" alt="Logo Institut Teknologi Sumatera" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('logo-missing');">
+            </div>
+            <div>
+              <div class="tl-header">
+                <h3 class="tl-role" data-i18n="exp1.role">Asisten Praktikum Deep Learning</h3>
+                <span class="tl-period" data-i18n="exp1.period">September - Desember 2025</span>
+              </div>
+              <p class="tl-org"><i class="fa-solid fa-university" aria-hidden="true"></i> Program Studi Sains Data — Institut Teknologi Sumatera</p>
+            </div>
           </div>
-          <p class="tl-org"><i class="fa-solid fa-university" aria-hidden="true"></i> <span data-i18n="exp1.org">Program Studi Sains Data — Institut Teknologi Sumatera</span></p>
           <ul class="tl-bullets">
             <li data-i18n="exp1.b1">Melakukan pendampingi serta mengevaluasi pelaksanaan praktikum Deep Learning dengan mengimplementasikan model berbasis Python (CNN, RNN, Transformer, GAN) serta proses end-to-end mulai dari data preprocessing, perancangan arsitektur, tuning hyperparameter, hingga evaluasi performa model. Membantu troubleshooting kode dan memastikan pemahaman alur pengembangan model secara sistematis.</li>
           </ul>
@@ -1131,11 +1229,18 @@
       <article class="timeline-item fade-in" style="transition-delay:0.2s" role="listitem">
         <div class="tl-dot" aria-hidden="true"><div class="tl-dot-inner"><i class="fa-solid fa-map-location-dot"></i></div></div>
         <div class="tl-card">
-          <div class="tl-header">
-            <h3 class="tl-role" data-i18n="exp2.role">Asisten Praktikum Analisis Data Spasial</h3>
-            <span class="tl-period" data-i18n="exp2.period">Februari - Mei 2025</span>
+          <div class="tl-company-row">
+            <div class="tl-company-logo" aria-label="Institut Teknologi Sumatera logo">
+              <img src="assets/Sains_Data.jpg" alt="Logo Institut Teknologi Sumatera" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('logo-missing');">
+            </div>
+            <div>
+              <div class="tl-header">
+                <h3 class="tl-role" data-i18n="exp2.role">Asisten Praktikum Analisis Data Spasial</h3>
+                <span class="tl-period" data-i18n="exp2.period">Februari - Mei 2025</span>
+              </div>
+              <p class="tl-org"><i class="fa-solid fa-university" aria-hidden="true"></i> Program Studi Sains Data — Institut Teknologi Sumatera</p>
+            </div>
           </div>
-          <p class="tl-org"><i class="fa-solid fa-university" aria-hidden="true"></i> <span data-i18n="exp2.org">Program Studi Sains Data — Institut Teknologi Sumatera</span></p>
           <ul class="tl-bullets">
             <li data-i18n="exp2.b1">Memberikan pemaparan serta mendukung pelaksanaan praktikum Analisis Data Spasial, termasuk menyiapkan 10 modul praktikum dan mendampingi satu kelompok mahasiswa dalam pengolahan tugas besar hingga menghasilkan publikasi pada seminar nasional. Selain itu, melakukan evaluasi hasil praktikum serta pengembangan modul pembelajaran untuk memastikan kegiatan berjalan terstruktur dan selaras dengan capaian pembelajaran.</li>
           </ul>
@@ -1145,11 +1250,18 @@
       <article class="timeline-item fade-in" role="listitem">
         <div class="tl-dot" aria-hidden="true"><div class="tl-dot-inner"><i class="fa-solid fa-building-columns"></i></div></div>
         <div class="tl-card">
-          <div class="tl-header">
-            <h3 class="tl-role" data-i18n="exp3.role">Internship Data Analyst dan Entry</h3>
-            <span class="tl-period" data-i18n="exp3.period">Juli - Agustus 2024</span>
+          <div class="tl-company-row">
+            <div class="tl-company-logo" aria-label="Badan Pusat Statistik logo">
+              <img src="assets/Badan_Pusat.jpg" alt="Logo Badan Pusat Statistik" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('logo-missing');">
+            </div>
+            <div>
+              <div class="tl-header">
+                <h3 class="tl-role" data-i18n="exp3.role">Internship Data Analyst dan Entry</h3>
+                <span class="tl-period" data-i18n="exp3.period">Juli - Agustus 2024</span>
+              </div>
+              <p class="tl-org"><i class="fa-solid fa-building" aria-hidden="true"></i> Badan Pusat Statistik (BPS) — Bandar Lampung, Indonesia</p>
+            </div>
           </div>
-          <p class="tl-org"><i class="fa-solid fa-building" aria-hidden="true"></i> <span data-i18n="exp3.org">Badan Pusat Statistik (BPS) — Bandar Lampung, Indonesia</span></p>
           <ul class="tl-bullets">
             <li data-i18n="exp3.b1">Menyelesaikan penyusunan dan validasi data neraca keuangan daerah untuk pelaporan statistik ekonomi regional melalui koordinasi lintas unit, termasuk Subbagian Umum (perencanaan anggaran), Statistik Sosial (data kependudukan), Statistik Produksi (data pertanian), serta Subdirektorat IPDS dalam pengelolaan sistem informasi statistik.</li>
             <li data-i18n="exp3.b2">Menyelesaikan input, pengecekan, dan rekonsiliasi data menggunakan sistem resmi BPS. Dengan menghasilkan publikasi statistik daerah, termasuk Publikasi <i>Hasil Pencacahan Lengkap Sensus Pertanian 2023 Kota Bandar Lampung</i> dan laporan akhir <i>Analisis Regresi Linear Dalam Menganalisis Pengaruhi Diare Di Provinsi Lampung Pada Tahun 2022</i>.</li>
@@ -1193,10 +1305,10 @@
       </article>
 
       <article class="project-card" onclick="openModal('p2')" role="button" tabindex="0"
-               aria-label="View Beach Waste Detection project details"
+               aria-label="View Customer Churn Prediction project details"
                onkeypress="if(event.key==='Enter')openModal('p2')">
         <div class="project-thumb t2" aria-hidden="true">
-          <img src="assets/P2_Gambar.png" alt="Beach Waste Detection Model"></div>
+          <img src="assets/P2_Gambar.png" alt="Customer Churn Prediction Model"></div>
         <div class="project-body">
           <div class="project-type">Deep Learning</div>
           <h3 class="project-title" data-i18n="p2.title">Deteksi dan Perhitungan Jumlah Sampah Pantai Menggunakan RT-DETR</h3>
@@ -1209,10 +1321,10 @@
       </article>
 
       <article class="project-card" onclick="openModal('p3')" role="button" tabindex="0"
-               aria-label="View Land Cover Classification project details"
+               aria-label="View Spatial Analysis of Poverty project details"
                onkeypress="if(event.key==='Enter')openModal('p3')">
         <div class="project-thumb t3" aria-hidden="true">
-          <img src="assets/Spatial_Gambar.jpeg" alt="Land Cover Classification"></div>
+          <img src="assets/Spatial_Gambar.jpeg" alt="Spatial Analysis of Poverty Indicators"></div>
         <div class="project-body">
           <div class="project-type">Spatial Analysis</div>
           <h3 class="project-title" data-i18n="p3.title">Klasifikasi Spasial Tutupan Lahan di Kota Metro dengan Menggunakan Algoritma Random Forest</h3>
@@ -1224,69 +1336,69 @@
         </div>
       </article>
 
-      <article class="project-card" onclick="openModal('p4')" role="button" tabindex="0"
-              aria-label="View Poverty Estimation Final Project details"
-              onkeypress="if(event.key==='Enter')openModal('p4')">
-        <div class="project-thumb t4" aria-hidden="true">
-          <img src="assets/Plot-Penduduk.jpg" alt="Final Project Image"></div>
-        <div class="project-body">
-          <div class="project-type">Final Project</div>
-          <h3 class="project-title" data-i18n="p4.title">Pendugaan Tingkat Kemiskinan Di Provinsi Bengkulu Pada Tahun 2024 Menggunakan Metode <i>Small Area Estimation</i> (SAE) Dengan Pendekatan <i>Empirical Best Linear Unbiased Predictor</i>(EBLUP)</h3>
-          <p class="project-desc" data-i18n="p4.desc">Analisis menggunakan metode Small Area Estimation untuk memperkirakan tingkat kemiskinan di Provinsi Bengkulu pada Tahun 2024.</p>
-          <div class="project-tools">
-            <span class="tool-tag">Small Area Estimation</span><span class="tool-tag">Excel</span><span class="tool-tag">R Programming</span><span class="tool-tag">Statistical Modeling</span>
+        <article class="project-card" onclick="openModal('p4')" role="button" tabindex="0"
+                aria-label="View Data Literacy Bootcamp project details"
+                onkeypress="if(event.key==='Enter')openModal('p4')">
+          <div class="project-thumb t4" aria-hidden="true">
+            <img src="assets/Plot-Penduduk.jpg" alt="Final Project Image"></div>
+          <div class="project-body">
+            <div class="project-type">Final Project</div>
+            <h3 class="project-title" data-i18n="p4.title">Pendugaan Tingkat Kemiskinan Di Provinsi Bengkulu Pada Tahun 2024 Menggunakan Metode <i>Small Area Estimation</i> (SAE) Dengan Pendekatan <i>Empirical Best Linear Unbiased Predictor</i>(EBLUP)</h3>
+            <p class="project-desc" data-i18n="p4.desc">Analisis menggunakan metode Small Area Estimation untuk memperkirakan tingkat kemiskinan di Provinsi Bengkulu pada Tahun 2024.</p>
+            <div class="project-tools">
+              <span class="tool-tag">Small Area Estimation</span><span class="tool-tag">Excel</span><span class="tool-tag">R Programming</span><span class="tool-tag">Statistical Modeling</span>
+            </div>
+            <div class="project-more" aria-hidden="true"><span data-i18n="proj.viewDetails">Lihat Detail</span> <i class="fa-solid fa-arrow-right"></i></div>
           </div>
-          <div class="project-more" aria-hidden="true"><span data-i18n="proj.viewDetails">Lihat Detail</span> <i class="fa-solid fa-arrow-right"></i></div>
-        </div>
-      </article>
+        </article>
 
-      <article class="project-card" onclick="openModal('p5')" role="button" tabindex="0"
-              aria-label="View IMDB Sentiment Analysis project details"
-              onkeypress="if(event.key==='Enter')openModal('p5')">
-        <div class="project-thumb t5" aria-hidden="true">
-          <img src="assets/Gambar_IMDB.jpg" alt="IMDB Sentiment Analysis"></div>
-        <div class="project-body">
-          <div class="project-type">Sentiment Analysis</div>
-          <h3 class="project-title" data-i18n="p5.title">Analisis Sentiment Dataset IMDB Movie dengan Algoritma Regresi Logistik dan Naive Bayes</h3>
-          <p class="project-desc" data-i18n="p5.desc">Pengembangan model analisis sentimen pada 50.000 ulasan film IMDB menggunakan pendekatan klasifikasi Regresi Logistik dan Naive Bayes untuk memprediksi sentimen positif, negatif, dan netral.</p>
-          <div class="project-tools">
-            <span class="tool-tag">Machine Learning</span><span class="tool-tag">Naive Bayes</span><span class="tool-tag">IMDB Dataset</span><span class="tool-tag">Python</span>
+        <article class="project-card" onclick="openModal('p5')" role="button" tabindex="0"
+                aria-label="View Data Literacy Bootcamp project details"
+                onkeypress="if(event.key==='Enter')openModal('p5')">
+          <div class="project-thumb t5" aria-hidden="true">
+            <img src="assets/Gambar_IMDB.jpg" alt="Final Project Image"></div>
+          <div class="project-body">
+            <div class="project-type">Sentiment Analysis</div>
+            <h3 class="project-title" data-i18n="p5.title">Analisis Sentiment Dataset IMDB Movie dengan Algoritma Regresi Logistik dan Naive Bayes</h3>
+            <p class="project-desc" data-i18n="p5.desc">Pengembangan model analisis sentimen pada 50.000 ulasan film IMDB menggunakan pendekatan klasifikasi Regresi Logistik dan Naive Bayes untuk memprediksi sentimen positif, negatif, dan netral.</p>
+            <div class="project-tools">
+              <span class="tool-tag">Machine Learning</span><span class="tool-tag">Naive Bayes</span><span class="tool-tag">IMDB Dataset</span><span class="tool-tag">Python</span>
+            </div>
+            <div class="project-more" aria-hidden="true"><span data-i18n="proj.viewDetails">Lihat Detail</span> <i class="fa-solid fa-arrow-right"></i></div>
           </div>
-          <div class="project-more" aria-hidden="true"><span data-i18n="proj.viewDetails">Lihat Detail</span> <i class="fa-solid fa-arrow-right"></i></div>
-        </div>
-      </article>
+        </article>
 
-      <article class="project-card" onclick="openModal('p6')" role="button" tabindex="0"
-              aria-label="View Agricultural Census Publication project details"
-              onkeypress="if(event.key==='Enter')openModal('p6')">
-        <div class="project-thumb t6" aria-hidden="true">
-          <img src="assets/Gambar_Publikasi.jpeg" alt="Agricultural Census Publication"></div>
-        <div class="project-body">
-          <div class="project-type">Publication</div>
-          <h3 class="project-title" data-i18n="p6.title">Hasil Pencacahan Lengkap Sensus Pertanian 2023 kota Bandar Lampung</h3>
-          <p class="project-desc" data-i18n="p6.desc">Kontribusi dalam penyusunan dan validasi publikasi resmi Hasil Pencacahan Lengkap Sensus Pertanian 2023 Kota Bandar Lampung sebagai bagian dari proses pengolahan dan verifikasi data statistik sektoral di lingkungan Badan Pusat Statistik (BPS).</p>
-          <div class="project-tools">
-            <span class="tool-tag">Official Statistics</span><span class="tool-tag">Data Validation</span><span class="tool-tag">R Programming</span><span class="tool-tag">Statistical Publication</span>
+        <article class="project-card" onclick="openModal('p6')" role="button" tabindex="0"
+                aria-label="View Data Literacy Bootcamp project details"
+                onkeypress="if(event.key==='Enter')openModal('p6')">
+          <div class="project-thumb t6" aria-hidden="true">
+            <img src="assets/Gambar_Publikasi.jpeg" alt="Final Project Image"></div>
+          <div class="project-body">
+            <div class="project-type">Publication</div>
+            <h3 class="project-title" data-i18n="p6.title">Hasil Pencacahan Lengkap Sensus Pertanian 2023 kota Bandar Lampung</h3>
+            <p class="project-desc" data-i18n="p6.desc">Kontribusi dalam penyusunan dan validasi publikasi resmi Hasil Pencacahan Lengkap Sensus Pertanian 2023 Kota Bandar Lampung sebagai bagian dari proses pengolahan dan verifikasi data statistik sektoral di lingkungan Badan Pusat Statistik (BPS).</p>
+            <div class="project-tools">
+              <span class="tool-tag">Official Statistics</span><span class="tool-tag">Data Validation</span><span class="tool-tag">R Programming</span><span class="tool-tag">Statistical Publication</span>
+            </div>
+            <div class="project-more" aria-hidden="true"><span data-i18n="proj.viewDetails">Lihat Detail</span> <i class="fa-solid fa-arrow-right"></i></div>
           </div>
-          <div class="project-more" aria-hidden="true"><span data-i18n="proj.viewDetails">Lihat Detail</span> <i class="fa-solid fa-arrow-right"></i></div>
-        </div>
-      </article>
+        </article>
 
-      <article class="project-card" onclick="openModal('p7')" role="button" tabindex="0"
-              aria-label="View Diarrhea Regression Analysis project details"
-              onkeypress="if(event.key==='Enter')openModal('p7')">
-        <div class="project-thumb t7" aria-hidden="true">
-          <img src="assets/Prediksi_Diare.png" alt="Diarrhea Regression Analysis"></div>
-        <div class="project-body">
-          <div class="project-type">Internship Final Project</div>
-          <h3 class="project-title" data-i18n="p7.title">Analisis Regresi Linear Dalam Menganalisis Pengaruh Diare Di Provinsi Lampung Pada Tahun 2022</h3>
-          <p class="project-desc" data-i18n="p7.desc">Proyek ini merupakan laporan kerja praktik di Badan Pusat Statistik (BPS) Kota Bandar Lampung yang berfokus pada analisis faktor-faktor yang memengaruhi kasus diare di Provinsi Lampung tahun 2022 menggunakan pendekatan regresi linear. Analisis dilakukan untuk mendukung pengambilan keputusan berbasis data dalam konteks kesehatan masyarakat dan perencanaan kebijakan daerah.</p>
-          <div class="project-tools">
-            <span class="tool-tag">Linear Regression</span><span class="tool-tag">Public Health Data</span><span class="tool-tag">R Programming</span><span class="tool-tag">Statistical Analysis</span>
+        <article class="project-card" onclick="openModal('p7')" role="button" tabindex="0"
+                aria-label="View Data Literacy Bootcamp project details"
+                onkeypress="if(event.key==='Enter')openModal('p7')">
+          <div class="project-thumb t7" aria-hidden="true">
+            <img src="assets/Prediksi_Diare.png" alt="Internship Report"></div>
+          <div class="project-body">
+            <div class="project-type">Internship Final Project</div>
+            <h3 class="project-title" data-i18n="p7.title">Analisis Regresi Linear Dalam Menganalisis Pengaruh Diare Di Provinsi Lampung Pada Tahun 2022</h3>
+            <p class="project-desc" data-i18n="p7.desc">Proyek ini merupakan laporan kerja praktik di Badan Pusat Statistik (BPS) Kota Bandar Lampung yang berfokus pada analisis faktor-faktor yang memengaruhi kasus diare di Provinsi Lampung tahun 2022 menggunakan pendekatan regresi linear. Analisis dilakukan untuk mendukung pengambilan keputusan berbasis data dalam konteks kesehatan masyarakat dan perencanaan kebijakan daerah.</p>
+            <div class="project-tools">
+              <span class="tool-tag">Linear Regression</span><span class="tool-tag">Public Health Data</span><span class="tool-tag">R Programming</span><span class="tool-tag">Statistical Analysis</span>
+            </div>
+            <div class="project-more" aria-hidden="true"><span data-i18n="proj.viewDetails">Lihat Detail</span> <i class="fa-solid fa-arrow-right"></i></div>
           </div>
-          <div class="project-more" aria-hidden="true"><span data-i18n="proj.viewDetails">Lihat Detail</span> <i class="fa-solid fa-arrow-right"></i></div>
-        </div>
-      </article>
+        </article>
 
     </div>
   </div>
@@ -1309,9 +1421,9 @@
            onkeypress="if(event.key==='Enter')openCertModal(this)">
         <div class="cert-thumb" aria-hidden="true"><img src="assets/Sertif_Course.jpg" alt="RevoU Certificate"></div>
         <div class="cert-body">
-          <div class="cert-title" data-i18n="cert1.title">Mini Course - Intro to Data Analytics</div>
-          <div class="cert-org" data-i18n="cert1.org">RevoU</div>
-          <div class="cert-year" data-i18n="cert1.year">Januari 2026</div>
+          <div class="cert-title">Mini Course - Intro to Data Analytics</div>
+          <div class="cert-org">RevoU</div>
+          <div class="cert-year">Januari 2026</div>
         </div>
       </div>
 
@@ -1320,9 +1432,9 @@
            onkeypress="if(event.key==='Enter')openCertModal(this)">
         <div class="cert-thumb" aria-hidden="true"><img src="assets/Sertif_Toefl.jpg" alt="TOEFL Certificate"></div>
         <div class="cert-body">
-          <div class="cert-title" data-i18n="cert2.title">TOEFL Score Report</div>
-          <div class="cert-org" data-i18n="cert2.org">Institut Teknologi Sumatera</div>
-          <div class="cert-year" data-i18n="cert2.year">Desember 2025</div>
+          <div class="cert-title">TOEFL Score Report</div>
+          <div class="cert-org">Institut Teknologi Sumatera</div>
+          <div class="cert-year">Desember 2025</div>
         </div>
       </div>
 
@@ -1331,9 +1443,9 @@
            onkeypress="if(event.key==='Enter')openCertModal(this)">
         <div class="cert-thumb" aria-hidden="true"><img src="assets/Sertif_Asprak_DL.jpg" alt="Deep Learning Certificate"></div>
         <div class="cert-body">
-          <div class="cert-title" data-i18n="cert3.title">Asisten Praktikum Deep Learning</div>
-          <div class="cert-org" data-i18n="cert3.org">Program Studi Sains Data ITERA</div>
-          <div class="cert-year" data-i18n="cert3.year">September - Desember 2025</div>
+          <div class="cert-title">Asisten Praktikum Deep Learning</div>
+          <div class="cert-org">Program Studi Sains Data ITERA</div>
+          <div class="cert-year">September - Desember 2025</div>
         </div>
       </div>
 
@@ -1342,9 +1454,9 @@
            onkeypress="if(event.key==='Enter')openCertModal(this)">
         <div class="cert-thumb" aria-hidden="true"><img src="assets/Sertif_Asprak_ADSP.jpg" alt="Spatial Data Certificate"></div>
         <div class="cert-body">
-          <div class="cert-title" data-i18n="cert4.title">Asisten Praktikum Analisis Data Spasial</div>
-          <div class="cert-org" data-i18n="cert4.org">Program Studi Sains Data ITERA</div>
-          <div class="cert-year" data-i18n="cert4.year">Februari - Mei 2025</div>
+          <div class="cert-title">Asisten Praktikum Analisis Data Spasial</div>
+          <div class="cert-org">Program Studi Sains Data ITERA</div>
+          <div class="cert-year">Februari - Mei 2025</div>
         </div>
       </div>
 
@@ -1354,9 +1466,9 @@
            onkeypress="if(event.key==='Enter')openCertSlider(this)">
         <div class="cert-thumb" aria-hidden="true"><img src="assets/Sertif_HIMARSKAP.jpg" alt="Leadership Certificate"></div>
         <div class="cert-body">
-          <div class="cert-title" data-i18n="cert5.title">Pemateri Dasar-Dasar Kepemimpinan</div>
-          <div class="cert-org" data-i18n="cert5.org">Organisasi Kemahasiswaan ITERA</div>
-          <div class="cert-year" data-i18n="cert5.year">Februari 2024 - Agustus 2025</div>
+          <div class="cert-title">Pemateri Dasar-Dasar Kepemimpinan</div>
+          <div class="cert-org">Organisasi Kemahasiswaan ITERA</div>
+          <div class="cert-year">Februari 2024 - Agustus 2025</div>
         </div>
       </div>
 
@@ -1365,9 +1477,9 @@
            onkeypress="if(event.key==='Enter')openCertModal(this)">
         <div class="cert-thumb" aria-hidden="true"><img src="assets/Sertif_Kadep.jpg" alt="Department Head Certificate"></div>
         <div class="cert-body">
-          <div class="cert-title" data-i18n="cert6.title">Kepala Departemen Internal</div>
-          <div class="cert-org" data-i18n="cert6.org">Himpunan Mahasiswa Sains Data (HMSD) Adyatama ITERA</div>
-          <div class="cert-year" data-i18n="cert6.year">Februari 2024 - Februari 2025</div>
+          <div class="cert-title">Kepala Departemen Internal</div>
+          <div class="cert-org">Himpunan Mahasiswa Sains Data (HMSD) Adyatama ITERA</div>
+          <div class="cert-year">Februari 2024 - Februari 2025</div>
         </div>
       </div>
 
@@ -1376,9 +1488,9 @@
            onkeypress="if(event.key==='Enter')openCertModal(this)">
         <div class="cert-thumb" aria-hidden="true"><img src="assets/Sertif_BPS.jpg" alt="BPS Certificate"></div>
         <div class="cert-body">
-          <div class="cert-title" data-i18n="cert7.title">Internship Bidang Neraca dan Analisis Statistik</div>
-          <div class="cert-org" data-i18n="cert7.org">Badan Pusat Statistik (BPS) Kota Bandar Lampung</div>
-          <div class="cert-year" data-i18n="cert7.year">Juli - Agustus 2024</div>
+          <div class="cert-title">Internship Bidang Neraca dan Analisis Statistik</div>
+          <div class="cert-org">Badan Pusat Statistik (BPS) Kota Bandar Lampung</div>
+          <div class="cert-year">Juli - Agustus 2024</div>
         </div>
       </div>
 
@@ -1387,9 +1499,9 @@
            onkeypress="if(event.key==='Enter')openCertModal(this)">
         <div class="cert-thumb" aria-hidden="true"><img src="assets/Sertif_Pelatihan.jpg" alt="LKMM Training Certificate"></div>
         <div class="cert-body">
-          <div class="cert-title" data-i18n="cert8.title">Pelatihan Pemanduan LKMM ITERA</div>
-          <div class="cert-org" data-i18n="cert8.org">Institut Teknologi Sumatera</div>
-          <div class="cert-year" data-i18n="cert8.year">Februari 2024</div>
+          <div class="cert-title">Pelatihan Pemanduan LKMM ITERA</div>
+          <div class="cert-org">Institut Teknologi Sumatera</div>
+          <div class="cert-year">Februari 2024</div>
         </div>
       </div>
 
@@ -1398,9 +1510,9 @@
            onkeypress="if(event.key==='Enter')openCertModal(this)">
         <div class="cert-thumb" aria-hidden="true"><img src="assets/Sertif_Ketuplak.jpg" alt="PEMIRA Certificate"></div>
         <div class="cert-body">
-          <div class="cert-title" data-i18n="cert9.title">Ketua Pelaksana PEMIRA KM-ITERA 2023</div>
-          <div class="cert-org" data-i18n="cert9.org">SENAT KM-ITERA</div>
-          <div class="cert-year" data-i18n="cert9.year">September - November 2023</div>
+          <div class="cert-title">Ketua Pelaksana PEMIRA KM-ITERA 2023</div>
+          <div class="cert-org">SENAT KM-ITERA</div>
+          <div class="cert-year">September - November 2023</div>
         </div>
       </div>
 
@@ -1409,9 +1521,9 @@
            onkeypress="if(event.key==='Enter')openCertModal(this)">
         <div class="cert-thumb" aria-hidden="true"><img src="assets/Sertif_KRTI.jpg" alt="KRTI Certificate"></div>
         <div class="cert-body">
-          <div class="cert-title" data-i18n="cert10.title">Kordinator Komisi Disiplin</div>
-          <div class="cert-org" data-i18n="cert10.org">Balai Pengembangan Talenta Indonesia</div>
-          <div class="cert-year" data-i18n="cert10.year">September 2023</div>
+          <div class="cert-title">Kordinator Komisi Disiplin</div>
+          <div class="cert-org">Balai Pengembangan Talenta Indonesia</div>
+          <div class="cert-year">September 2023</div>
         </div>
       </div>
 
@@ -1420,9 +1532,9 @@
            onkeypress="if(event.key==='Enter')openCertModal(this)">
         <div class="cert-thumb" aria-hidden="true"><img src="assets/Sertif_Peserta_LKMM.jpg" alt="LKMM Certificate"></div>
         <div class="cert-body">
-          <div class="cert-title" data-i18n="cert11.title">Latihan Keterampilan Manajemen Mahasiswa (LKMM) Tingkat Dasar III</div>
-          <div class="cert-org" data-i18n="cert11.org">Institut Teknologi Sumatera</div>
-          <div class="cert-year" data-i18n="cert11.year">2023</div>
+          <div class="cert-title">Latihan Keterampilan Manajemen Mahasiswa (LKMM) Tingkat Dasar III</div>
+          <div class="cert-org">Institut Teknologi Sumatera</div>
+          <div class="cert-year">2023</div>
         </div>
       </div>
 
@@ -1476,8 +1588,8 @@
           <div class="contact-item">
             <div class="contact-item-icon" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></div>
             <div class="contact-item-text">
-              <div class="contact-item-label" data-i18n="contact.locationLabel">Lokasi</div>
-              <div class="contact-item-value" data-i18n="contact.locationValue">Tangerang Selatan, Indonesia</div>
+              <div class="contact-item-label" data-i18n="contact.location">Lokasi</div>
+              <div class="contact-item-value">Tangerang Selatan, Indonesia</div>
             </div>
           </div>
         </div>
@@ -1675,163 +1787,126 @@
 ═══════════════════════════════════════════ -->
 <script>
 /* ────────────────────────────────────────────
-   COMPLETE BILINGUAL TRANSLATION DICTIONARY
+   TRANSLATION DICTIONARY
 ──────────────────────────────────────────── */
 const translations = {
   en: {
-    /* NAV */
-    'nav.home':'Home','nav.about':'About','nav.education':'Education',
+    'located.label':'Located in','located.value':'South Tangerang, Indonesia','hero.skillsLabel':'Expertise','nav.home':'Home','nav.about':'About','nav.education':'Education',
     'nav.skills':'Skills','nav.experience':'Experience','nav.projects':'Projects',
     'nav.certifications':'Certifications','nav.contact':'Contact','nav.downloadCV':'Download CV',
-    /* HERO */
     'hero.badge':'Open to Opportunities — Data Analytics & Corporate Management Trainee Roles',
-    'hero.tagline':'Data-Driven Professional &nbsp;|&nbsp; Business Intelligence &nbsp;|&nbsp; Data Analytics &nbsp;|&nbsp; Machine Learning &nbsp;|&nbsp; Statistics &nbsp;|&nbsp; Analytical Thinking',
+    'hero.tagline':'Data-Driven Professional | Business Intelligence | Data Analytics | Machine Learning | Statistics | Analytical Thinking',
     'hero.statement':'Integrating data analysis and leadership to produce measurable impact aligned with strategic industry needs in data analytics and machine learning.',
     'hero.downloadCV':'Download CV','hero.viewProjects':'View Projects','hero.contactMe':'Contact Me',
-    'hero.stat1':'Internship &amp; Lab<br>Experiences','hero.stat2':'Organization<br>Roles','hero.stat3':'Projects<br>Completed',
-    'hero.skillsLabel':'Expertise',
-    'located.label':'Located in','located.value':'South Tangerang, Indonesia',
-    /* ABOUT */
+    'hero.stat1':'Internship & Lab<br>Experiences','hero.stat2':'Organization<br>Roles','hero.stat3':'Projects<br>Completed',
     'about.label':'About Me','about.accentLabel':'Fresh Graduate<br>Data Science',
     'about.heading':'Analytical Mindset.<br>Leadership Backbone.',
     'about.p1':'A Data Science graduate with academic and practical experience in data processing and analysis. Through an internship at <strong>Badan Pusat Statistik (BPS) Kota Bandar Lampung</strong>, I was involved in managing and validating official-scale data and understanding structured reporting governance in the financial accounts and analytics division.',
     'about.p2':'During my studies at Institut Teknologi Sumatera, I actively served as a lab assistant for <strong>Spatial Data Analysis</strong> and <strong>Deep Learning</strong> courses, strengthening technical competence while developing communication and academic mentoring skills. Proficient in Python, R, SQL, and Tableau for systematically exploring, cleaning, and analyzing data to generate measurable and strategically valuable recommendations.',
-    /* EDUCATION */
     'edu.label':'Education','edu.title':'Academic ','edu.titleSpan':'Foundation',
     'edu.sub':'Formal education providing a strong foundation in statistics, quantitative methods, and analytical thinking.',
-    'edu.degree':'Bachelor\'s Degree - Data Science',
+    'edu.degree':'Bachelor - Data Science',
     'edu.highlight':'Completed relevant coursework including: Big Data Analytics, Statistical Computing, Time Series Analysis, Multivariate Analysis, Survey Sampling Methods, Data Mining, Data and Information Visualization, and Business Intelligence. Produced a Final Thesis titled "Estimation of Poverty Rates in Bengkulu Province in 2024 Using the Small Area Estimation (SAE) Method with the Empirical Best Linear Unbiased Predictor (EBLUP) Approach".',
-    /* ORGANIZATIONS */
-    'org.label':'Leadership &amp; Organizations','org.title':'Making an ','org.titleSpan':'Impact','org.titleSuffix':' Beyond the Classroom',
+    'org.label':'Leadership & Organizations','org.title':'Making an ','org.titleSpan':'Impact','org.titleSuffix':' Beyond the Classroom',
     'org.sub':'Experienced in building teams, managing projects, and leading initiatives within campus organizations and committees.',
     'org1.role':'Class President — Data Science 2021 Cohort','org1.period':'2022 – Present',
     'org1.b1':'Led 143 Data Science students of the 2021 cohort at ITERA, contributing to academic and non-academic knowledge-sharing sessions to facilitate academic discussions within the cohort.',
     'org1.b2':'Regularly organized online knowledge-sharing sessions during the Common Preparation Phase (TPB) and guided the cohort to join and participate in the Data Science student organization.',
     'org2.role':'Head of Internal Department — HMSD Adyatama ITERA','org2.period':'February 2024 – 2025',
-    'org2.b1':'Managed the implementation of internal programs including graduation celebrations (July &amp; November), student sharing sessions on academic and non-academic matters, and interfaith worship programs, ensuring activities ran smoothly and sustainably.',
+    'org2.b1':'Managed the implementation of internal programs including graduation celebrations (July & November), student sharing sessions on academic and non-academic matters, and interfaith worship programs, ensuring activities ran smoothly and sustainably.',
     'org2.b2':'Coordinated with approximately 600 Data Science students, board members, and lecturers to increase participation rates in internally organized programs.',
     'org3.role':'Executive Chairman — PEMIRA KM-ITERA 2023','org3.period':'September - November 2023',
     'org3.b1':'Led and coordinated the committee with the secretariat, 6 division heads and 13 subdivisions with a total of 126 staff, ensuring core duties ran effectively. Aligned communication and cooperation among 41 Student Program Associations (HMPS) representing 18,454 active students in the PEMIRA KM-ITERA 2023 election.',
     'org3.b2':'Coordinated with 2 student presidential candidate pairs and faculty to ensure the election ran according to the principles of Direct, General, Free, Honest, and Fair (LUBER JURDIL), resulting in voter participation of 8,397 active students at Institut Teknologi Sumatera.',
     'org4.role':'Discipline Commission Coordinator — KRTI 2023 ITERA','org4.period':'September 2023',
-    'org4.b1':'Coordinated participant and supporter discipline oversight at a national competition attended by 102 finalist teams from 40 universities, covering 4 competition divisions (<i>Racing Plane, Fixed Wing, VTOL, and Technology Development</i>).',
+    'org4.b1':'Coordinated participant and supporter discipline oversight at a national competition attended by 102 finalist teams from 40 universities, covering 4 competition divisions (Racing Plane, Fixed Wing, VTOL, and Technology Development).',
     'org4.b2':'Ensured the event ran safely and orderly according to Standard Operating Procedures (SOP) for committees, participants, and related institutions during the competition organized by BPTI–Puspresnas Kemdikbudristek at Lanud TNI AU Prince M. Bunyamin, Lampung.',
-    /* SKILLS */
     'skills.label':'Technical Skills','skills.title':'Technical Skills That ','skills.titleSpan':'Deliver Impact',
     'skills.sub':'A structured blend of technical expertise, soft skills, and professional skills for data-driven and leadership impact.',
-    'skills.hardTitle':'Hard Skills','skills.softTitle':'Soft Skills','skills.toolsTitle':'Software &amp; Tools',
-    /* EXPERIENCE */
+    'skills.hardTitle':'Hard Skills','skills.softTitle':'Soft Skills','skills.toolsTitle':'Software & Tools',
     'exp.label':'Professional Experience','exp.title':'Professional Implementation That ','exp.titleSpan':'Delivers Impact',
     'exp1.role':'Deep Learning Lab Assistant','exp1.period':'September - December 2025',
-    'exp1.org':'Data Science Study Program — Institut Teknologi Sumatera',
     'exp1.b1':'Mentored and evaluated Deep Learning lab sessions by implementing Python-based models (CNN, RNN, Transformer, GAN) and end-to-end processes from data preprocessing, architecture design, hyperparameter tuning, to model performance evaluation. Assisted with code troubleshooting and ensured systematic understanding of the model development pipeline.',
     'exp2.role':'Spatial Data Analysis Lab Assistant','exp2.period':'February - May 2025',
-    'exp2.org':'Data Science Study Program — Institut Teknologi Sumatera',
     'exp2.b1':'Delivered presentations and supported the execution of Spatial Data Analysis labs, including preparing 10 lab modules and mentoring a student group in their major project until publication at a national seminar. Also evaluated lab results and developed learning modules to ensure structured activities aligned with learning outcomes.',
-    'exp3.role':'Data Analyst &amp; Entry Internship','exp3.period':'July - August 2024',
-    'exp3.org':'Badan Pusat Statistik (BPS) — Bandar Lampung, Indonesia',
+    'exp3.role':'Data Analyst & Entry Internship','exp3.period':'July - August 2024',
     'exp3.b1':'Completed the compilation and validation of regional financial account data for regional economic statistical reporting through cross-unit coordination, including the General Sub-division (budget planning), Social Statistics (demographic data), Production Statistics (agricultural data), and the IPDS Sub-directorate in managing the statistical information system.',
-    'exp3.b2':'Completed data input, verification, and reconciliation using BPS official systems. Produced regional statistics publications including the <i>Complete Census of Agriculture 2023 for Bandar Lampung City</i> and a final report on <i>Linear Regression Analysis of Diarrhea Factors in Lampung Province in 2022</i>.',
-    /* PROJECTS */
+    'exp3.b2':'Completed data input, verification, and reconciliation using BPS official systems. Produced regional statistics publications including the Complete Census of Agriculture 2023 for Bandar Lampung City and a final report on Linear Regression Analysis of Diarrhea Factors in Lampung Province in 2022.',
+    'exp4.role':'Staff Production Planning & Inventory Control (PPIC)','exp4.period':'June 2026 - Now',
+    'exp4.b1':'Prepared and controlled Production Plans based on demand, production capacity, material availability, and delivery requirements.',
+    'exp4.b2':'Performed capacity planning, monitored daily production progress, and adjusted production schedules in response to changes in demand, capacity, and production constraints.',
+    'exp4.b3':'Coordinated with Production, Warehouse, Material, IE, QA, and related functions to maintain smooth production flow and support on-time delivery.',
+    'exp4.b4':'Analyzed production achievement, backlog, and potential bottlenecks as a basis for corrective action and rescheduling to minimize delivery delay risks.',
     'proj.label':'Selected Projects','proj.title':'Work That ','proj.titleSpan':'Speaks',
     'proj.sub':'A selection of analytical, BI, and leadership-driven projects demonstrating end-to-end problem-solving ability.',
     'proj.viewDetails':'View Details',
-    'p1.title':'Planning &amp; Implementation of a Large-Scale Business Intelligence System on the Netflix Platform',
+    'p1.title':'Planning & Implementation of a Large-Scale Business Intelligence System on the Netflix Platform',
     'p1.desc':'Interactive BI dashboard showcasing large-scale business intelligence system implementation on the Netflix platform.',
     'p2.title':'Detection and Calculation of Beach Waste Using RT-DETR',
     'p2.desc':'Development of a Transformer-based object detection system to automatically and real-time identify and count beach litter using the RT-DETR model, as an AI-based solution to support environmental conservation.',
-    'p3.title':'Spatial Classification of Land Cover in Metro City Using the Random Forest Algorithm',
+    'p3.title':'Classification of Land Cover in Metro City Using Random Forest',
     'p3.desc':'Analyzing land cover changes in Metro City for the period 2019–2023 using Landsat 8 satellite imagery and a Google Earth Engine-based Random Forest algorithm to produce accurate classification maps as a basis for data-driven spatial planning.',
-    'p4.title':'Estimation of Poverty Levels in Bengkulu Province in 2024 Using the <i>Small Area Estimation</i> (SAE) Method with the <i>Empirical Best Linear Unbiased Predictor</i> (EBLUP) Approach',
-    'p4.desc':'Analysis using the Small Area Estimation method to estimate poverty rates in Bengkulu Province in 2024.',
-    'p5.title':'Sentiment Analysis of IMDB Movie Dataset Using Logistic Regression and Naive Bayes Algorithms',
-    'p5.desc':'Development of a sentiment analysis model on 50,000 IMDB movie reviews using Logistic Regression and Naive Bayes classification approaches to predict positive, negative, and neutral sentiments.',
-    'p6.title':'Complete Census of Agriculture 2023 for Bandar Lampung City',
-    'p6.desc':'Contribution in compiling and validating the official publication of the Complete Census of Agriculture 2023 for Bandar Lampung City as part of the process of processing and verifying sectoral statistical data within the Badan Pusat Statistik (BPS) environment.',
-    'p7.title':'Linear Regression Analysis in Analyzing the Impact of Diarrhea in Lampung Province in 2022',
-    'p7.desc':'This project is a work report from the Central Statistics Agency (BPS) of Bandar Lampung City, focusing on analyzing factors influencing diarrhea cases in Lampung Province in 2022 using a linear regression approach. The analysis was conducted to support data-driven decision-making in public health and regional policy planning.',
-    /* CERTIFICATIONS */
-    'cert.label':'Certificates','cert.title':'Certifications &amp; ','cert.titleSpan':'Licenses',
-    'cert1.title':'Mini Course - Intro to Data Analytics','cert1.org':'RevoU','cert1.year':'January 2026',
-    'cert2.title':'TOEFL Score Report','cert2.org':'Institut Teknologi Sumatera','cert2.year':'December 2025',
-    'cert3.title':'Deep Learning Lab Assistant','cert3.org':'Data Science Study Program ITERA','cert3.year':'September - December 2025',
-    'cert4.title':'Spatial Data Analysis Lab Assistant','cert4.org':'Data Science Study Program ITERA','cert4.year':'February - May 2025',
-    'cert5.title':'Leadership Fundamentals Speaker','cert5.org':'ITERA Student Organizations','cert5.year':'February 2024 - August 2025',
-    'cert6.title':'Head of Internal Department','cert6.org':'Himpunan Mahasiswa Sains Data (HMSD) Adyatama ITERA','cert6.year':'February 2024 - February 2025',
-    'cert7.title':'Internship in Statistical Accounts &amp; Analysis','cert7.org':'Badan Pusat Statistik (BPS) Kota Bandar Lampung','cert7.year':'July - August 2024',
-    'cert8.title':'LKMM ITERA Facilitation Training','cert8.org':'Institut Teknologi Sumatera','cert8.year':'February 2024',
-    'cert9.title':'Executive Chairman PEMIRA KM-ITERA 2023','cert9.org':'SENAT KM-ITERA','cert9.year':'September - November 2023',
-    'cert10.title':'Discipline Commission Coordinator','cert10.org':'Balai Pengembangan Talenta Indonesia','cert10.year':'September 2023',
-    'cert11.title':'Student Management Skills Training (LKMM) Level III','cert11.org':'Institut Teknologi Sumatera','cert11.year':'2023',
-    /* CONTACT */
+    'p4.title':'Estimation of Poverty Levels in Bengkulu Province in 2024 Using the Small Area Estimation (SAE) Method with the Empirical Best Linear Unbiased Predictor (EBLUP) Approach',
+    'p4.desc':'This study aims to improve the accuracy of estimates in areas with small sample sizes, thereby producing more stable and reliable poverty indicators to support data-driven policy formulation.','p5.title':'Sentiment Analysis of IMDB MOVIE Dataset with Logistic Regression and Naive Bayes Algorithms',
+    'p5.desc':'Development of a sentiment analysis model on 50,000 IMDB movie reviews using the Logistic Regression and Naive Bayes classification approaches to predict positive, negative, and neutral sentiments.','p6.title':'Complete Census of Agriculture 2023 for Bandar Lampung City',
+    'p6.desc':'Contribution in compiling and validating official statistical publications of the Complete Census of Agriculture 2023 for Bandar Lampung City as part of the process of processing and verifying sectoral statistical data within the Badan Pusat Statistik (BPS) environment.','p7.title':'Linear Regression Analysis in Analyzing the Impact of Diarrhea in Lampung Province in 2022',
+    'p7.desc':'This project is a work report from the Central Statistics Agency (BPS) of Bandar Lampung City that focuses on analyzing the factors that influence cases of diarrhea in Lampung Province in 2022 using a linear regression approach. The analysis was conducted to support data-driven decision-making in the context of public health and regional policy planning.',
+    'cert.label':'Certificates','cert.title':'Certifications & ','cert.titleSpan':'Licenses',
     'contact.label':'Contact','contact.heading':"Let's Build Something Together",
     'contact.sub':'I am actively seeking opportunities in Data Analytics, Finance, and Management Trainee programs. I am very interested in connecting and exploring how I can contribute to your team.',
-    'contact.locationLabel':'Location','contact.locationValue':'South Tangerang, Indonesia',
-    'contact.downloadCV':'Download Full CV',
-    /* FORM */
+    'contact.location':'Location','contact.downloadCV':'Download Full CV',
     'form.firstName':'First Name','form.lastName':'Last Name','form.email':'Email Address',
     'form.subject':'Subject','form.message':'Message','form.send':'Send Message',
-    /* MODAL */
-    'modal.context':'Context','modal.tools':'Tools &amp; Technologies','modal.recommendation':'Recommendation',
-    /* FOOTER */
+    'modal.context':'Context','modal.tools':'Tools & Technologies','modal.recommendation':'Recommendation',
     'footer.built':'Built with purpose'
   },
-
   id: {
-    /* NAV */
-    'nav.home':'Beranda','nav.about':'Tentang','nav.education':'Pendidikan',
+    'located.label':'Berbasis di','located.value':'Tangerang Selatan, Indonesia','hero.skillsLabel':'Keahlian','nav.home':'Beranda','nav.about':'Tentang','nav.education':'Pendidikan',
     'nav.skills':'Keterampilan','nav.experience':'Pengalaman','nav.projects':'Proyek',
     'nav.certifications':'Sertifikasi','nav.contact':'Kontak','nav.downloadCV':'Unduh CV',
-    /* HERO */
-    'hero.badge':'Terbuka untuk Peluang — Peran Analitik Data &amp; Manajemen Korporat',
-    'hero.tagline':'Profesional Berbasis Data &nbsp;|&nbsp; Kecerdasan Bisnis &nbsp;|&nbsp; Data Analytics &nbsp;|&nbsp; Machine Learning &nbsp;|&nbsp; Statistika &nbsp;|&nbsp; Berfikir Analitis',
+    'hero.badge':'Terbuka untuk Peluang — Peran Analitik Data & Magang Manajemen',
+    'hero.tagline':'Profesional Berbasis Data | Kecerdasan Bisnis | Data Analytics | Machine Learning | Statistika | Berfikir Analitis',
     'hero.statement':'Mengintegrasikan analisis data dan kepemimpinan untuk menghasilkan dampak terukur yang selaras dengan kebutuhan strategis industri di bidang data analytics dan machine learning',
     'hero.downloadCV':'Unduh CV','hero.viewProjects':'Lihat Proyek','hero.contactMe':'Hubungi Saya',
-    'hero.stat1':'Pengalaman Magang<br>&amp; Asisten Lab','hero.stat2':'Peran<br>Organisasi','hero.stat3':'Proyek<br>Selesai',
-    'hero.skillsLabel':'Keahlian',
-    'located.label':'Berbasis di','located.value':'Tangerang Selatan, Indonesia',
-    /* ABOUT */
+    'hero.stat1':'Pengalaman Magang<br>& Asisten Lab','hero.stat2':'Peran<br>Organisasi','hero.stat3':'Proyek<br>Selesai',
     'about.label':'Tentang Saya','about.accentLabel':'Fresh Graduate<br>Sains Data',
     'about.heading':'Pola Pikir Analitis.<br>Kepemimpinan Solid.',
     'about.p1':'Lulusan Sains Data dengan pengalaman akademik dan praktis dalam pengolahan serta analisis data. Melalui program magang di <strong>Badan Pusat Statistik (BPS) Kota Bandar Lampung</strong>, terlibat dalam pengelolaan dan validasi data berskala resmi serta memahami tata kelola pelaporan pada bidang neraca dan analitik secara terstruktur.',
     'about.p2':'Selama menempuh pendidikan di Institut Teknologi Sumatera, aktif sebagai asisten praktikum untuk mata kuliah <strong>Analisis Data Spasial</strong> dan <strong>Deep Learning</strong>, yang memperkuat kompetensi teknis sekaligus mengembangkan kemampuan komunikasi dan pendampingan akademik. Terbiasa menggunakan Python, R, SQL, dan Tableau dalam mengeksplorasi, membersihkan, serta menganalisis data secara sistematis guna menghasilkan rekomendasi yang terukur dan bernilai strategis.',
-    /* EDUCATION */
     'edu.label':'Pendidikan','edu.title':'Landasan ','edu.titleSpan':'Akademis',
     'edu.sub':'Pendidikan formal yang memberikan dasar kuat dalam ilmu statistik, metode kuantitatif, dan pemikiran analitis.',
     'edu.degree':'S1 - Sains Data',
     'edu.highlight':'Menyelesaikan mata kuliah yang relevan, seperti: Analisis Big Data, Komputasi Statistik, Analisis Deret Waktu, Analisis Multivariat, Metode Survei Sampel, Data Mining, Visualisasi Data dan Informasi, serta Kecerdasan Bisnis. Menghasilkan Tugas Akhir yang berjudul "Pendugaan Tingkat Kemiskinan Di Provinsi Bengkulu Pada Tahun 2024 Menggunakan Metode Small Area Estimation (SAE) Dengan Pendekatan Empirical Best Linear Unbiased Predictor (EBLUP)".',
-    /* ORGANIZATIONS */
-    'org.label':'Kepemimpinan &amp; Organisasi','org.title':'Memberikan ','org.titleSpan':'Dampak','org.titleSuffix':' di Luar Ruang Kelas',
+    'org.label':'Kepemimpinan & Organisasi','org.title':'Memberikan ','org.titleSpan':'Dampak','org.titleSuffix':' di Luar Ruang Kelas',
     'org.sub':'Berpengalaman dalam membangun tim, mengelola proyek, dan memimpin inisiatif di organisasi maupun kepanitian internal kampus.',
     'org1.role':'Ketua Angkatan Sains Data 2021','org1.period':'2022 – Sekarang',
     'org1.b1':'Memimpin mahasiswa/i Program Studi Sains Data angkatan 2021 ITERA yang terdiri dari 143 mahasiswa/i, berkontribusi dalam memberikan akses dalam sesi berbagi pengetahuan baik akademik maupun non-akademik untuk mempermudah diskusi akademis dalam lingkup angkatan.',
     'org1.b2':'Secara rutin mengadakan sesi berbagi pengetahuan melalui media online selama periode Tahap Persiapan Bersama (TPB) dan membimbing kelompok tersebut untuk bergabung dan berpartisipasi dalam organisasi mahasiswa Program Studi Sains Data.',
     'org2.role':'Kepala Departemen Internal — HMSD Adyatama ITERA','org2.period':'Februari 2024 – 2025',
-    'org2.b1':'Mengelola pelaksanaan program kegiatan internal riuh wisuda (Juli &amp; November) dan sharing session bagi mahasiswa terkait aspek akademik dan non-akademik, serta program kerohanian. Seperti pelaksanaan ibadah bersama lintas agama, serta memastikan kegiatan berjalan tertib dan berkelanjutan.',
+    'org2.b1':'Mengelola pelaksanaan program kegiatan internal riuh wisuda (Juli & November) dan sharing session bagi mahasiswa terkait aspek akademik dan non-akademik, serta program kerohanian. Seperti pelaksanaan ibadah bersama lintas agama, serta memastikan kegiatan berjalan tertib dan berkelanjutan.',
     'org2.b2':'Mampu berkoordinasi dengan kurang lebih 600 mahasiswa/I Sains Data, pengurus himpunan, dan dosen dalam upaya meningkatkan angka partisipasi kegiatan yang diselenggarakan oleh internal program studi.',
     'org3.role':'Ketua Pelaksana — PEMIRA KM-ITERA 2023','org3.period':'September - November 2023',
     'org3.b1':'Memimpin dan mengoordinasikan kepanitian bersama kesekretariatan, 6 kepala divisi dan 13 subdivisi dengan total 126 staf, untuk memastikan tugas pokok dan fungsi berjalan efektif. Dengan menyelaraskan komunikasi dan kerja sama antar 41 Himpunan Mahasiswa Program Studi (HMPS) yang mewakili 18.454 mahasiswa/I aktif dalam penyelenggaraan PEMIRA KM-ITERA 2023.',
     'org3.b2':'Berkoordinasi dengan 2 pasangan calon Presiden Mahasiswa serta pihak dosen untuk memastikan proses pemilihan berjalan sesuai asas Langsung, Umum, Bebas, Jujur, dan Adil (LUBER JURDIL), sehingga menghasilkan angka partisipasi pemilih sebanyak 8397 mahasiswa/I aktif Institut Teknologi Sumatera.',
     'org4.role':'Koordinator Komisi Disiplin — KRTI 2023 ITERA','org4.period':'September 2023',
-    'org4.b1':'Mengoordinasikan pengawasan disiplin peserta dan pendukung pada ajang nasional yang diikuti 102 tim finalis dari 40 perguruan tinggi, mencakup 4 divisi lomba (<i>Racing Plane, Fixed Wing, VTOL, dan Technology Development</i>).',
+    'org4.b1':'Mengoordinasikan pengawasan disiplin peserta dan pendukung pada ajang nasional yang diikuti 102 tim finalis dari 40 perguruan tinggi, mencakup 4 divisi lomba (Racing Plane, Fixed Wing, VTOL, dan Technology Development).',
     'org4.b2':'Memastikan kegiatan berjalan aman dan kondusif sesuai Standar Operasional Prosedur (SOP), kepada panitia, peserta, dan instansi terkait selama pelaksanaan lomba yang diselenggarakan oleh BPTI–Puspresnas Kemdikbudristek di Lanud TNI AU Pangeran M. Bunyamin, Lampung.',
-    /* SKILLS */
     'skills.label':'Keterampilan Teknis','skills.title':'Keterampilan Teknis yang ','skills.titleSpan':'Berdampak',
-    'skills.sub':'Perpaduan terstruktur antara keahlian teknis, <i>soft skills</i>, dan <i>profesional skills</i> untuk dampak yang didorong dalam bidang data dan kepemimpinan.',
-    'skills.hardTitle':'Hard Skills','skills.softTitle':'Soft Skills','skills.toolsTitle':'Perangkat Lunak &amp; Alat',
-    /* EXPERIENCE */
+    'skills.sub':'Perpaduan terstruktur antara keahlian teknis, soft skills, dan profesional skills untuk dampak yang didorong dalam bidang data dan kepemimpinan.',
+    'skills.hardTitle':'Hard Skills','skills.softTitle':'Soft Skills','skills.toolsTitle':'Perangkat Lunak & Alat',
     'exp.label':'Pengalaman Profesional','exp.title':'Implementasi Profesional yang ','exp.titleSpan':'Berdampak',
     'exp1.role':'Asisten Praktikum Deep Learning','exp1.period':'September - Desember 2025',
-    'exp1.org':'Program Studi Sains Data — Institut Teknologi Sumatera',
     'exp1.b1':'Melakukan pendampingi serta mengevaluasi pelaksanaan praktikum Deep Learning dengan mengimplementasikan model berbasis Python (CNN, RNN, Transformer, GAN) serta proses end-to-end mulai dari data preprocessing, perancangan arsitektur, tuning hyperparameter, hingga evaluasi performa model. Membantu troubleshooting kode dan memastikan pemahaman alur pengembangan model secara sistematis.',
     'exp2.role':'Asisten Praktikum Analisis Data Spasial','exp2.period':'Februari - Mei 2025',
-    'exp2.org':'Program Studi Sains Data — Institut Teknologi Sumatera',
     'exp2.b1':'Memberikan pemaparan serta mendukung pelaksanaan praktikum Analisis Data Spasial, termasuk menyiapkan 10 modul praktikum dan mendampingi satu kelompok mahasiswa dalam pengolahan tugas besar hingga menghasilkan publikasi pada seminar nasional. Selain itu, melakukan evaluasi hasil praktikum serta pengembangan modul pembelajaran untuk memastikan kegiatan berjalan terstruktur dan selaras dengan capaian pembelajaran.',
     'exp3.role':'Internship Data Analyst dan Entry','exp3.period':'Juli - Agustus 2024',
-    'exp3.org':'Badan Pusat Statistik (BPS) — Bandar Lampung, Indonesia',
     'exp3.b1':'Menyelesaikan penyusunan dan validasi data neraca keuangan daerah untuk pelaporan statistik ekonomi regional melalui koordinasi lintas unit, termasuk Subbagian Umum (perencanaan anggaran), Statistik Sosial (data kependudukan), Statistik Produksi (data pertanian), serta Subdirektorat IPDS dalam pengelolaan sistem informasi statistik.',
-    'exp3.b2':'Menyelesaikan input, pengecekan, dan rekonsiliasi data menggunakan sistem resmi BPS. Dengan menghasilkan publikasi statistik daerah, termasuk Publikasi <i>Hasil Pencacahan Lengkap Sensus Pertanian 2023 Kota Bandar Lampung</i> dan laporan akhir <i>Analisis Regresi Linear Dalam Menganalisis Pengaruhi Diare Di Provinsi Lampung Pada Tahun 2022</i>.',
-    /* PROJECTS */
+    'exp3.b2':'Menyelesaikan input, pengecekan, dan rekonsiliasi data menggunakan sistem resmi BPS. Dengan menghasilkan publikasi statistik daerah, termasuk Publikasi Hasil Pencacahan Lengkap Sensus Pertanian 2023 Kota Bandar Lampung dan laporan akhir Analisis Regresi Linear Dalam Menganalisis Pengaruhi Diare Di Provinsi Lampung Pada Tahun 2022.',
+    'exp4.role':'Staff Production Planning & Inventory Control (PPIC)','exp4.period':'June 2026 - Now',
+    'exp4.b1':'Menyusun dan mengendalikan Production Plan berdasarkan demand, kapasitas produksi, ketersediaan material, dan target delivery.',
+    'exp4.b2':'Melakukan capacity planning, memantau progress produksi, serta melakukan penyesuaian schedule terhadap perubahan demand, kapasitas, dan kendala produksi.',
+    'exp4.b3':'Berkoordinasi dengan Production, Warehouse, Material, IE, QA, dan fungsi terkait untuk menjaga kelancaran produksi serta mendukung pencapaian on-time delivery.',
+    'exp4.b4':'Menganalisis production achievement, backlog, dan potensi bottleneck sebagai dasar corrective action dan rescheduling untuk meminimalkan risiko keterlambatan.',
     'proj.label':'Proyek Pilihan','proj.title':'Karya yang ','proj.titleSpan':'Berbicara',
     'proj.sub':'Pilihan proyek analitis, BI, dan berbasis kepemimpinan yang menunjukkan kemampuan pemecahan masalah end-to-end.',
     'proj.viewDetails':'Lihat Detail',
@@ -1839,193 +1914,34 @@ const translations = {
     'p1.desc':'Dashboard BI interaktif yang menampilkan implementasi sistem intelijen bisnis skala besar pada platform Netflix.',
     'p2.title':'Deteksi dan Perhitungan Jumlah Sampah Pantai Menggunakan RT-DETR',
     'p2.desc':'Pengembangan sistem deteksi objek berbasis Transformer untuk mengidentifikasi dan menghitung sampah pantai secara otomatis dan real-time menggunakan model RT-DETR, sebagai solusi berbasis AI untuk mendukung konservasi lingkungan.',
-    'p3.title':'Klasifikasi Spasial Tutupan Lahan di Kota Metro dengan Menggunakan Algoritma Random Forest',
+    'p3.title':'Klasifikasi Tutupan Lahan Kota Metro Menggunakan Random Forest',
     'p3.desc':'Menganalisis perubahan tutupan lahan Kota Metro periode 2019–2023 menggunakan citra satelit Landsat 8 dan algoritma Random Forest berbasis Google Earth Engine untuk menghasilkan peta klasifikasi yang akurat sebagai dasar perencanaan tata ruang berbasis data.',
-    'p4.title':'Pendugaan Tingkat Kemiskinan Di Provinsi Bengkulu Pada Tahun 2024 Menggunakan Metode <i>Small Area Estimation</i> (SAE) Dengan Pendekatan <i>Empirical Best Linear Unbiased Predictor</i>(EBLUP)',
-    'p4.desc':'Analisis menggunakan metode Small Area Estimation untuk memperkirakan tingkat kemiskinan di Provinsi Bengkulu pada Tahun 2024.',
-    'p5.title':'Analisis Sentiment Dataset IMDB Movie dengan Algoritma Regresi Logistik dan Naive Bayes',
-    'p5.desc':'Pengembangan model analisis sentimen pada 50.000 ulasan film IMDB menggunakan pendekatan klasifikasi Regresi Logistik dan Naive Bayes untuk memprediksi sentimen positif, negatif, dan netral.',
-    'p6.title':'Hasil Pencacahan Lengkap Sensus Pertanian 2023 kota Bandar Lampung',
-    'p6.desc':'Kontribusi dalam penyusunan dan validasi publikasi resmi Hasil Pencacahan Lengkap Sensus Pertanian 2023 Kota Bandar Lampung sebagai bagian dari proses pengolahan dan verifikasi data statistik sektoral di lingkungan Badan Pusat Statistik (BPS).',
-    'p7.title':'Analisis Regresi Linear Dalam Menganalisis Pengaruh Diare Di Provinsi Lampung Pada Tahun 2022',
+    'p4.title':'Pendugaan Tingkat Kemiskinan Di Provinsi Bengkulu Pada Tahun 2024 Menggunakan Metode <i>Small Area Estimation</i> (SAE) Dengan Pendekatan <i>Empirical Best Linear Unbiased Predictor</i> (EBLUP)',
+    'p4.desc':'Penelitian ini bertujuan meningkatkan akurasi estimasi pada wilayah dengan ukuran sampel kecil, sehingga menghasilkan indikator kemiskinan yang lebih stabil dan reliabel untuk mendukung perumusan kebijakan berbasis data.','p5.title':'Analisis Sentimen Dataset IMDB MOVIE dengan Algoritma Regresi Logistik dan Naive Bayes',
+    'p5.desc':'Pengembangan model analisis sentimen pada 50.000 ulasan film IMDB menggunakan pendekatan klasifikasi Regresi Logistik dan Naive Bayes untuk memprediksi sentimen positif, negatif, dan netral.','p6.title':'Hasil Pencacahan Lengkap Sensus Pertanian 2023 Kota Bandar Lampung',
+    'p6.desc':'Kontribusi dalam penyusunan dan validasi publikasi resmi Hasil Pencacahan Lengkap Sensus Pertanian 2023 Kota Bandar Lampung sebagai bagian dari proses pengolahan dan verifikasi data statistik sektoral di lingkungan Badan Pusat Statistik (BPS).','p7.title':'Analisis Regresi Linear Dalam Menganalisis Pengaruhi Diare Di Provinsi Lampung Pada Tahun 2022',
     'p7.desc':'Proyek ini merupakan laporan kerja praktik di Badan Pusat Statistik (BPS) Kota Bandar Lampung yang berfokus pada analisis faktor-faktor yang memengaruhi kasus diare di Provinsi Lampung tahun 2022 menggunakan pendekatan regresi linear. Analisis dilakukan untuk mendukung pengambilan keputusan berbasis data dalam konteks kesehatan masyarakat dan perencanaan kebijakan daerah.',
-    /* CERTIFICATIONS */
-    'cert.label':'Sertifikat','cert.title':'Sertifikasi &amp; ','cert.titleSpan':'Lisensi',
-    'cert1.title':'Mini Course - Intro to Data Analytics','cert1.org':'RevoU','cert1.year':'Januari 2026',
-    'cert2.title':'TOEFL Score Report','cert2.org':'Institut Teknologi Sumatera','cert2.year':'Desember 2025',
-    'cert3.title':'Asisten Praktikum Deep Learning','cert3.org':'Program Studi Sains Data ITERA','cert3.year':'September - Desember 2025',
-    'cert4.title':'Asisten Praktikum Analisis Data Spasial','cert4.org':'Program Studi Sains Data ITERA','cert4.year':'Februari - Mei 2025',
-    'cert5.title':'Pemateri Dasar-Dasar Kepemimpinan','cert5.org':'Organisasi Kemahasiswaan ITERA','cert5.year':'Februari 2024 - Agustus 2025',
-    'cert6.title':'Kepala Departemen Internal','cert6.org':'Himpunan Mahasiswa Sains Data (HMSD) Adyatama ITERA','cert6.year':'Februari 2024 - Februari 2025',
-    'cert7.title':'Internship Bidang Neraca dan Analisis Statistik','cert7.org':'Badan Pusat Statistik (BPS) Kota Bandar Lampung','cert7.year':'Juli - Agustus 2024',
-    'cert8.title':'Pelatihan Pemanduan LKMM ITERA','cert8.org':'Institut Teknologi Sumatera','cert8.year':'Februari 2024',
-    'cert9.title':'Ketua Pelaksana PEMIRA KM-ITERA 2023','cert9.org':'SENAT KM-ITERA','cert9.year':'September - November 2023',
-    'cert10.title':'Kordinator Komisi Disiplin','cert10.org':'Balai Pengembangan Talenta Indonesia','cert10.year':'September 2023',
-    'cert11.title':'Latihan Keterampilan Manajemen Mahasiswa (LKMM) Tingkat Dasar III','cert11.org':'Institut Teknologi Sumatera','cert11.year':'2023',
-    /* CONTACT */
+    'cert.label':'Sertifikat','cert.title':'Sertifikasi & ','cert.titleSpan':'Lisensi',
     'contact.label':'Kontak','contact.heading':'Mari Kita Bangun Kerjasama',
     'contact.sub':'Saya sedang aktif mencari peluang di bidang Analisis Data, Finance, dan program Magang Manajemen. Saya sangat tertarik untuk terhubung dan menjajaki cara saya dapat berkontribusi pada tim Anda.',
-    'contact.locationLabel':'Lokasi','contact.locationValue':'Tangerang Selatan, Indonesia',
-    'contact.downloadCV':'Unduh CV Lengkap',
-    /* FORM */
+    'contact.location':'Lokasi','contact.downloadCV':'Unduh CV Lengkap',
     'form.firstName':'Nama Depan','form.lastName':'Nama Belakang','form.email':'Alamat Email',
     'form.subject':'Subjek','form.message':'Pesan','form.send':'Kirim Pesan',
-    /* MODAL */
-    'modal.context':'Konteks','modal.tools':'Alat &amp; Teknologi','modal.recommendation':'Rekomendasi',
-    /* FOOTER */
+    'modal.context':'Konteks','modal.tools':'Alat & Teknologi','modal.recommendation':'Rekomendasi',
     'footer.built':'Dibangun dengan tujuan'
   }
 };
 
-/* ────────────────────────────────────────────
-   BILINGUAL PROJECT DATA (both languages)
-──────────────────────────────────────────── */
-const projects = {
-  p1: {
-    en: {
-      type:'Business Intelligence',
-      title:'Planning & Implementation of a Large-Scale Business Intelligence System on the Netflix Platform',
-      context:'Developed a Business Intelligence (BI) system for Netflix by integrating structured ETL processes, data modeling, and interactive dashboards using Python and Tableau. The system transforms raw content data into actionable business insights to support strategic decision-making in content planning, distribution, and market expansion.',
-      tools:'Microsoft Excel (data checking & preparation), Python (data extraction & transformation), Tableau (final dashboard design)',
-      recomendation:'Optimize production strategy through data-driven content planning, expand international content to support market expansion, and leverage the Business Intelligence dashboard to support investment and distribution decisions in a measurable and integrated manner within the company\'s long-term strategy.',
-      outcome:'⚡ Outcome: Analysis results show the dominance of movies in Netflix\'s catalog, indicating a focus on short-duration content formats. TV-MA and TV-14 ratings are the main categories, reflecting high market demand for adult content. Content production is still centered in the United States, while globally, International Movies, Drama, and Comedy genres dominate. Most films are 75–125 minutes long, consistent with user consumption patterns.'
-    },
-    id: {
-      type:'Business Intelligence',
-      title:'Perencanaan dan Implementasi Sistem Intelijen Bisnis Skala Besar pada platform Netflix',
-      context:'Mengembangkan sistem Business Intelligence (BI) untuk Netflix dengan mengintegrasikan proses ETL terstruktur, pemodelan data, dan dashboard interaktif menggunakan Python dan Tableau. Sistem ini mengubah data konten mentah menjadi wawasan bisnis yang dapat ditindaklanjuti untuk mendukung pengambilan keputusan strategis dalam perencanaan konten, distribusi, dan ekspansi pasar.',
-      tools:'Microsoft Excel (data checking & preparation), Python (data extraction & transformation), Tableau (final dashboard design)',
-      recomendation:'Optimalisasi strategi produksi melalui perencanaan konten berbasis data, perluasan konten internasional untuk mendukung ekspansi pasar, serta pemanfaatan dashboard Business Intelligence guna mendukung keputusan investasi dan distribusi secara terukur serta terintegrasi dalam strategi jangka panjang perusahaan.',
-      outcome:'⚡ Outcome: Hasil analisis menunjukkan dominasi film dalam katalog Netflix, menandakan fokus pada format konten berdurasi singkat. Rating TV-MA dan TV-14 menjadi kategori utama, mencerminkan tingginya permintaan pasar terhadap konten dewasa. Produksi konten masih terpusat di Amerika Serikat, sementara secara global genre International Movies, Drama, dan Komedi mendominasi. Mayoritas film berdurasi 75–125 menit, sejalan dengan pola konsumsi pengguna.'
-    }
-  },
-  p2: {
-    en: {
-      type:'Deep Learning',
-      title:'Detection and Calculation of Beach Waste Using RT-DETR',
-      context:'Beach waste problems, particularly plastic waste, are environmental issues that require technology-based solutions. This project was developed to build an automatic detection system using the RT-DETR model to identify and count seven categories of beach waste in real-time, making monitoring more efficient and measurable compared to manual methods.',
-      tools:'Python, RT-DETR (Large & Extra-Large), PyTorch, COCO Evaluation Metrics (mAP@50, mAP@50-95), Roboflow Dataset',
-      recomendation:'For field implementation with hardware limitations, the RT-DETR Large model is recommended for being more efficient without significant performance loss. Further development can focus on improving small object detection and integrating the system with monitoring devices such as drones or IoT to support data-driven beach waste management.',
-      outcome:'⚡ Outcome: The RT-DETR Extra-Large model achieved the best performance with mAP@50 of 0.816 and mAP@50-95 of 0.612, while RT-DETR Large offers higher inference speed at 20.1 ms. These results demonstrate a trade-off between accuracy and computational efficiency, and prove that Transformer-based approaches are effective for real-time environmental object detection.'
-    },
-    id: {
-      type:'Deep Learning',
-      title:'Deteksi dan Perhitungan Jumlah Sampah Pantai Menggunakan RT-DETR',
-      context:'Permasalahan sampah pantai, khususnya limbah plastik, menjadi isu lingkungan yang membutuhkan solusi berbasis teknologi. Proyek ini dikembangkan untuk membangun sistem deteksi otomatis menggunakan model RT-DETR guna mengidentifikasi dan menghitung tujuh kategori sampah pantai secara real-time, sehingga proses monitoring menjadi lebih efisien dan terukur dibandingkan metode manual.',
-      tools:'Python, RT-DETR (Large & Extra-Large), PyTorch, COCO Evaluation Metrics (mAP@50, mAP@50-95), Roboflow Dataset',
-      recomendation:'Untuk implementasi lapangan dengan keterbatasan perangkat, model RT-DETR Large direkomendasikan karena lebih efisien tanpa penurunan performa yang signifikan. Pengembangan lanjutan dapat difokuskan pada peningkatan deteksi objek kecil dan integrasi sistem dengan perangkat monitoring seperti drone atau IoT guna mendukung pengelolaan sampah pantai berbasis data.',
-      outcome:'⚡ Outcome: Model RT-DETR Extra-Large mencapai performa terbaik dengan mAP@50 sebesar 0.816 dan mAP@50-95 sebesar 0.612, sementara RT-DETR Large menawarkan kecepatan inferensi lebih tinggi dengan waktu 20.1 ms. Hasil ini menunjukkan adanya trade-off antara akurasi dan efisiensi komputasi, serta membuktikan bahwa pendekatan berbasis Transformer efektif untuk deteksi objek lingkungan secara real-time.'
-    }
-  },
-  p3: {
-    en: {
-      type:'Spatial Analysis',
-      title:'Spatial Classification of Land Cover in Metro City Using the Random Forest Algorithm',
-      context:'Population growth and urbanization in Metro City are driving significant changes in land cover. A data-based approach using geospatial technology is needed to systematically monitor these changes to support sustainable development policies.',
-      tools:'Google Earth Engine (GEE), Landsat 8 Satellite Imagery, GIS & Remote Sensing Analysis',
-      recomendation:'Classification results can be used as a basis for integrating data-driven spatial planning, particularly in controlling built-up area growth, protecting vegetation areas, and optimizing water resource management and city infrastructure.',
-      outcome:'⚡ Outcome: The Random Forest model successfully classified 393 observation points with 82.40% accuracy and a kappa value of 0.71 (good category). Analysis shows the dominance of vegetation areas and an increase in built-up areas, providing a quantitative foundation to support sustainable development policies.'
-    },
-    id: {
-      type:'Spatial Analysis',
-      title:'Klasifikasi Spasial Tutupan Lahan di Kota Metro dengan Menggunakan Algoritma Random Forest',
-      context:'Pertumbuhan penduduk dan urbanisasi di Kota Metro mendorong perubahan signifikan pada tutupan lahan. Diperlukan pendekatan berbasis data dan teknologi geospasial untuk memantau perubahan tersebut secara sistematis guna mendukung kebijakan pembangunan yang berkelanjutan.',
-      tools:'Google Earth Engine (GEE), Landsat 8 Satellite Imagery, GIS & Remote Sensing Analysis',
-      recomendation:'Hasil klasifikasi dapat dimanfaatkan sebagai dasar integrasi perencanaan tata ruang berbasis data, khususnya dalam pengendalian pertumbuhan kawasan terbangun, perlindungan area vegetasi, serta optimalisasi pengelolaan sumber daya air dan infrastruktur kota.',
-      outcome:'⚡ Outcome: Model Random Forest berhasil mengklasifikasikan 393 titik observasi dengan akurasi 82,40% dan nilai kappa 0,71 (kategori baik). Analisis menunjukkan dominasi area vegetasi dan peningkatan kawasan terbangun, memberikan landasan kuantitatif dalam mendukung kebijakan pembangunan berkelanjutan.'
-    }
-  },
-  p4: {
-    en: {
-      type:'Final Project',
-      title:'Estimation of Poverty Levels in Bengkulu Province in 2024 Using the Small Area Estimation (SAE) Method with the Empirical Best Linear Unbiased Predictor (EBLUP) Approach',
-      context:'Direct estimation of poverty rates at the district/city level often has high variance due to limited survey sample sizes. This causes instability in indicators used for regional development planning. Through the SAE-EBLUP approach, this study integrates survey data with auxiliary variables to improve estimation precision and reduce error at the small area level.',
-      tools:'R (statistical modeling & SAE implementation), Excel, Python (data training and visualization)',
-      recomendation:'Future research development is suggested by expanding the scope of covariates and utilizing SUSENAS micro data to improve the accuracy of EBLUP model estimation. The analysis can also be extended to the unit level with alternative approaches such as Empirical Bayes (EB), Hierarchical Bayes (HB), or spatial approaches (SEBLUP) to more comprehensively capture regional heterogeneity. Additionally, integration of Relative Standard Error (RSE) data from BPS is recommended to strengthen MSE evaluation and improve estimation reliability at the district/city level.',
-      outcome:'⚡ Outcome: The application of the EBLUP method produced more accurate poverty rate estimates compared to direct estimation, with a lower RRMSE (11.65% vs 12.29%) and consistently smaller MSE values. Estimation results show Bengkulu City has the highest number of poor people (52.29 thousand) and Lebong Regency the lowest (13.06 thousand), with health facilities proven as a significant factor influencing poverty rates (p-value 0.01070; VIF 1.6256).'
-    },
-    id: {
-      type:'Final Project',
-      title:'Pendugaan Tingkat Kemiskinan Di Provinsi Bengkulu Pada Tahun 2024 Menggunakan Metode Small Area Estimation (SAE) Dengan Pendekatan Empirical Best Linear Unbiased Predictor(EBLUP)',
-      context:'Estimasi langsung tingkat kemiskinan pada level kabupaten/kota seringkali memiliki varians tinggi akibat keterbatasan ukuran sampel survei. Hal ini menyebabkan kurang stabilnya indikator yang digunakan dalam perencanaan pembangunan daerah. Melalui pendekatan SAE-EBLUP, penelitian ini mengintegrasikan data survei dengan variabel penunjang (auxiliary variables) untuk meningkatkan presisi estimasi dan mengurangi error pada level wilayah kecil.',
-      tools:'R (statistical modeling & SAE implementation), Excel, Python (data train and visualization)',
-      recomendation:'Pengembangan penelitian selanjutnya disarankan dengan memperluas cakupan variabel penyerta serta memanfaatkan data mikro SUSENAS guna meningkatkan akurasi estimasi model EBLUP. Analisis juga dapat dikembangkan ke level unit dengan pendekatan alternatif seperti Empirical Bayes (EB), Hierarchical Bayes (HB), maupun pendekatan spasial (SEBLUP) untuk menangkap heterogenitas wilayah secara lebih komprehensif. Selain itu, integrasi data Relative Standard Error (RSE) dari BPS direkomendasikan untuk memperkuat evaluasi MSE dan meningkatkan reliabilitas estimasi pada tingkat kabupaten/kota.',
-      outcome:'⚡ Outcome: Penerapan metode EBLUP menghasilkan estimasi tingkat kemiskinan yang lebih akurat dibandingkan pendugaan langsung, dengan RRMSE lebih rendah (11,65% vs 12,29%) serta nilai MSE yang konsisten lebih kecil; hasil estimasi menunjukkan Kota Bengkulu memiliki jumlah penduduk miskin tertinggi (52,29 ribu jiwa) dan Kabupaten Lebong terendah (13,06 ribu jiwa), dengan fasilitas kesehatan terbukti sebagai faktor signifikan yang memengaruhi tingkat kemiskinan (p-value 0,01070; VIF 1,6256).'
-    }
-  },
-  p5: {
-    en: {
-      type:'Sentiment Analysis',
-      title:'Sentiment Analysis of IMDB Movie Dataset Using Logistic Regression and Naive Bayes Algorithms',
-      context:'The growth of streaming platforms increases the need to analyze public opinion about films. The IMDB dataset containing 50,000 reviews was used to understand audience sentiment patterns and build a classification model capable of mapping opinions into three sentiment categories. The study also analyzed rating trends to support data-driven decision making in the entertainment industry.',
-      tools:'Python, Scikit-learn, Logistic Regression, Naive Bayes, Text Preprocessing (Data Cleaning, Labeling, Feature Selection), Train-Test Split (70:30), Data Visualization.',
-      recomendation:'Model optimization can be achieved through improved feature engineering techniques, using more complex classification methods (such as ensemble learning or deep learning), and hyperparameter tuning to improve prediction accuracy and the quality of sentiment-based film recommendations.',
-      outcome:'⚡ Outcome: The Logistic Regression model achieved 68% accuracy (10,239 correct predictions from 14,890 test data), outperforming Naive Bayes with 57% accuracy (8,629 correct predictions from 14,937 test data). These results indicate that Logistic Regression is more optimal for text sentiment classification on the IMDB dataset, while also providing insight into audience preference trends.'
-    },
-    id: {
-      type:'Sentiment Analysis',
-      title:'Analisis Sentiment Dataset IMDB Movie dengan Algoritma Regresi Logistik dan Naive Bayes',
-      context:'Pertumbuhan platform streaming meningkatkan kebutuhan analisis opini publik terhadap film. Dataset IMDB yang berisi 50.000 ulasan digunakan untuk memahami pola sentimen penonton serta membangun model klasifikasi yang mampu memetakan opini ke dalam tiga kategori sentimen. Penelitian juga menganalisis tren rating untuk mendukung pengambilan keputusan berbasis data dalam industri hiburan.',
-      tools:'Python, Scikit-learn, Logistic Regression, Naive Bayes, Text Preprocessing (Data Cleaning, Labeling, Feature Selection), Train-Test Split (70:30), Data Visualization.',
-      recomendation:'Optimalisasi model dapat dilakukan melalui peningkatan teknik feature engineering, penggunaan metode klasifikasi yang lebih kompleks (seperti ensemble learning atau deep learning), serta tuning hyperparameter untuk meningkatkan akurasi prediksi dan kualitas rekomendasi film berbasis sentimen.',
-      outcome:'⚡ Outcome: Model Regresi Logistik menghasilkan akurasi 68% (10.239 prediksi benar dari 14.890 data uji), lebih baik dibandingkan Naive Bayes dengan akurasi 57% (8.629 prediksi benar dari 14.937 data uji). Hasil ini menunjukkan bahwa Regresi Logistik lebih optimal dalam klasifikasi sentimen teks pada dataset IMDB, sekaligus memberikan insight terhadap tren preferensi penonton.'
-    }
-  },
-  p6: {
-    en: {
-      type:'Publication',
-      title:'Complete Census of Agriculture 2023 for Bandar Lampung City',
-      context:'The 2023 Agricultural Census is a large-scale national activity that produces strategic data related to agricultural conditions in Indonesia. Within the scope of Bandar Lampung City, the complete enumeration process requires data validation, inter-variable consistency, and cross-unit coordination before being officially published as a government statistical document.',
-      tools:'Microsoft Excel',
-      recomendation:'Utilization of a Business Intelligence dashboard based on census data to facilitate monitoring of regional agricultural indicators and support faster and more measurable data-driven policy formulation.',
-      outcome:'⚡ Outcome: Successfully supported the compilation and validation of data leading to the official publication of the Complete Census of Agriculture 2023 for Bandar Lampung City, which is used as a policy reference and planning document for the regional agricultural sector.'
-    },
-    id: {
-      type:'Publication',
-      title:'Hasil Pencacahan Lengkap Sensus Pertanian 2023 Kota Bandar Lampung',
-      context:'Sensus Pertanian 2023 merupakan kegiatan nasional berskala besar yang menghasilkan data strategis terkait kondisi pertanian di Indonesia. Dalam lingkup Kota Bandar Lampung, proses pencacahan lengkap memerlukan validasi data, konsistensi antar-variabel, serta koordinasi lintas unit sebelum dipublikasikan secara resmi sebagai dokumen statistik pemerintah.',
-      tools:'Microsoft Excel',
-      recomendation:'Pemanfaatan dashboard Business Intelligence berbasis data sensus untuk mempermudah monitoring indikator pertanian daerah serta mendukung perumusan kebijakan berbasis data secara lebih cepat dan terukur.',
-      outcome:'⚡ Outcome: Berhasil mendukung penyusunan dan validasi data hingga terbitnya publikasi resmi Hasil Pencacahan Lengkap Sensus Pertanian 2023 Kota Bandar Lampung, yang digunakan sebagai referensi kebijakan dan perencanaan sektor pertanian di tingkat daerah.'
-    }
-  },
-  p7: {
-    en: {
-      type:'Internship Final Project',
-      title:'Linear Regression Analysis in Analyzing the Impact of Diarrhea in Lampung Province in 2022',
-      context:'Diarrhea cases remain one of the public health problems in Lampung Province. Through a work placement at BPS Kota Bandar Lampung, statistical analysis was conducted to identify variables affecting the number of diarrhea cases in 2022, using official government data as the basis for evaluation.',
-      tools:'Python (data modelling), Excel (data checking & preparation)',
-      recomendation:'The analysis results can be used as a basis for planning data-driven health intervention programs, particularly in improving health facilities and area-based disease prevention. Further research development can be carried out by adding supporting variables and using more complex analytical methods to improve model accuracy.',
-      outcome:'⚡ Outcome: Analysis results indicate that there are variables that significantly influence the number of diarrhea cases in Lampung Province in 2022. The regression model built provides a quantitative picture of the relationships between variables and can be used as a consideration basis in evaluating regional health policies.'
-    },
-    id: {
-      type:'Internship Final Project',
-      title:'Analisis Regresi Linear dalam Menganalisis Pengaruh Diare di Provinsi Lampung Tahun 2022',
-      context:'Kasus diare masih menjadi salah satu permasalahan kesehatan masyarakat di Provinsi Lampung. Melalui kerja praktik di BPS Kota Bandar Lampung, dilakukan analisis statistik untuk mengidentifikasi variabel-variabel yang berpengaruh terhadap jumlah kasus diare tahun 2022, menggunakan data resmi pemerintah sebagai dasar evaluasi.',
-      tools:'Python(data modelling), Excel (data checking & preparation)',
-      recomendation:'Hasil analisis dapat dimanfaatkan sebagai dasar perencanaan program intervensi kesehatan berbasis data, khususnya dalam peningkatan fasilitas kesehatan dan pencegahan penyakit berbasis wilayah. Pengembangan penelitian selanjutnya dapat dilakukan dengan penambahan variabel pendukung serta penggunaan metode analisis yang lebih kompleks untuk meningkatkan akurasi model.',
-      outcome:'⚡ Outcome: Hasil analisis menunjukkan bahwa terdapat variabel-variabel yang secara signifikan memengaruhi jumlah kasus diare di Provinsi Lampung tahun 2022. Model regresi yang dibangun mampu memberikan gambaran hubungan antar variabel secara kuantitatif dan dapat digunakan sebagai dasar pertimbangan dalam evaluasi kebijakan kesehatan daerah.'
-    }
-  }
-};
-
-/* ────────────────────────────────────────────
-   LANGUAGE ENGINE
-──────────────────────────────────────────── */
 let currentLang = localStorage.getItem('portfolioLang') || 'id';
 
 function setLang(lang) {
   currentLang = lang;
   localStorage.setItem('portfolioLang', lang);
   document.documentElement.lang = lang;
-
-  // Toggle button states
   document.getElementById('btnEN').classList.toggle('active', lang === 'en');
   document.getElementById('btnID').classList.toggle('active', lang === 'id');
-  document.getElementById('btnEN').setAttribute('aria-pressed', String(lang === 'en'));
-  document.getElementById('btnID').setAttribute('aria-pressed', String(lang === 'id'));
-
-  // Apply all translations
+  document.getElementById('btnEN').setAttribute('aria-pressed', lang === 'en');
+  document.getElementById('btnID').setAttribute('aria-pressed', lang === 'id');
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (translations[lang] && translations[lang][key] !== undefined) {
@@ -2081,32 +1997,80 @@ const observer = new IntersectionObserver(entries => {
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
 /* ────────────────────────────────────────────
-   PROJECT MODAL (bilingual)
+   PROJECT MODAL
 ──────────────────────────────────────────── */
+const projects = {
+  p1: {
+    type:'Business Intelligence',
+    title:'Perencanaan dan Implementasi Sistem Intelijen Bisnis Skala Besar pada platform Netflix',
+    context:'Mengembangkan sistem Business Intelligence (BI) untuk Netflix dengan mengintegrasikan proses ETL terstruktur, pemodelan data, dan dashboard interaktif menggunakan Python dan Tableau. Sistem ini mengubah data konten mentah menjadi wawasan bisnis yang dapat ditindaklanjuti untuk mendukung pengambilan keputusan strategis dalam perencanaan konten, distribusi, dan ekspansi pasar.',
+    tools:'Microsoft Excel (data checking & preparation), Python (data extraction & transformation), Tableau (final dashboard design)',
+    recomendation:'Optimalisasi strategi produksi melalui perencanaan konten berbasis data, perluasan konten internasional untuk mendukung ekspansi pasar, serta pemanfaatan dashboard Business Intelligence guna mendukung keputusan investasi dan distribusi secara terukur serta terintegrasi dalam strategi jangka panjang perusahaan.',
+    outcome:'⚡ Outcome: Hasil analisis menunjukkan dominasi film dalam katalog Netflix, menandakan fokus pada format konten berdurasi singkat. Rating TV-MA dan TV-14 menjadi kategori utama, mencerminkan tingginya permintaan pasar terhadap konten dewasa. Produksi konten masih terpusat di Amerika Serikat, sementara secara global genre International Movies, Drama, dan Komedi mendominasi. Mayoritas film berdurasi 75–125 menit, sejalan dengan pola konsumsi pengguna.'
+  },
+  p2: {
+    type:'Deep Learning',
+    title:'Deteksi dan Perhitungan Jumlah Sampah Pantai Menggunakan RT-DETR',
+    context:'Permasalahan sampah pantai, khususnya limbah plastik, menjadi isu lingkungan yang membutuhkan solusi berbasis teknologi. Proyek ini dikembangkan untuk membangun sistem deteksi otomatis menggunakan model RT-DETR guna mengidentifikasi dan menghitung tujuh kategori sampah pantai secara real-time, sehingga proses monitoring menjadi lebih efisien dan terukur dibandingkan metode manual.',
+    tools:'Python, RT-DETR (Large & Extra-Large), PyTorch, COCO Evaluation Metrics (mAP@50, mAP@50-95), Roboflow Dataset',
+    recomendation:'Untuk implementasi lapangan dengan keterbatasan perangkat, model RT-DETR Large direkomendasikan karena lebih efisien tanpa penurunan performa yang signifikan. Pengembangan lanjutan dapat difokuskan pada peningkatan deteksi objek kecil dan integrasi sistem dengan perangkat monitoring seperti drone atau IoT guna mendukung pengelolaan sampah pantai berbasis data.',
+    outcome:'⚡ Outcome: Model RT-DETR Extra-Large mencapai performa terbaik dengan mAP@50 sebesar 0.816 dan mAP@50-95 sebesar 0.612, sementara RT-DETR Large menawarkan kecepatan inferensi lebih tinggi dengan waktu 20.1 ms. Hasil ini menunjukkan adanya trade-off antara akurasi dan efisiensi komputasi, serta membuktikan bahwa pendekatan berbasis Transformer efektif untuk deteksi objek lingkungan secara real-time.'
+  },
+  p3: {
+    type:'Spatial Analysis',
+    title:'Klasifikasi Tutupan Lahan Kota Metro Menggunakan Random Forest',
+    context:"Pertumbuhan penduduk dan urbanisasi di Kota Metro mendorong perubahan signifikan pada tutupan lahan. Diperlukan pendekatan berbasis data dan teknologi geospasial untuk memantau perubahan tersebut secara sistematis guna mendukung kebijakan pembangunan yang berkelanjutan.",
+    tools:"Google Earth Engine (GEE), ALandsat 8 Satellite Imagery, GIS & Remote Sensing Analysis",
+    recomendation:"Hasil klasifikasi dapat dimanfaatkan sebagai dasar integrasi perencanaan tata ruang berbasis data, khususnya dalam pengendalian pertumbuhan kawasan terbangun, perlindungan area vegetasi, serta optimalisasi pengelolaan sumber daya air dan infrastruktur kota.",
+    outcome:'⚡ Outcome: Model Random Forest berhasil mengklasifikasikan 393 titik observasi dengan akurasi 82,40% dan nilai kappa 0,71 (kategori baik). Analisis menunjukkan dominasi area vegetasi dan peningkatan kawasan terbangun, memberikan landasan kuantitatif dalam mendukung kebijakan pembangunan berkelanjutan.'
+  },
+  p4: {
+    type:'Final Project',
+    title:'Pendugaan Tingkat Kemiskinan Di Provinsi Bengkulu Pada Tahun 2024 Menggunakan Metode Small Area Estimation (SAE) Dengan Pendekatan Empirical Best Linear Unbiased Predictor(EBLUP)',
+    context:'Estimasi langsung tingkat kemiskinan pada level kabupaten/kota seringkali memiliki varians tinggi akibat keterbatasan ukuran sampel survei. Hal ini menyebabkan kurang stabilnya indikator yang digunakan dalam perencanaan pembangunan daerah.Melalui pendekatan SAE-EBLUP, penelitian ini mengintegrasikan data survei dengan variabel penunjang (auxiliary variables) untuk meningkatkan presisi estimasi dan mengurangi error pada level wilayah kecil.',
+    tools:'R (statistical modeling & SAE implementation), Excel, Python (data train and visualization)',
+    recomendation:'Pengembangan penelitian selanjutnya disarankan dengan memperluas cakupan variabel penyerta serta memanfaatkan data mikro SUSENAS guna meningkatkan akurasi estimasi model EBLUP. Analisis juga dapat dikembangkan ke level unit dengan pendekatan alternatif seperti Empirical Bayes (EB), Hierarchical Bayes (HB), maupun pendekatan spasial (SEBLUP) untuk menangkap heterogenitas wilayah secara lebih komprehensif. Selain itu, integrasi data Relative Standard Error (RSE) dari BPS direkomendasikan untuk memperkuat evaluasi MSE dan meningkatkan reliabilitas estimasi pada tingkat kabupaten/kota.',
+    outcome:'⚡ Outcome: Penerapan metode EBLUP menghasilkan estimasi tingkat kemiskinan yang lebih akurat dibandingkan pendugaan langsung, dengan RRMSE lebih rendah (11,65% vs 12,29%) serta nilai MSE yang konsisten lebih kecil; hasil estimasi menunjukkan Kota Bengkulu memiliki jumlah penduduk miskin tertinggi (52,29 ribu jiwa) dan Kabupaten Lebong terendah (13,06 ribu jiwa), dengan fasilitas kesehatan terbukti sebagai faktor signifikan yang memengaruhi tingkat kemiskinan (p-value 0,01070; VIF 1,6256).'
+  },
+  p5: {
+    type:'Sentiment Analysis',
+    title:'Analisis Sentiment Dataset IMDB Movie dengan Algoritma Regresi Logistik dan Naive Bayes',
+    context:'Pertumbuhan platform streaming meningkatkan kebutuhan analisis opini publik terhadap film. Dataset IMDB yang berisi 50.000 ulasan digunakan untuk memahami pola sentimen penonton serta membangun model klasifikasi yang mampu memetakan opini ke dalam tiga kategori sentimen. Penelitian juga menganalisis tren rating untuk mendukung pengambilan keputusan berbasis data dalam industri hiburan.',
+    tools:'Python, Scikit-learn, Logistic Regression, Naive Bayes, Text Preprocessing (Data Cleaning, Labeling, Feature Selection), Train-Test Split (70:30), Data Visualization.',
+    recomendation:'Optimalisasi model dapat dilakukan melalui peningkatan teknik feature engineering, penggunaan metode klasifikasi yang lebih kompleks (seperti ensemble learning atau deep learning), serta tuning hyperparameter untuk meningkatkan akurasi prediksi dan kualitas rekomendasi film berbasis sentimen.',
+    outcome:'⚡ Outcome: Model Regresi Logistik menghasilkan akurasi 68% (10.239 prediksi benar dari 14.890 data uji), lebih baik dibandingkan Naive Bayes dengan akurasi 57% (8.629 prediksi benar dari 14.937 data uji). Hasil ini menunjukkan bahwa Regresi Logistik lebih optimal dalam klasifikasi sentimen teks pada dataset IMDB, sekaligus memberikan insight terhadap tren preferensi penonton.'
+  },
+  p6: {
+    type:'Publication',
+    title:'Hasil Pencacahan Lengkap Sensus Pertanian 2023 Kota Bandar Lampung',
+    context:'Sensus Pertanian 2023 merupakan kegiatan nasional berskala besar yang menghasilkan data strategis terkait kondisi pertanian di Indonesia. Dalam lingkup Kota Bandar Lampung, proses pencacahan lengkap memerlukan validasi data, konsistensi antar-variabel, serta koordinasi lintas unit sebelum dipublikasikan secara resmi sebagai dokumen statistik pemerintah.',
+    tools:'Microsoft Excel',
+    recomendation:'Pemanfaatan dashboard Business Intelligence berbasis data sensus untuk mempermudah monitoring indikator pertanian daerah serta mendukung perumusan kebijakan berbasis data secara lebih cepat dan terukur.',
+    outcome:'⚡ Outcome: Berhasil mendukung penyusunan dan validasi data hingga terbitnya publikasi resmi Hasil Pencacahan Lengkap Sensus Pertanian 2023 Kota Bandar Lampung, yang digunakan sebagai referensi kebijakan dan perencanaan sektor pertanian di tingkat daerah.'
+  },
+  p7: {
+    type:'Internship Final Project',
+    title:'Analisis Regresi Linear dalam Menganalisis Pengaruh Diare di Provinsi Lampung Tahun 2022',
+    context:'Kasus diare masih menjadi salah satu permasalahan kesehatan masyarakat di Provinsi Lampung. Melalui kerja praktik di BPS Kota Bandar Lampung, dilakukan analisis statistik untuk mengidentifikasi variabel-variabel yang berpengaruh terhadap jumlah kasus diare tahun 2022, menggunakan data resmi pemerintah sebagai dasar evaluasi.',
+    tools:'Python(data modelling), Excel (data checking & preparation)',
+    recomendation:'Hasil analisis dapat dimanfaatkan sebagai dasar perencanaan program intervensi kesehatan berbasis data, khususnya dalam peningkatan fasilitas kesehatan dan pencegahan penyakit berbasis wilayah. Pengembangan penelitian selanjutnya dapat dilakukan dengan penambahan variabel pendukung serta penggunaan metode analisis yang lebih kompleks untuk meningkatkan akurasi model.',
+    outcome:'⚡ Outcome: Hasil analisis menunjukkan bahwa terdapat variabel-variabel yang secara signifikan memengaruhi jumlah kasus diare di Provinsi Lampung tahun 2022. Model regresi yang dibangun mampu memberikan gambaran hubungan antar variabel secara kuantitatif dan dapat digunakan sebagai dasar pertimbangan dalam evaluasi kebijakan kesehatan daerah.'
+  }
+};
+
 function openModal(id) {
-  const proj = projects[id];
-  if (!proj) return;
-  const data = proj[currentLang] || proj['id'];
-
-  document.getElementById('mType').textContent          = data.type;
-  document.getElementById('mTitle').textContent         = data.title;
-  document.getElementById('mContext').textContent       = data.context;
-  document.getElementById('mTools').textContent         = data.tools;
-  document.getElementById('mRecomendation').textContent = data.recomendation;
-  document.getElementById('mOutcome').textContent       = data.outcome;
-
-  // Update modal section headers from current translation
-  const t = translations[currentLang];
-  document.querySelector('#projectModal .modal-section:nth-child(1) h4').innerHTML = t['modal.context'] || 'Context';
-  document.querySelector('#projectModal .modal-section:nth-child(2) h4').innerHTML = t['modal.tools'] || 'Tools & Technologies';
-  document.querySelector('#projectModal .modal-section:nth-child(3) h4').innerHTML = t['modal.recommendation'] || 'Recommendation';
-
+  const p = projects[id]; if (!p) return;
+  document.getElementById('mType').textContent         = p.type;
+  document.getElementById('mTitle').textContent        = p.title;
+  document.getElementById('mContext').textContent      = p.context;
+  document.getElementById('mTools').textContent        = p.tools;
+  document.getElementById('mRecomendation').textContent = p.recomendation;
+  document.getElementById('mOutcome').textContent      = p.outcome;
   const modal = document.getElementById('projectModal');
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
   modal.querySelector('.modal-close').focus();
 }
-
 function closeModal() {
   document.getElementById('projectModal').classList.remove('open');
   document.body.style.overflow = '';
@@ -2202,7 +2166,7 @@ document.addEventListener('keydown', e => {
   if (document.getElementById('projectModal').classList.contains('open')       && key === 'Escape') closeModal();
   if (document.getElementById('certModal').classList.contains('active')        && key === 'Escape') closeCertModal();
   if (document.getElementById('certSliderModal').classList.contains('active')) {
-    if (key === 'Escape')       closeCertSlider();
+    if (key === 'Escape')      closeCertSlider();
     else if (key === 'ArrowLeft')  certSliderNavigate(-1);
     else if (key === 'ArrowRight') certSliderNavigate(1);
   }
