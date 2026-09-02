@@ -1854,6 +1854,78 @@
 
 
 
+    /* Additional dark-mode compatibility for labels, cards, menus and modal surfaces. */
+    body.dark-mode .section-label {
+      background: var(--blue-pale);
+      color: var(--blue-light);
+      border-color: var(--blue-pale-2);
+    }
+
+    body.dark-mode .section-title { color: var(--navy); }
+    body.dark-mode .section-title span { color: var(--blue-mid); }
+    body.dark-mode .section-sub { color: var(--text-mid); }
+
+    body.dark-mode .tl-card.latest {
+      background: linear-gradient(135deg, rgba(24,40,61,0.92) 0%, rgba(16,26,41,1) 48%, rgba(16,26,41,1) 100%);
+      border-color: var(--blue-pale-2);
+      border-left-color: var(--blue);
+    }
+
+    body.dark-mode .tl-company-logo {
+      background: #ffffff;
+      border-color: #d8e0ea;
+    }
+
+    body.dark-mode .tl-period,
+    body.dark-mode .edu-year,
+    body.dark-mode .cert-year {
+      background: #18283d;
+      color: #a9d0f5;
+      border-color: #28425f;
+    }
+
+    body.dark-mode .about-tags .about-tag,
+    body.dark-mode .tool-tag,
+    body.dark-mode .skill-item {
+      background: #162235;
+      color: #dce5f1;
+      border-color: #2a3b51;
+    }
+
+    body.dark-mode .project-type,
+    body.dark-mode .project-more,
+    body.dark-mode .cert-year { color: var(--blue-light); }
+
+    body.dark-mode .cert-thumb {
+      color: var(--blue-light);
+      background: #122136;
+    }
+
+    body.dark-mode .cert-modal-overlay,
+    body.dark-mode .cert-slider-overlay {
+      background: rgba(2,8,15,0.84);
+    }
+
+    body.dark-mode .cert-slider-images { background: #0b1421; }
+    body.dark-mode .modal-outcome {
+      background: #18283d;
+      color: #a9d0f5;
+      border-left-color: var(--blue);
+    }
+
+    body.dark-mode .nav-links a:hover,
+    body.dark-mode .nav-links a.active {
+      background: #18283d;
+      color: var(--blue-light);
+    }
+
+    body.dark-mode .nav-links.open {
+      background: #0d1725;
+    }
+
+    body.dark-mode ::-webkit-scrollbar-track { background: #0b1421; }
+    body.dark-mode ::-webkit-scrollbar-thumb { background: var(--blue); }
+
     /* Final dark-mode tuning for the About badge and navbar controls. */
     .about-accent-box {
       background: #0e1b2e;
@@ -1899,6 +1971,73 @@
     body.dark-mode .lang-btn.active:hover {
       color: #0e1b2e;
       background: #ffffff;
+    }
+
+
+
+    /* ═══════════════════════════════════════════
+       DARK MODE — FLOATING SOCIAL SIDEBAR
+       (Additional only; existing layout preserved.)
+       ═══════════════════════════════════════════ */
+
+    body.dark-mode .social-sidebar-btn {
+      background: #101a29;
+      border-color: #2a3b51;
+      color: #dce5f1;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.22);
+    }
+
+    /* Tooltip: the dark-mode navy variable becomes light, so explicitly
+       reset the tooltip to a high-contrast dark surface. */
+    body.dark-mode .social-sidebar-btn::after {
+      background: #f3f6fb;
+      color: #0e1b2e;
+      border: 1px solid #d8e0ea;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.24);
+    }
+
+    body.dark-mode .social-sidebar-btn.ig {
+      color: #ff5f8f;
+    }
+
+    body.dark-mode .social-sidebar-btn.li {
+      color: #69a7e8;
+    }
+
+    body.dark-mode .social-sidebar-btn.gh {
+      color: #eef3f9;
+    }
+
+    body.dark-mode .social-sidebar-btn.em {
+      color: #a9d0f5;
+    }
+
+    body.dark-mode .social-sidebar-btn.ig:hover {
+      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+      color: #ffffff;
+      border-color: transparent;
+    }
+
+    body.dark-mode .social-sidebar-btn.li:hover {
+      background: #0a66c2;
+      color: #ffffff;
+      border-color: #0a66c2;
+    }
+
+    body.dark-mode .social-sidebar-btn.gh:hover {
+      background: #f3f6fb;
+      color: #111827;
+      border-color: #f3f6fb;
+    }
+
+    body.dark-mode .social-sidebar-btn.em:hover {
+      background: var(--blue);
+      color: #ffffff;
+      border-color: var(--blue);
+    }
+
+    body.dark-mode .social-sidebar-line {
+      background: #2a3b51;
     }
 
   </style>
@@ -1977,7 +2116,7 @@
 
       </button>
 
-      <a href="https://drive.google.com/file/d/14UgbDBkcpicb9aoI_NiibYJvjqP2ufVf/view?usp=sharing"
+      <a href="https://drive.google.com/file/d/1NRflDJsBEvvUCUIbNAVV46vB1Cc7SxIv/view?usp=sharing"
 
          class="btn btn-primary nav-cta" style="padding:8px 18px;font-size:0.81rem;"
 
@@ -2357,282 +2496,6 @@
 
 
 
-<!-- ─── ORGANIZATIONS ─── -->
-
-<section id="organizations" class="section" aria-labelledby="org-heading">
-
-  <div class="container">
-
-<div class="section-header fade-in">
-
-  <div class="section-label" data-i18n="org.label">Kepemimpinan & Organisasi</div>
-
-  <h2 class="section-title" id="org-heading">
-
-    <span data-i18n="org.title">Memberikan </span><span data-i18n="org.titleSpan">Dampak</span><span data-i18n="org.titleSuffix"> di Luar Ruang Kelas</span>
-
-  </h2>
-
-  <div class="divider" aria-hidden="true"></div>
-
-  <p class="section-sub" data-i18n="org.sub">Berpengalaman dalam membangun tim, mengelola proyek, dan memimpin inisiatif di organisasi maupun kepanitian internal kampus.</p>
-
-</div>
-
-
-
-<div class="org-grid fade-in">
-
-
-
-  <article class="org-card">
-
-    <div class="org-header">
-
-      <div class="org-logo-wrap"><img src="assets/logo_angkatan.jpg" alt="Angkatan Sains Data 2021 logo" /></div>
-
-      <div class="org-info">
-
-        <h3 class="org-role" data-i18n="org1.role">Ketua Angkatan Sains Data 2021</h3>
-
-        <p class="org-period" data-i18n="org1.period">2022 – Sekarang</p>
-
-      </div>
-
-    </div>
-
-    <ul class="org-bullets">
-
-      <li data-i18n="org1.b1">Memimpin mahasiswa/i Program Studi Sains Data angkatan 2021 ITERA yang terdiri dari 143 mahasiswa/i, berkontribusi dalam memberikan akses dalam sesi berbagi pengetahuan baik akademik maupun non-akademik untuk mempermudah diskusi akademis dalam lingkup angkatan.</li>
-
-      <li data-i18n="org1.b2">Secara rutin mengadakan sesi berbagi pengetahuan melalui media online selama periode Tahap Persiapan Bersama (TPB) dan membimbing kelompok tersebut untuk bergabung dan berpartisipasi dalam organisasi mahasiswa Program Studi Sains Data.</li>
-
-    </ul>
-
-  </article>
-
-
-
-  <article class="org-card">
-
-    <div class="org-header">
-
-      <div class="org-logo-wrap"><img src="assets/LOGO_HMSD2.png" alt="HMSD Adyatama ITERA logo" /></div>
-
-      <div class="org-info">
-
-        <h3 class="org-role" data-i18n="org2.role">Kepala Departemen Internal — HMSD Adyatama ITERA</h3>
-
-        <p class="org-period" data-i18n="org2.period">Februari 2024 – 2025</p>
-
-      </div>
-
-    </div>
-
-    <ul class="org-bullets">
-
-      <li data-i18n="org2.b1">Mengelola pelaksanaan program kegiatan internal riuh wisuda (Juli & November) dan sharing session bagi mahasiswa terkait aspek akademik dan non-akademik, serta program kerohanian. Seperti pelaksanaan ibadah bersama lintas agama, serta memastikan kegiatan berjalan tertib dan berkelanjutan.</li>
-
-      <li data-i18n="org2.b2">Mampu berkoordinasi dengan kurang lebih 600 mahasiswa/I Sains Data, pengurus himpunan, dan dosen dalam upaya meningkatkan angka partisipasi kegiatan yang diselenggarakan oleh internal program studi.</li>
-
-    </ul>
-
-  </article>
-
-
-
-  <article class="org-card">
-
-    <div class="org-header">
-
-      <div class="org-logo-wrap"><img src="assets/Logo_PEMIRA.png" alt="PEMIRA KM-ITERA 2023 logo" /></div>
-
-      <div class="org-info">
-
-        <h3 class="org-role" data-i18n="org3.role">Ketua Pelaksana — PEMIRA KM-ITERA 2023</h3>
-
-        <p class="org-period" data-i18n="org3.period">September - November 2023</p>
-
-      </div>
-
-    </div>
-
-    <ul class="org-bullets">
-
-      <li data-i18n="org3.b1">Memimpin dan mengoordinasikan kepanitian bersama kesekretariatan, 6 kepala divisi dan 13 subdivisi dengan total 126 staf, untuk memastikan tugas pokok dan fungsi berjalan efektif. Dengan menyelaraskan komunikasi dan kerja sama antar 41 Himpunan Mahasiswa Program Studi (HMPS) yang mewakili 18.454 mahasiswa/I aktif dalam penyelenggaraan PEMIRA KM-ITERA 2023.</li>
-
-      <li data-i18n="org3.b2">Berkoordinasi dengan 2 pasangan calon Presiden Mahasiswa serta pihak dosen untuk memastikan proses pemilihan berjalan sesuai asas Langsung, Umum, Bebas, Jujur, dan Adil (LUBER JURDIL), sehingga menghasilkan angka partisipasi pemilih sebanyak 8397 mahasiswa/I aktif Institut Teknologi Sumatera.</li>
-
-    </ul>
-
-  </article>
-
-
-
-  <article class="org-card">
-
-    <div class="org-header">
-
-      <div class="org-logo-wrap"><img src="assets/Logo_KRTI.png" alt="KRTI 2023 ITERA logo" /></div>
-
-      <div class="org-info">
-
-        <h3 class="org-role" data-i18n="org4.role">Koordinator Komisi Disiplin — KRTI 2023 ITERA</h3>
-
-        <p class="org-period" data-i18n="org4.period">September 2023</p>
-
-      </div>
-
-    </div>
-
-    <ul class="org-bullets">
-
-      <li data-i18n="org4.b1">Mengoordinasikan pengawasan disiplin peserta dan pendukung pada ajang nasional yang diikuti 102 tim finalis dari 40 perguruan tinggi, mencakup 4 divisi lomba (<i>Racing Plane, Fixed Wing, VTOL, dan Technology Development</i>).</li>
-
-      <li data-i18n="org4.b2">Memastikan kegiatan berjalan aman dan kondusif sesuai Standar Operasional Prosedur (SOP), kepada panitia, peserta, dan instansi terkait selama pelaksanaan lomba yang diselenggarakan oleh BPTI–Puspresnas Kemdikbudristek di Lanud TNI AU Pangeran M. Bunyamin, Lampung.</li>
-
-    </ul>
-
-  </article>
-
-
-
-</div>
-
-  </div>
-
-</section>
-
-
-
-<!-- ─── SKILLS ─── -->
-
-<section id="skills" class="section section-alt" aria-labelledby="skills-heading">
-
-  <div class="container">
-
-<div class="section-header fade-in">
-
-  <div class="section-label" data-i18n="skills.label">Keterampilan Teknis</div>
-
-  <h2 class="section-title" id="skills-heading">
-
-    <span data-i18n="skills.title">Keterampilan Teknis yang </span><span data-i18n="skills.titleSpan">Berdampak</span>
-
-  </h2>
-
-  <div class="divider" aria-hidden="true"></div>
-
-  <p class="section-sub" data-i18n="skills.sub">Perpaduan terstruktur antara keahlian teknis, <i>soft skills</i>, dan <i>profesional skills</i> untuk dampak yang didorong dalam bidang data dan kepemimpinan.</p>
-
-</div>
-
-
-
-<div class="skills-grid fade-in">
-
-  <div class="skill-category">
-
-    <div class="skill-cat-header">
-
-      <div class="skill-cat-icon" aria-hidden="true"><i class="fa-solid fa-code"></i></div>
-
-      <h3 class="skill-cat-title" data-i18n="skills.hardTitle">Hard Skills</h3>
-
-    </div>
-
-    <div class="skill-items" role="list" aria-label="Hard skills">
-
-      <div class="skill-item" role="listitem"><i class="fa-solid fa-chart-column" aria-hidden="true"></i> Data Analysis</div>
-
-      <div class="skill-item" role="listitem"><i class="fa-solid fa-square-root-alt" aria-hidden="true"></i> Statistical Modeling</div>
-
-      <div class="skill-item" role="listitem"><i class="fa-solid fa-chart-pie" aria-hidden="true"></i> Data Visualization</div>
-
-      <div class="skill-item" role="listitem"><i class="fa-solid fa-brain" aria-hidden="true"></i> Machine Learning</div>
-
-      <div class="skill-item" role="listitem"><i class="fa-solid fa-map" aria-hidden="true"></i> Spatial Analysis</div>
-
-      <div class="skill-item" role="listitem"><i class="fa-solid fa-file-alt" aria-hidden="true"></i> Report Writing</div>
-
-    </div>
-
-  </div>
-
-
-
-  <div class="skill-category">
-
-    <div class="skill-cat-header">
-
-      <div class="skill-cat-icon soft" aria-hidden="true"><i class="fa-solid fa-lightbulb"></i></div>
-
-      <h3 class="skill-cat-title" data-i18n="skills.softTitle">Soft Skills</h3>
-
-    </div>
-
-    <div class="skill-items" role="list" aria-label="Soft skills">
-
-      <div class="skill-item soft-skill" role="listitem"><i class="fa-solid fa-people-group" aria-hidden="true"></i> Team Leadership</div>
-
-      <div class="skill-item soft-skill" role="listitem"><i class="fa-solid fa-comments" aria-hidden="true"></i> Communication</div>
-
-      <div class="skill-item soft-skill" role="listitem"><i class="fa-solid fa-lightbulb" aria-hidden="true"></i> Problem Solving</div>
-
-      <div class="skill-item soft-skill" role="listitem"><i class="fa-solid fa-handshake" aria-hidden="true"></i> Stakeholder Engagement</div>
-
-      <div class="skill-item soft-skill" role="listitem"><i class="fa-solid fa-chess" aria-hidden="true"></i> Analytical Thinking</div>
-
-      <div class="skill-item soft-skill" role="listitem"><i class="fa-solid fa-users-viewfinder" aria-hidden="true"></i> Collaboration</div>
-
-      <div class="skill-item soft-skill" role="listitem"><i class="fa-solid fa-bullseye" aria-hidden="true"></i> Attention to Detail</div>
-
-    </div>
-
-  </div>
-
-
-
-  <div class="skill-category">
-
-    <div class="skill-cat-header">
-
-      <div class="skill-cat-icon tools" aria-hidden="true"><i class="fa-solid fa-wrench"></i></div>
-
-      <h3 class="skill-cat-title" data-i18n="skills.toolsTitle">Software & Tools</h3>
-
-    </div>
-
-    <div class="skill-items" role="list" aria-label="Software and tools">
-
-      <div class="skill-item tool-skill" role="listitem"><i class="fa-brands fa-python" aria-hidden="true"></i> Python</div>
-
-      <div class="skill-item tool-skill" role="listitem"><i class="fa-brands fa-r-project" aria-hidden="true"></i> R</div>
-
-      <div class="skill-item tool-skill" role="listitem"><i class="fa-solid fa-database" aria-hidden="true"></i> SQL (Database)</div>
-
-      <div class="skill-item tool-skill" role="listitem"><i class="fa-solid fa-file-excel" aria-hidden="true"></i> Excel</div>
-
-      <div class="skill-item tool-skill" role="listitem"><i class="fa-solid fa-chart-area" aria-hidden="true"></i> Tableau</div>
-
-      <div class="skill-item tool-skill" role="listitem"><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</div>
-
-      <div class="skill-item tool-skill" role="listitem"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i> QGIS</div>
-
-      <div class="skill-item tool-skill" role="listitem"><i class="fa-solid fa-file-alt" aria-hidden="true"></i> Microsoft Office</div>
-
-    </div>
-
-  </div>
-
-</div>
-
-  </div>
-
-</section>
-
-
-
 <!-- ─── EXPERIENCE ─── -->
 
 <section id="experience" class="section" aria-labelledby="experience-heading">
@@ -2830,6 +2693,282 @@
       </ul>
 
     </div>
+
+  </article>
+
+
+
+</div>
+
+  </div>
+
+</section>
+
+
+
+<!-- ─── SKILLS ─── -->
+
+<section id="skills" class="section section-alt" aria-labelledby="skills-heading">
+
+  <div class="container">
+
+<div class="section-header fade-in">
+
+  <div class="section-label" data-i18n="skills.label">Keterampilan Teknis</div>
+
+  <h2 class="section-title" id="skills-heading">
+
+    <span data-i18n="skills.title">Keterampilan Teknis yang </span><span data-i18n="skills.titleSpan">Berdampak</span>
+
+  </h2>
+
+  <div class="divider" aria-hidden="true"></div>
+
+  <p class="section-sub" data-i18n="skills.sub">Perpaduan terstruktur antara keahlian teknis, <i>soft skills</i>, dan <i>profesional skills</i> untuk dampak yang didorong dalam bidang data dan kepemimpinan.</p>
+
+</div>
+
+
+
+<div class="skills-grid fade-in">
+
+  <div class="skill-category">
+
+    <div class="skill-cat-header">
+
+      <div class="skill-cat-icon" aria-hidden="true"><i class="fa-solid fa-code"></i></div>
+
+      <h3 class="skill-cat-title" data-i18n="skills.hardTitle">Hard Skills</h3>
+
+    </div>
+
+    <div class="skill-items" role="list" aria-label="Hard skills">
+
+      <div class="skill-item" role="listitem"><i class="fa-solid fa-chart-column" aria-hidden="true"></i> Data Analysis</div>
+
+      <div class="skill-item" role="listitem"><i class="fa-solid fa-square-root-alt" aria-hidden="true"></i> Statistical Modeling</div>
+
+      <div class="skill-item" role="listitem"><i class="fa-solid fa-chart-pie" aria-hidden="true"></i> Data Visualization</div>
+
+      <div class="skill-item" role="listitem"><i class="fa-solid fa-brain" aria-hidden="true"></i> Machine Learning</div>
+
+      <div class="skill-item" role="listitem"><i class="fa-solid fa-map" aria-hidden="true"></i> Spatial Analysis</div>
+
+      <div class="skill-item" role="listitem"><i class="fa-solid fa-file-alt" aria-hidden="true"></i> Report Writing</div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="skill-category">
+
+    <div class="skill-cat-header">
+
+      <div class="skill-cat-icon soft" aria-hidden="true"><i class="fa-solid fa-lightbulb"></i></div>
+
+      <h3 class="skill-cat-title" data-i18n="skills.softTitle">Soft Skills</h3>
+
+    </div>
+
+    <div class="skill-items" role="list" aria-label="Soft skills">
+
+      <div class="skill-item soft-skill" role="listitem"><i class="fa-solid fa-people-group" aria-hidden="true"></i> Team Leadership</div>
+
+      <div class="skill-item soft-skill" role="listitem"><i class="fa-solid fa-comments" aria-hidden="true"></i> Communication</div>
+
+      <div class="skill-item soft-skill" role="listitem"><i class="fa-solid fa-lightbulb" aria-hidden="true"></i> Problem Solving</div>
+
+      <div class="skill-item soft-skill" role="listitem"><i class="fa-solid fa-handshake" aria-hidden="true"></i> Stakeholder Engagement</div>
+
+      <div class="skill-item soft-skill" role="listitem"><i class="fa-solid fa-chess" aria-hidden="true"></i> Analytical Thinking</div>
+
+      <div class="skill-item soft-skill" role="listitem"><i class="fa-solid fa-users-viewfinder" aria-hidden="true"></i> Collaboration</div>
+
+      <div class="skill-item soft-skill" role="listitem"><i class="fa-solid fa-bullseye" aria-hidden="true"></i> Attention to Detail</div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="skill-category">
+
+    <div class="skill-cat-header">
+
+      <div class="skill-cat-icon tools" aria-hidden="true"><i class="fa-solid fa-wrench"></i></div>
+
+      <h3 class="skill-cat-title" data-i18n="skills.toolsTitle">Software & Tools</h3>
+
+    </div>
+
+    <div class="skill-items" role="list" aria-label="Software and tools">
+
+      <div class="skill-item tool-skill" role="listitem"><i class="fa-brands fa-python" aria-hidden="true"></i> Python</div>
+
+      <div class="skill-item tool-skill" role="listitem"><i class="fa-brands fa-r-project" aria-hidden="true"></i> R</div>
+
+      <div class="skill-item tool-skill" role="listitem"><i class="fa-solid fa-database" aria-hidden="true"></i> SQL (Database)</div>
+
+      <div class="skill-item tool-skill" role="listitem"><i class="fa-solid fa-file-excel" aria-hidden="true"></i> Excel</div>
+
+      <div class="skill-item tool-skill" role="listitem"><i class="fa-solid fa-chart-area" aria-hidden="true"></i> Tableau</div>
+
+      <div class="skill-item tool-skill" role="listitem"><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</div>
+
+      <div class="skill-item tool-skill" role="listitem"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i> QGIS</div>
+
+      <div class="skill-item tool-skill" role="listitem"><i class="fa-solid fa-file-alt" aria-hidden="true"></i> Microsoft Office</div>
+
+    </div>
+
+  </div>
+
+</div>
+
+  </div>
+
+</section>
+
+
+
+<!-- ─── ORGANIZATIONS ─── -->
+
+<section id="organizations" class="section" aria-labelledby="org-heading">
+
+  <div class="container">
+
+<div class="section-header fade-in">
+
+  <div class="section-label" data-i18n="org.label">Kepemimpinan & Organisasi</div>
+
+  <h2 class="section-title" id="org-heading">
+
+    <span data-i18n="org.title">Memberikan </span><span data-i18n="org.titleSpan">Dampak</span><span data-i18n="org.titleSuffix"> di Luar Ruang Kelas</span>
+
+  </h2>
+
+  <div class="divider" aria-hidden="true"></div>
+
+  <p class="section-sub" data-i18n="org.sub">Berpengalaman dalam membangun tim, mengelola proyek, dan memimpin inisiatif di organisasi maupun kepanitian internal kampus.</p>
+
+</div>
+
+
+
+<div class="org-grid fade-in">
+
+
+
+  <article class="org-card">
+
+    <div class="org-header">
+
+      <div class="org-logo-wrap"><img src="assets/logo_angkatan.jpg" alt="Angkatan Sains Data 2021 logo" /></div>
+
+      <div class="org-info">
+
+        <h3 class="org-role" data-i18n="org1.role">Ketua Angkatan Sains Data 2021</h3>
+
+        <p class="org-period" data-i18n="org1.period">2022 – Sekarang</p>
+
+      </div>
+
+    </div>
+
+    <ul class="org-bullets">
+
+      <li data-i18n="org1.b1">Memimpin mahasiswa/i Program Studi Sains Data angkatan 2021 ITERA yang terdiri dari 143 mahasiswa/i, berkontribusi dalam memberikan akses dalam sesi berbagi pengetahuan baik akademik maupun non-akademik untuk mempermudah diskusi akademis dalam lingkup angkatan.</li>
+
+      <li data-i18n="org1.b2">Secara rutin mengadakan sesi berbagi pengetahuan melalui media online selama periode Tahap Persiapan Bersama (TPB) dan membimbing kelompok tersebut untuk bergabung dan berpartisipasi dalam organisasi mahasiswa Program Studi Sains Data.</li>
+
+    </ul>
+
+  </article>
+
+
+
+  <article class="org-card">
+
+    <div class="org-header">
+
+      <div class="org-logo-wrap"><img src="assets/LOGO_HMSD2.png" alt="HMSD Adyatama ITERA logo" /></div>
+
+      <div class="org-info">
+
+        <h3 class="org-role" data-i18n="org2.role">Kepala Departemen Internal — HMSD Adyatama ITERA</h3>
+
+        <p class="org-period" data-i18n="org2.period">Februari 2024 – 2025</p>
+
+      </div>
+
+    </div>
+
+    <ul class="org-bullets">
+
+      <li data-i18n="org2.b1">Mengelola pelaksanaan program kegiatan internal riuh wisuda (Juli & November) dan sharing session bagi mahasiswa terkait aspek akademik dan non-akademik, serta program kerohanian. Seperti pelaksanaan ibadah bersama lintas agama, serta memastikan kegiatan berjalan tertib dan berkelanjutan.</li>
+
+      <li data-i18n="org2.b2">Mampu berkoordinasi dengan kurang lebih 600 mahasiswa/I Sains Data, pengurus himpunan, dan dosen dalam upaya meningkatkan angka partisipasi kegiatan yang diselenggarakan oleh internal program studi.</li>
+
+    </ul>
+
+  </article>
+
+
+
+  <article class="org-card">
+
+    <div class="org-header">
+
+      <div class="org-logo-wrap"><img src="assets/Logo_PEMIRA.png" alt="PEMIRA KM-ITERA 2023 logo" /></div>
+
+      <div class="org-info">
+
+        <h3 class="org-role" data-i18n="org3.role">Ketua Pelaksana — PEMIRA KM-ITERA 2023</h3>
+
+        <p class="org-period" data-i18n="org3.period">September - November 2023</p>
+
+      </div>
+
+    </div>
+
+    <ul class="org-bullets">
+
+      <li data-i18n="org3.b1">Memimpin dan mengoordinasikan kepanitian bersama kesekretariatan, 6 kepala divisi dan 13 subdivisi dengan total 126 staf, untuk memastikan tugas pokok dan fungsi berjalan efektif. Dengan menyelaraskan komunikasi dan kerja sama antar 41 Himpunan Mahasiswa Program Studi (HMPS) yang mewakili 18.454 mahasiswa/I aktif dalam penyelenggaraan PEMIRA KM-ITERA 2023.</li>
+
+      <li data-i18n="org3.b2">Berkoordinasi dengan 2 pasangan calon Presiden Mahasiswa serta pihak dosen untuk memastikan proses pemilihan berjalan sesuai asas Langsung, Umum, Bebas, Jujur, dan Adil (LUBER JURDIL), sehingga menghasilkan angka partisipasi pemilih sebanyak 8397 mahasiswa/I aktif Institut Teknologi Sumatera.</li>
+
+    </ul>
+
+  </article>
+
+
+
+  <article class="org-card">
+
+    <div class="org-header">
+
+      <div class="org-logo-wrap"><img src="assets/Logo_KRTI.png" alt="KRTI 2023 ITERA logo" /></div>
+
+      <div class="org-info">
+
+        <h3 class="org-role" data-i18n="org4.role">Koordinator Komisi Disiplin — KRTI 2023 ITERA</h3>
+
+        <p class="org-period" data-i18n="org4.period">September 2023</p>
+
+      </div>
+
+    </div>
+
+    <ul class="org-bullets">
+
+      <li data-i18n="org4.b1">Mengoordinasikan pengawasan disiplin peserta dan pendukung pada ajang nasional yang diikuti 102 tim finalis dari 40 perguruan tinggi, mencakup 4 divisi lomba (<i>Racing Plane, Fixed Wing, VTOL, dan Technology Development</i>).</li>
+
+      <li data-i18n="org4.b2">Memastikan kegiatan berjalan aman dan kondusif sesuai Standar Operasional Prosedur (SOP), kepada panitia, peserta, dan instansi terkait selama pelaksanaan lomba yang diselenggarakan oleh BPTI–Puspresnas Kemdikbudristek di Lanud TNI AU Pangeran M. Bunyamin, Lampung.</li>
+
+    </ul>
 
   </article>
 
@@ -3139,11 +3278,11 @@
 
     <div class="cert-body">
 
-      <div class="cert-title">Mini Course - Intro to Data Analytics</div>
+      <div class="cert-title" data-i18n="cert1.title">Mini Course - Intro to Data Analytics</div>
 
       <div class="cert-org">RevoU</div>
 
-      <div class="cert-year">Januari 2026</div>
+      <div class="cert-year" data-i18n="cert1.year">Januari 2026</div>
 
     </div>
 
@@ -3161,11 +3300,11 @@
 
     <div class="cert-body">
 
-      <div class="cert-title">TOEFL Score Report</div>
+      <div class="cert-title" data-i18n="cert2.title">TOEFL Score Report</div>
 
       <div class="cert-org">Institut Teknologi Sumatera</div>
 
-      <div class="cert-year">Desember 2025</div>
+      <div class="cert-year" data-i18n="cert2.year">Desember 2025</div>
 
     </div>
 
@@ -3183,11 +3322,11 @@
 
     <div class="cert-body">
 
-      <div class="cert-title">Asisten Praktikum Deep Learning</div>
+      <div class="cert-title" data-i18n="cert3.title">Asisten Praktikum Deep Learning</div>
 
-      <div class="cert-org">Program Studi Sains Data ITERA</div>
+      <div class="cert-org" data-i18n="cert3.org">Program Studi Sains Data ITERA</div>
 
-      <div class="cert-year">September - Desember 2025</div>
+      <div class="cert-year" data-i18n="cert3.year">September - Desember 2025</div>
 
     </div>
 
@@ -3205,11 +3344,11 @@
 
     <div class="cert-body">
 
-      <div class="cert-title">Asisten Praktikum Analisis Data Spasial</div>
+      <div class="cert-title" data-i18n="cert4.title">Asisten Praktikum Analisis Data Spasial</div>
 
-      <div class="cert-org">Program Studi Sains Data ITERA</div>
+      <div class="cert-org" data-i18n="cert4.org">Program Studi Sains Data ITERA</div>
 
-      <div class="cert-year">Februari - Mei 2025</div>
+      <div class="cert-year" data-i18n="cert4.year">Februari - Mei 2025</div>
 
     </div>
 
@@ -3229,11 +3368,11 @@
 
     <div class="cert-body">
 
-      <div class="cert-title">Pemateri Dasar-Dasar Kepemimpinan</div>
+      <div class="cert-title" data-i18n="cert5.title">Pemateri Dasar-Dasar Kepemimpinan</div>
 
-      <div class="cert-org">Organisasi Kemahasiswaan ITERA</div>
+      <div class="cert-org" data-i18n="cert5.org">Organisasi Kemahasiswaan ITERA</div>
 
-      <div class="cert-year">Februari 2024 - Agustus 2025</div>
+      <div class="cert-year" data-i18n="cert5.year">Februari 2024 - Agustus 2025</div>
 
     </div>
 
@@ -3251,11 +3390,11 @@
 
     <div class="cert-body">
 
-      <div class="cert-title">Kepala Departemen Internal</div>
+      <div class="cert-title" data-i18n="cert6.title">Kepala Departemen Internal</div>
 
       <div class="cert-org">Himpunan Mahasiswa Sains Data (HMSD) Adyatama ITERA</div>
 
-      <div class="cert-year">Februari 2024 - Februari 2025</div>
+      <div class="cert-year" data-i18n="cert6.year">Februari 2024 - Februari 2025</div>
 
     </div>
 
@@ -3273,11 +3412,11 @@
 
     <div class="cert-body">
 
-      <div class="cert-title">Internship Bidang Neraca dan Analisis Statistik</div>
+      <div class="cert-title" data-i18n="cert7.title">Internship Bidang Neraca dan Analisis Statistik</div>
 
       <div class="cert-org">Badan Pusat Statistik (BPS) Kota Bandar Lampung</div>
 
-      <div class="cert-year">Juli - Agustus 2024</div>
+      <div class="cert-year" data-i18n="cert7.year">Juli - Agustus 2024</div>
 
     </div>
 
@@ -3295,11 +3434,11 @@
 
     <div class="cert-body">
 
-      <div class="cert-title">Pelatihan Pemanduan LKMM ITERA</div>
+      <div class="cert-title" data-i18n="cert8.title">Pelatihan Pemanduan LKMM ITERA</div>
 
       <div class="cert-org">Institut Teknologi Sumatera</div>
 
-      <div class="cert-year">Februari 2024</div>
+      <div class="cert-year" data-i18n="cert8.year">Februari 2024</div>
 
     </div>
 
@@ -3317,11 +3456,11 @@
 
     <div class="cert-body">
 
-      <div class="cert-title">Ketua Pelaksana PEMIRA KM-ITERA 2023</div>
+      <div class="cert-title" data-i18n="cert9.title">Ketua Pelaksana PEMIRA KM-ITERA 2023</div>
 
       <div class="cert-org">SENAT KM-ITERA</div>
 
-      <div class="cert-year">September - November 2023</div>
+      <div class="cert-year" data-i18n="cert9.year">September - November 2023</div>
 
     </div>
 
@@ -3339,11 +3478,11 @@
 
     <div class="cert-body">
 
-      <div class="cert-title">Kordinator Komisi Disiplin</div>
+      <div class="cert-title" data-i18n="cert10.title">Kordinator Komisi Disiplin</div>
 
       <div class="cert-org">Balai Pengembangan Talenta Indonesia</div>
 
-      <div class="cert-year">September 2023</div>
+      <div class="cert-year" data-i18n="cert10.year">September 2023</div>
 
     </div>
 
@@ -3361,11 +3500,11 @@
 
     <div class="cert-body">
 
-      <div class="cert-title">Latihan Keterampilan Manajemen Mahasiswa (LKMM) Tingkat Dasar III</div>
+      <div class="cert-title" data-i18n="cert11.title">Latihan Keterampilan Manajemen Mahasiswa (LKMM) Tingkat Dasar III</div>
 
       <div class="cert-org">Institut Teknologi Sumatera</div>
 
-      <div class="cert-year">2023</div>
+      <div class="cert-year" data-i18n="cert11.year">2023</div>
 
     </div>
 
@@ -4000,6 +4139,17 @@ const translations = {
     'p7.desc':'This project is a work report from the Central Statistics Agency (BPS) of Bandar Lampung City that focuses on analyzing the factors that influence cases of diarrhea in Lampung Province in 2022 using a linear regression approach. The analysis was conducted to support data-driven decision-making in the context of public health and regional policy planning.',
 
     'cert.label':'Certificates','cert.title':'Certifications & ','cert.titleSpan':'Licenses',
+    'cert1.title':'Mini Course - Intro to Data Analytics','cert1.year':'January 2026',
+    'cert2.title':'TOEFL Score Report','cert2.year':'December 2025',
+    'cert3.title':'Deep Learning Lab Assistant','cert3.year':'September - December 2025','cert3.org':'Data Science Study Program, ITERA',
+    'cert4.title':'Spatial Data Analysis Lab Assistant','cert4.year':'February - May 2025','cert4.org':'Data Science Study Program, ITERA',
+    'cert5.title':'Leadership Fundamentals Speaker','cert5.year':'February 2024 - August 2025','cert5.org':'ITERA Student Organizations',
+    'cert6.title':'Head of Internal Department','cert6.year':'February 2024 - February 2025',
+    'cert7.title':'Statistics & Financial Accounts Internship','cert7.year':'July - August 2024',
+    'cert8.title':'LKMM ITERA Facilitation Training','cert8.year':'February 2024',
+    'cert9.title':'Executive Chairman — PEMIRA KM-ITERA 2023','cert9.year':'September - November 2023',
+    'cert10.title':'Discipline Commission Coordinator','cert10.year':'September 2023',
+    'cert11.title':'Student Management Skills Training (LKMM) Level III','cert11.year':'2023',
 
     'contact.label':'Contact','contact.heading':"Let's Build Something Together",
 
@@ -4140,6 +4290,17 @@ const translations = {
     'p7.desc':'Proyek ini merupakan laporan kerja praktik di Badan Pusat Statistik (BPS) Kota Bandar Lampung yang berfokus pada analisis faktor-faktor yang memengaruhi kasus diare di Provinsi Lampung tahun 2022 menggunakan pendekatan regresi linear. Analisis dilakukan untuk mendukung pengambilan keputusan berbasis data dalam konteks kesehatan masyarakat dan perencanaan kebijakan daerah.',
 
     'cert.label':'Sertifikat','cert.title':'Sertifikasi & ','cert.titleSpan':'Lisensi',
+    'cert1.title':'Mini Course - Intro to Data Analytics','cert1.year':'Januari 2026',
+    'cert2.title':'TOEFL Score Report','cert2.year':'Desember 2025',
+    'cert3.title':'Asisten Praktikum Deep Learning','cert3.year':'September - Desember 2025','cert3.org':'Program Studi Sains Data ITERA',
+    'cert4.title':'Asisten Praktikum Analisis Data Spasial','cert4.year':'Februari - Mei 2025','cert4.org':'Program Studi Sains Data ITERA',
+    'cert5.title':'Pemateri Dasar-Dasar Kepemimpinan','cert5.year':'Februari 2024 - Agustus 2025','cert5.org':'Organisasi Kemahasiswaan ITERA',
+    'cert6.title':'Kepala Departemen Internal','cert6.year':'Februari 2024 - Februari 2025',
+    'cert7.title':'Internship Bidang Neraca dan Analisis Statistik','cert7.year':'Juli - Agustus 2024',
+    'cert8.title':'Pelatihan Pemanduan LKMM ITERA','cert8.year':'Februari 2024',
+    'cert9.title':'Ketua Pelaksana PEMIRA KM-ITERA 2023','cert9.year':'September - November 2023',
+    'cert10.title':'Kordinator Komisi Disiplin','cert10.year':'September 2023',
+    'cert11.title':'Latihan Keterampilan Manajemen Mahasiswa (LKMM) Tingkat Dasar III','cert11.year':'2023',
 
     'contact.label':'Kontak','contact.heading':'Mari Kita Bangun Kerjasama',
 
@@ -4413,9 +4574,68 @@ const projects = {
 
 
 
+const projectModalEN = {
+  p1: {
+    type:'Business Intelligence',
+    title:'Planning and Implementation of a Large-Scale Business Intelligence System on the Netflix Platform',
+    context:'Developed a Business Intelligence (BI) system for Netflix by integrating structured ETL processes, data modeling, and an interactive dashboard using Python and Tableau. The system transformed raw content data into actionable business insights to support strategic decisions in content planning, distribution, and market expansion.',
+    tools:'Microsoft Excel (data checking & preparation), Python (data extraction & transformation), Tableau (final dashboard design)',
+    recomendation:'Optimize production strategy through data-driven content planning, expand international content to support market growth, and use Business Intelligence dashboards to support measurable investment and distribution decisions within the company’s long-term strategy.',
+    outcome:'⚡ Outcome: The analysis showed that movies dominate Netflix’s catalog, indicating a strong focus on shorter content formats. TV-MA and TV-14 were the leading ratings, reflecting strong demand for mature content. Content production remained concentrated in the United States, while International Movies, Drama, and Comedy dominated globally. Most movies were 75–125 minutes long, consistent with user consumption patterns.'
+  },
+  p2: {
+    type:'Deep Learning',
+    title:'Detection and Counting of Beach Waste Using RT-DETR',
+    context:'Beach waste, particularly plastic waste, is an environmental issue that requires technology-based solutions. This project developed an automated RT-DETR detection system to identify and count seven categories of beach waste in real time, making monitoring more efficient and measurable than manual approaches.',
+    tools:'Python, RT-DETR (Large & Extra-Large), PyTorch, COCO Evaluation Metrics (mAP@50, mAP@50-95), Roboflow Dataset',
+    recomendation:'For field implementation with limited computing resources, RT-DETR Large is recommended because it is more efficient without a significant performance loss. Further development can focus on improving small-object detection and integrating the system with monitoring devices such as drones or IoT to support data-driven beach waste management.',
+    outcome:'⚡ Outcome: RT-DETR Extra-Large achieved the best performance with mAP@50 of 0.816 and mAP@50-95 of 0.612, while RT-DETR Large provided faster inference at 20.1 ms. The results demonstrate a trade-off between accuracy and computational efficiency and show that Transformer-based methods can effectively support real-time environmental object detection.'
+  },
+  p3: {
+    type:'Spatial Analysis',
+    title:'Land Cover Classification in Metro City Using Random Forest',
+    context:'Population growth and urbanization in Metro City have driven significant land-cover changes. A data-driven geospatial approach is needed to monitor these changes systematically and support sustainable development planning.',
+    tools:'Google Earth Engine (GEE), Landsat 8 Satellite Imagery, GIS & Remote Sensing Analysis',
+    recomendation:'The classification results can support data-driven spatial planning, particularly for controlling built-up area growth, protecting vegetation, and optimizing water-resource and urban-infrastructure management.',
+    outcome:'⚡ Outcome: The Random Forest model classified 393 observation points with an accuracy of 82.40% and a kappa value of 0.71 (good category). The analysis showed dominant vegetation areas and increasing built-up areas, providing a quantitative foundation for sustainable development planning.'
+  },
+  p4: {
+    type:'Final Project',
+    title:'Estimation of Poverty Levels in Bengkulu Province in 2024 Using the Small Area Estimation (SAE) Method with the Empirical Best Linear Unbiased Predictor (EBLUP) Approach',
+    context:'Direct poverty estimates at the district/city level often have high variance because of limited survey sample sizes. This can make indicators less stable for regional development planning. Through SAE-EBLUP, this research integrates survey data with auxiliary variables to improve estimate precision and reduce error at the small-area level.',
+    tools:'R (statistical modeling & SAE implementation), Excel, Python (data training and visualization)',
+    recomendation:'Future research can expand the auxiliary variables and use SUSENAS microdata to improve EBLUP model accuracy. The analysis can also be extended to unit-level approaches such as Empirical Bayes (EB), Hierarchical Bayes (HB), or spatial approaches such as SEBLUP. Integrating Relative Standard Error (RSE) from BPS is also recommended to strengthen MSE evaluation and estimate reliability.',
+    outcome:'⚡ Outcome: The EBLUP approach produced more accurate poverty estimates than direct estimation, with lower RRMSE (11.65% vs 12.29%) and consistently smaller MSE values. The estimates showed Bengkulu City had the highest number of poor residents (52.29 thousand), while Lebong had the lowest (13.06 thousand). Health facilities were identified as a significant factor associated with poverty levels (p-value 0.01070; VIF 1.6256).'
+  },
+  p5: {
+    type:'Sentiment Analysis',
+    title:'Sentiment Analysis of the IMDB Movie Dataset Using Logistic Regression and Naive Bayes',
+    context:'The growth of streaming platforms increases the need to analyze public opinion about movies. A dataset of 50,000 IMDB reviews was used to understand audience sentiment and build a classification model that maps opinions into sentiment categories. Rating trends were also analyzed to support data-driven decision-making in the entertainment industry.',
+    tools:'Python, Scikit-learn, Logistic Regression, Naive Bayes, Text Preprocessing (Data Cleaning, Labeling, Feature Selection), Train-Test Split (70:30), Data Visualization',
+    recomendation:'Model performance can be optimized through improved feature engineering, more advanced classification methods such as ensemble learning or deep learning, and hyperparameter tuning to increase prediction accuracy and recommendation quality.',
+    outcome:'⚡ Outcome: Logistic Regression achieved 68% accuracy (10,239 correct predictions out of 14,890 test observations), outperforming Naive Bayes at 57% (8,629 correct predictions out of 14,937 test observations). This indicates that Logistic Regression was more effective for text sentiment classification on the IMDB dataset.'
+  },
+  p6: {
+    type:'Publication',
+    title:'Complete Census of Agriculture 2023 for Bandar Lampung City',
+    context:'The 2023 Agriculture Census was a large-scale national activity producing strategic data on agricultural conditions in Indonesia. In Bandar Lampung, complete enumeration required data validation, cross-variable consistency checks, and coordination across units before publication as an official government statistics document.',
+    tools:'Microsoft Excel',
+    recomendation:'A Business Intelligence dashboard based on census data can simplify monitoring of regional agricultural indicators and support faster, more measurable data-driven policy formulation.',
+    outcome:'⚡ Outcome: Supported data compilation and validation through the publication of the official Complete Census of Agriculture 2023 for Bandar Lampung City, which serves as a reference for policy and agricultural-sector planning at the regional level.'
+  },
+  p7: {
+    type:'Internship Final Project',
+    title:'Linear Regression Analysis of Diarrhea Factors in Lampung Province in 2022',
+    context:'Diarrhea remains a public health issue in Lampung Province. During the internship at BPS Bandar Lampung, statistical analysis was conducted to identify factors associated with the number of diarrhea cases in 2022 using official government data as the basis for evaluation.',
+    tools:'Python (data modelling), Excel (data checking & preparation)',
+    recomendation:'The findings can support data-driven health intervention planning, particularly in improving health facilities and region-based disease prevention. Future work can add supporting variables and use more advanced analytical methods to improve model accuracy.',
+    outcome:'⚡ Outcome: The regression analysis identified variables that significantly influenced the number of diarrhea cases in Lampung Province in 2022. The model quantified relationships among variables and can support evaluation of regional health policies.'
+  }
+};
+
 function openModal(id) {
 
-  const p = projects[id]; if (!p) return;
+  const p = currentLang === 'en' ? projectModalEN[id] : projects[id]; if (!p) return;
 
   document.getElementById('mType').textContent         = p.type;
 
