@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html lang="id">
@@ -3110,6 +3109,298 @@ body.dark-mode #contact::before{opacity:1;}
       .hero-inner > .fade-in:first-child::after {
         animation: none !important;
       }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       SPECTACULAR CONTENT SHAPES v2 — glow frame + corner locks
+       ═══════════════════════════════════════════════════════════
+       This is the ONE place that controls the "shape enclosing
+       text" for every content card on the site: Education,
+       Organizations, Skills, Experience timeline, Projects, and
+       Certificates. Everything here is pure CSS on ::before /
+       ::after pseudo-elements — it never adds, removes, or moves
+       an HTML element, so your structure, IDs, onclick handlers,
+       and text are 100% untouched. It only reuses colors already
+       declared in your :root (--blue, --blue-mid, --blue-pale-2,
+       --accent, --accent-light), so it recolors itself
+       automatically in dark mode with zero extra work.
+
+       ── THE LOOK ──────────────────────────────────────────────
+       1) A soft animated gradient GLOW FRAME appears just outside
+          each card's border on hover (blue → gold → blue, slowly
+          shifting) — like the card is "lighting up".
+       2) Four small CORNER BRACKETS (camera-viewfinder / "target
+          lock" style) sit just inside each card and snap inward
+          slightly on hover, framing the content.
+       3) The bottom border itself sweeps from blue to gold on
+          hover (no extra element needed — just an animated
+          border-color + a matching underline).
+       4) Every .divider (the little accent line under section
+          titles) now gently shimmers, tying the whole page
+          together with the same moving-light motif.
+       5) The "current" experience card keeps its bold ribbon and
+          gets a live pulsing dot next to the role title.
+       6) Logo boxes (education / organization / company logos)
+          get a slow rotating gradient ring behind them on hover.
+
+       ── QUICK CUSTOMIZATION ───────────────────────────────────
+       • Change glow speed:      edit the "6s" in .shape-glow-frame
+       • Change bracket size:    edit the "16px" bracket variables
+       • Turn an effect OFF:     comment out or delete its rule
+                                  block below — each effect is
+                                  self-contained.
+       • Add a NEW card type:    add its class name to every
+                                  comma-separated selector list in
+                                  section 1, 2 and 3 below.
+       • prefers-reduced-motion: fully respected at the bottom —
+         everything degrades to a simple static highlight.
+       ═══════════════════════════════════════════════════════════ */
+
+    /* ── 1. Shared setup: card becomes a positioning context ── */
+    .education-card,
+    .org-card,
+    .skill-category,
+    .tl-card,
+    .project-card,
+    .cert-card {
+      position: relative;
+      isolation: isolate; /* keeps the glow frame from bleeding into siblings */
+      transition: var(--transition), border-color 0.5s ease;
+    }
+
+    /* ── 2. Animated gradient GLOW FRAME (sits just behind/around
+             the card, invisible at rest, fades + shimmers in on
+             hover). Uses inset:-3px so only a thin ring shows. ── */
+    .education-card::before,
+    .org-card::before,
+    .skill-category::before,
+    .tl-card::before,
+    .project-card::before,
+    .cert-card::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      z-index: -1;
+      border-radius: inherit;
+      background: linear-gradient(120deg,
+        var(--blue) 0%,
+        var(--accent-light) 25%,
+        var(--blue-mid) 50%,
+        var(--accent) 75%,
+        var(--blue) 100%);
+      background-size: 300% 300%;
+      opacity: 0;
+      filter: blur(2px);
+      transition: opacity 0.45s ease;
+      animation: shape-glow-shift 7s ease infinite;
+      pointer-events: none;
+    }
+
+    .education-card:hover::before,
+    .org-card:hover::before,
+    .skill-category:hover::before,
+    .tl-card:hover::before,
+    .project-card:hover::before,
+    .cert-card:hover::before {
+      opacity: 0.55;
+    }
+
+    @keyframes shape-glow-shift {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* ── 3. CORNER BRACKETS — four small "L" marks drawn with
+             layered linear-gradients (no extra HTML needed).
+             Sits on ::after, tucked just inside the card edge,
+             and tightens 3px inward on hover for a "focus lock"
+             feel. Uses the same blue/gold pairing as everywhere
+             else on the site. ── */
+    .education-card::after,
+    .org-card::after,
+    .skill-category::after,
+    .tl-card::after,
+    .project-card::after,
+    .cert-card::after {
+      content: '';
+      position: absolute;
+      inset: 10px;
+      z-index: 2;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.4s ease, inset 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      background-image:
+        /* top-left corner */
+        linear-gradient(to right, var(--blue) 2px, transparent 2px),
+        linear-gradient(to bottom, var(--blue) 2px, transparent 2px),
+        /* top-right corner */
+        linear-gradient(to left, var(--accent) 2px, transparent 2px),
+        linear-gradient(to bottom, var(--accent) 2px, transparent 2px),
+        /* bottom-left corner */
+        linear-gradient(to right, var(--accent) 2px, transparent 2px),
+        linear-gradient(to top, var(--accent) 2px, transparent 2px),
+        /* bottom-right corner */
+        linear-gradient(to left, var(--blue) 2px, transparent 2px),
+        linear-gradient(to top, var(--blue) 2px, transparent 2px);
+      background-repeat: no-repeat;
+      background-size: 16px 16px;
+      background-position:
+        top left, top left,
+        top right, top right,
+        bottom left, bottom left,
+        bottom right, bottom right;
+    }
+
+    .education-card:hover::after,
+    .org-card:hover::after,
+    .skill-category:hover::after,
+    .tl-card:hover::after,
+    .project-card:hover::after,
+    .cert-card:hover::after {
+      opacity: 0.85;
+      inset: 7px;
+    }
+
+    /* ── 4. Border + underline sweep on hover. No extra element —
+             just animating properties your cards already have. ── */
+    .education-card:hover,
+    .org-card:hover,
+    .skill-category:hover,
+    .tl-card:hover,
+    .project-card:hover,
+    .cert-card:hover {
+      border-bottom: 2px solid transparent;
+      border-image: linear-gradient(90deg, var(--blue), var(--accent)) 1;
+    }
+
+    /* ── 5. Shimmering divider — the little accent line under every
+             section title now has the same moving-light motif. ── */
+    .divider {
+      background: linear-gradient(90deg, var(--blue), var(--accent), var(--blue));
+      background-size: 200% auto;
+      animation: shape-divider-shimmer 5s linear infinite;
+    }
+
+    @keyframes shape-divider-shimmer {
+      0%   { background-position: 0% 0; }
+      100% { background-position: 200% 0; }
+    }
+
+    /* ── 6. "Current" experience card — bolder glow + a live
+             pulsing dot next to the role title. Reuses your
+             existing @keyframes pulse from the hero badge, so no
+             duplicate animation is added. ── */
+    .tl-card.latest::before {
+      opacity: 0.32;
+      filter: blur(3px);
+    }
+
+    .tl-card.latest:hover::before {
+      opacity: 0.7;
+    }
+
+    .tl-card.latest .tl-role {
+      position: relative;
+      padding-left: 14px;
+    }
+
+    .tl-card.latest .tl-role::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #22c55e;
+      transform: translateY(-50%);
+      animation: pulse 2.5s infinite;
+    }
+
+    /* ── 7. Logo boxes (Education / Organizations / Company logos)
+             get a slow rotating gradient ring behind them on
+             hover — same palette, different rhythm, so the
+             "identity" motif feels intentional across the page. ── */
+    .edu-logo-wrap,
+    .org-logo-wrap,
+    .tl-company-logo {
+      position: relative;
+      isolation: isolate;
+    }
+
+    .edu-logo-wrap::before,
+    .org-logo-wrap::before,
+    .tl-company-logo::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      z-index: -1;
+      border-radius: inherit;
+      background: conic-gradient(from 0deg, var(--blue), var(--accent), var(--blue-mid), var(--blue));
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      animation: shape-ring-spin 5s linear infinite;
+      pointer-events: none;
+    }
+
+    .edu-logo-wrap:hover::before,
+    .org-logo-wrap:hover::before,
+    .tl-company-logo:hover::before {
+      opacity: 0.5;
+    }
+
+    @keyframes shape-ring-spin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    /* ── 8. Certificates: keep the ribbon slimmer so it never
+             competes with the existing magnifying-glass hover
+             overlay in .cert-thumb::after. ── */
+    .cert-card::after { inset: 8px; background-size: 13px 13px; }
+    .cert-card:hover::after { inset: 5px; }
+
+    /* ── 9. Motion & contrast safety net ─────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+      .education-card::before, .org-card::before, .skill-category::before,
+      .tl-card::before, .project-card::before, .cert-card::before,
+      .education-card::after, .org-card::after, .skill-category::after,
+      .tl-card::after, .project-card::after, .cert-card::after,
+      .edu-logo-wrap::before, .org-logo-wrap::before, .tl-company-logo::before,
+      .divider, .tl-card.latest .tl-role::before {
+        animation: none !important;
+        transition: none !important;
+      }
+      .education-card:hover::before, .org-card:hover::before,
+      .skill-category:hover::before, .tl-card:hover::before,
+      .project-card:hover::before, .cert-card:hover::before {
+        opacity: 0.35;
+        filter: none;
+      }
+    }
+
+    /* Dark mode: everything above already pulls its colors from
+       variables that are redefined under body.dark-mode in your
+       :root block, so it recolors automatically. Only the glow
+       frame's rest-state and bracket contrast get a small boost
+       so they stay visible on dark card surfaces. */
+    body.dark-mode .education-card:hover::before,
+    body.dark-mode .org-card:hover::before,
+    body.dark-mode .skill-category:hover::before,
+    body.dark-mode .tl-card:hover::before,
+    body.dark-mode .project-card:hover::before,
+    body.dark-mode .cert-card:hover::before {
+      opacity: 0.75;
+    }
+
+    body.dark-mode .education-card:hover::after,
+    body.dark-mode .org-card:hover::after,
+    body.dark-mode .skill-category:hover::after,
+    body.dark-mode .tl-card:hover::after,
+    body.dark-mode .project-card:hover::after,
+    body.dark-mode .cert-card:hover::after {
+      opacity: 1;
     }
 
   </style>
