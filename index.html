@@ -7,6 +7,7 @@
   <meta charset="UTF-8" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0e1b2e" />
 
   <meta name="description" content="Dimas Rizky Ramadhani — Data Science graduate specializing in data analytics, machine learning, and business intelligence. Open to opportunities in Indonesia." />
 
@@ -159,15 +160,18 @@
       inset: 0;
       z-index: -3;
       pointer-events: none;
+      /* Manufacturing-inspired blueprint: production lanes, routing guides,
+         engineering diagonals, and subtle planning-grid texture. */
       background:
         radial-gradient(900px 620px at 6% 4%, var(--id-glow), transparent 62%),
         radial-gradient(760px 520px at 96% 14%, var(--id-glow-gold), transparent 66%),
         radial-gradient(820px 600px at 74% 92%, var(--id-glow), transparent 68%),
-        linear-gradient(90deg, transparent 0 49.6%, var(--id-line) 49.7%, transparent 49.8%),
-        linear-gradient(0deg, transparent 0 49.6%, var(--id-line) 49.7%, transparent 49.8%),
-        repeating-linear-gradient(90deg, transparent 0 94px, var(--id-paper-grain) 95px, transparent 96px),
-        repeating-linear-gradient(0deg, transparent 0 94px, var(--id-paper-grain) 95px, transparent 96px);
-      background-size: auto, auto, auto, 100% 100%, 100% 100%, 94px 94px, 94px 94px;
+        linear-gradient(118deg, transparent 0 18%, var(--id-line) 18.12%, transparent 18.28%),
+        linear-gradient(62deg, transparent 0 72%, var(--id-line-strong) 72.10%, transparent 72.24%),
+        repeating-linear-gradient(0deg, transparent 0 78px, var(--id-paper-grain) 79px, transparent 80px),
+        repeating-linear-gradient(90deg, transparent 0 156px, var(--id-paper-grain) 157px, transparent 158px),
+        repeating-linear-gradient(135deg, transparent 0 112px, var(--id-ink) 113px, transparent 114px);
+      background-size: auto, auto, auto, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
       opacity: 0.9;
     }
 
@@ -322,7 +326,7 @@
     }
 
     @media (max-width: 700px) {
-      body::before { background-size: auto, auto, auto, 100% 100%, 100% 100%, 60px 60px, 60px 60px; }
+      body::before { background-size: auto, auto, auto, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%; }
       body::after { width: 88vmax; height: 88vmax; right: -46vmax; }
       .id-route.r2, .id-route.r3, .id-topo, .id-node.n5 { display: none; }
     }
@@ -1337,13 +1341,13 @@
 
     }
 
-    .tl-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; margin-bottom: 4px; }
+    .tl-header { display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; flex-wrap: nowrap; gap: 6px; margin-bottom: 4px; }
 
     .tl-role { font-weight: 700; font-size: 0.98rem; color: var(--navy); font-family: var(--font-display); line-height: 1.35; }
 
     .tl-card.latest .tl-role { font-size: 1.12rem; }
 
-    .tl-period { font-size: 0.73rem; font-weight: 700; background: var(--blue-pale); color: var(--blue); padding: 3px 10px; border-radius: 20px; border: 1px solid var(--blue-pale-2); white-space: nowrap; }
+    .tl-period { align-self: flex-start; text-align: left; font-size: 0.73rem; font-weight: 700; background: var(--blue-pale); color: var(--blue); padding: 3px 10px; border-radius: 20px; border: 1px solid var(--blue-pale-2); white-space: nowrap; }
 
     .tl-org { font-size: 0.83rem; color: var(--text-light); font-weight: 500; margin-bottom: 0; }
 
@@ -2668,16 +2672,17 @@
       inset: 7px;
     }
 
-    /* ── 4. Border + underline sweep on hover. No extra element —
-             just animating properties your cards already have. ── */
+    /* ── 4. Rounded hover treatment.
+             Keep the card's native rounded border intact.
+             No border-image is used because it can render a
+             square/cut-corner line over rounded cards. ── */
     .education-card:hover,
     .org-card:hover,
     .skill-category:hover,
     .tl-card:hover,
     .project-card:hover,
     .cert-card:hover {
-      border-bottom: 2px solid transparent;
-      border-image: linear-gradient(90deg, var(--blue), var(--accent)) 1;
+      border-color: var(--blue-mid);
     }
 
     /* ── 5. Shimmering divider — the little accent line under every
@@ -3127,7 +3132,150 @@
       }
     }
 
-</style>
+
+/* ═══════════════════════════════════════════════════════════
+   FINAL QUALITY PASS — CONTENT-SAFE MICRO POLISH
+   Visual/interaction refinement only. Existing content, IDs,
+   project data, certificates, images, and section structure
+   remain unchanged.
+   ═══════════════════════════════════════════════════════════ */
+
+/* Anchor positions respect the fixed navigation bar. */
+html { scroll-padding-top: 82px; }
+
+section[id] {
+  scroll-margin-top: 82px;
+}
+
+/* Keep long titles and metadata from creating accidental overflow. */
+.edu-content,
+.tl-company-row > div:last-child,
+.org-info,
+.project-body,
+.cert-body {
+  min-width: 0;
+}
+
+.edu-institution,
+.edu-degree,
+.tl-role,
+.tl-org,
+.org-role,
+.project-title,
+.project-desc,
+.cert-title,
+.cert-org {
+  overflow-wrap: break-word;
+}
+
+/* Navigation stays visually ordered and calm at every state. */
+.nav-links {
+  gap: 4px;
+}
+
+.nav-links a {
+  position: relative;
+  border: 1px solid transparent;
+  transition:
+    color var(--transition),
+    background-color var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition),
+    transform var(--transition);
+}
+
+.nav-links a.active {
+  box-shadow:
+    inset 0 -2px 0 var(--blue-light),
+    0 4px 14px rgba(14,27,46,0.06);
+}
+
+body.dark-mode .nav-links a.active {
+  color: var(--blue-light);
+  background: rgba(52,116,190,0.14);
+  border-color: rgba(118,184,244,0.16);
+  box-shadow:
+    inset 0 -2px 0 var(--blue-light),
+    0 5px 18px rgba(0,0,0,0.12);
+}
+
+/* Dark-mode mobile navigation matches the rest of the interface. */
+body.dark-mode .nav-links.open {
+  background: rgba(6,15,27,0.97);
+  border-bottom-color: rgba(118,184,244,0.14);
+  box-shadow: 0 16px 36px rgba(0,0,0,0.24);
+}
+
+body.dark-mode .nav-links.open a {
+  color: rgba(234,242,251,0.78);
+}
+
+body.dark-mode .nav-links.open a:hover,
+body.dark-mode .nav-links.open a.active {
+  color: var(--blue-light);
+  background: rgba(52,116,190,0.14);
+}
+
+body.dark-mode .nav-hamburger span {
+  background: #eaf2fb;
+}
+
+/* Keyboard navigation gets the same visual language as hover. */
+:where(a, button, .project-card, .cert-card):focus-visible {
+  outline: 2px solid var(--blue-light);
+  outline-offset: 4px;
+}
+
+:where(.project-card, .cert-card)[tabindex] {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Consistent image rendering for every card family. */
+.edu-logo-wrap img,
+.tl-company-logo img,
+.project-thumb img,
+.cert-thumb img {
+  display: block;
+}
+
+.project-thumb img,
+.cert-thumb img {
+  object-position: center;
+}
+
+/* Avoid a tiny visual jump while card media finishes decoding. */
+.project-thumb,
+.cert-thumb,
+.edu-logo-wrap,
+.tl-company-logo {
+  contain: paint;
+}
+
+/* Keep the manufacturing/identity canvas subtle enough for reading. */
+.identity-canvas {
+  contain: strict;
+}
+
+/* Reduced-motion users should not receive smooth-scroll/animated polish. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  .nav-links a {
+    transition: none !important;
+  }
+}
+
+/* Fine mobile spacing guard for long navigation labels. */
+@media (max-width: 860px) {
+  .nav-links.open a {
+    width: 100%;
+  }
+}
+
+
+  </style>
 
 </head>
 
@@ -3184,19 +3332,21 @@
 
       <li role="none"><a href="#hero"           class="nav-link" role="menuitem" data-i18n="nav.home">Beranda</a></li>
 
-      <li role="none"><a href="#about"          class="nav-link" role="menuitem" data-i18n="nav.about">Tentang</a></li>
+      <li role="none"><a href="#about"           class="nav-link" role="menuitem" data-i18n="nav.about">Tentang</a></li>
 
-      <li role="none"><a href="#education"      class="nav-link" role="menuitem" data-i18n="nav.education">Pendidikan</a></li>
+      <li role="none"><a href="#education"       class="nav-link" role="menuitem" data-i18n="nav.education">Pendidikan</a></li>
 
-      <li role="none"><a href="#skills"         class="nav-link" role="menuitem" data-i18n="nav.skills">Keterampilan</a></li>
+      <li role="none"><a href="#experience"      class="nav-link" role="menuitem" data-i18n="nav.experience">Pengalaman</a></li>
 
-      <li role="none"><a href="#experience"     class="nav-link" role="menuitem" data-i18n="nav.experience">Pengalaman</a></li>
+      <li role="none"><a href="#skills"          class="nav-link" role="menuitem" data-i18n="nav.skills">Keterampilan</a></li>
 
-      <li role="none"><a href="#projects"       class="nav-link" role="menuitem" data-i18n="nav.projects">Proyek</a></li>
+      <li role="none"><a href="#organizations"   class="nav-link" role="menuitem" data-i18n="nav.organizations">Organisasi</a></li>
 
-      <li role="none"><a href="#certifications" class="nav-link" role="menuitem" data-i18n="nav.certifications">Sertifikasi</a></li>
+      <li role="none"><a href="#projects"        class="nav-link" role="menuitem" data-i18n="nav.projects">Proyek</a></li>
 
-      <li role="none"><a href="#contact"        class="nav-link" role="menuitem" data-i18n="nav.contact">Kontak</a></li>
+      <li role="none"><a href="#certifications"  class="nav-link" role="menuitem" data-i18n="nav.certifications">Sertifikasi</a></li>
+
+      <li role="none"><a href="#contact"         class="nav-link" role="menuitem" data-i18n="nav.contact">Kontak</a></li>
 
     </ul>
 
@@ -3224,7 +3374,7 @@
 
       </button>
 
-      <a href="https://drive.google.com/file/d/1NRflDJsBEvvUCUIbNAVV46vB1Cc7SxIv/view?usp=sharing"
+      <a href="https://drive.google.com/file/d/1SodHGXSBx79HV9xUouYZ0-MZn2X3qGyD/view?usp=sharing"
 
          class="btn btn-primary nav-cta" style="padding:8px 18px;font-size:0.81rem;"
 
@@ -3320,7 +3470,7 @@
 
     <div class="hero-actions">
 
-      <a href="https://drive.google.com/file/d/14UgbDBkcpicb9aoI_NiibYJvjqP2ufVf/view?usp=sharing"
+      <a href="https://drive.google.com/file/d/1SodHGXSBx79HV9xUouYZ0-MZn2X3qGyD/view?usp=sharing"
 
          class="btn btn-primary" target="_blank" rel="noopener noreferrer" aria-label="Download CV">
 
@@ -3372,7 +3522,7 @@
 
       <div>
 
-        <div class="hero-stat-num" aria-label="10 plus projects completed">7<span>+</span></div>
+        <div class="hero-stat-num" aria-label="10 projects featured">10<span>+</span></div>
 
         <div class="hero-stat-label" data-i18n="hero.stat3">Proyek<br>Selesai</div>
 
@@ -3434,7 +3584,7 @@
 
       <img src="assets/Profile_Porto.jpg" alt="Dimas Rizky Ramadhani"
 
-           style="width:110%;height:125%;object-fit:cover;object-position:bottom;">
+           style="width:110%;height:125%;object-fit:cover;object-position:bottom;" decoding="async" loading="eager" fetchpriority="high">
 
     </div>
 
@@ -3506,7 +3656,7 @@
 
       <img class="about-img" alt="Dimas Rizky Ramadhani at thesis defense"
 
-           style="width:1000%;height:100%;object-fit:cover;object-position:center;" src="assets/Wisuda_Photo.jpg">
+           style="width:100%;height:100%;object-fit:cover;object-position:center;" src="assets/Wisuda_Photo.jpg" decoding="async" loading="lazy">
 
     </div>
 
@@ -3606,7 +3756,7 @@
 
     <div class="edu-logo-wrap" aria-hidden="true">
 
-      <img src="assets/Logo-ITERA.png" alt="Institut Teknologi Sumatera logo" />
+      <img src="assets/Logo-ITERA.png" alt="Institut Teknologi Sumatera logo" / decoding="async" loading="lazy">
 
     </div>
 
@@ -3674,13 +3824,13 @@
 
     <div class="tl-dot" aria-hidden="true"><div class="tl-dot-inner"><i class="fa-solid fa-industry"></i></div></div>
 
-    <div class="tl-card latest">
+    <div class="tl-card">
 
       <div class="tl-company-row">
 
         <div class="tl-company-logo" aria-label="PT Pratama Abadi Industri logo">
 
-          <img src="assets/PT_Pratama.jpg" alt="Logo PT Pratama Abadi Industri" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('logo-missing');">
+          <img src="assets/PT_Pratama.jpg" alt="Logo PT Pratama Abadi Industri" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('logo-missing');" decoding="async">
 
         </div>
 
@@ -3690,7 +3840,7 @@
 
             <h3 class="tl-role" data-i18n="exp4.role">Staff Production Planning & Inventory Control (PPIC)</h3>
 
-            <span class="tl-period" data-i18n="exp4.period">June 2026 - Now</span>
+            <span class="tl-period" data-i18n="exp4.period">July 2026 - September 2026</span>
 
           </div>
 
@@ -3730,7 +3880,7 @@
 
         <div class="tl-company-logo" aria-label="Institut Teknologi Sumatera logo">
 
-          <img src="assets/Sains_Data.jpg" alt="Logo Institut Teknologi Sumatera" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('logo-missing');">
+          <img src="assets/Sains_Data.jpg" alt="Logo Institut Teknologi Sumatera" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('logo-missing');" decoding="async">
 
         </div>
 
@@ -3774,7 +3924,7 @@
 
         <div class="tl-company-logo" aria-label="Institut Teknologi Sumatera logo">
 
-          <img src="assets/Sains_Data.jpg" alt="Logo Institut Teknologi Sumatera" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('logo-missing');">
+          <img src="assets/Sains_Data.jpg" alt="Logo Institut Teknologi Sumatera" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('logo-missing');" decoding="async">
 
         </div>
 
@@ -3818,7 +3968,7 @@
 
         <div class="tl-company-logo" aria-label="Badan Pusat Statistik logo">
 
-          <img src="assets/Badan_Pusat.jpg" alt="Logo Badan Pusat Statistik" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('logo-missing');">
+          <img src="assets/Badan_Pusat.jpg" alt="Logo Badan Pusat Statistik" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('logo-missing');" decoding="async">
 
         </div>
 
@@ -4036,7 +4186,7 @@
 
     <div class="org-header">
 
-      <div class="org-logo-wrap"><img src="assets/logo_angkatan.jpg" alt="Angkatan Sains Data 2021 logo" /></div>
+      <div class="org-logo-wrap"><img src="assets/logo_angkatan.jpg" alt="Angkatan Sains Data 2021 logo" / decoding="async" loading="lazy"></div>
 
       <div class="org-info">
 
@@ -4066,7 +4216,7 @@
 
     <div class="org-header">
 
-      <div class="org-logo-wrap"><img src="assets/LOGO_HMSD2.png" alt="HMSD Adyatama ITERA logo" /></div>
+      <div class="org-logo-wrap"><img src="assets/LOGO_HMSD2.png" alt="HMSD Adyatama ITERA logo" / decoding="async" loading="lazy"></div>
 
       <div class="org-info">
 
@@ -4096,7 +4246,7 @@
 
     <div class="org-header">
 
-      <div class="org-logo-wrap"><img src="assets/Logo_PEMIRA.png" alt="PEMIRA KM-ITERA 2023 logo" /></div>
+      <div class="org-logo-wrap"><img src="assets/Logo_PEMIRA.png" alt="PEMIRA KM-ITERA 2023 logo" / decoding="async" loading="lazy"></div>
 
       <div class="org-info">
 
@@ -4126,7 +4276,7 @@
 
     <div class="org-header">
 
-      <div class="org-logo-wrap"><img src="assets/Logo_KRTI.png" alt="KRTI 2023 ITERA logo" /></div>
+      <div class="org-logo-wrap"><img src="assets/Logo_KRTI.png" alt="KRTI 2023 ITERA logo" / decoding="async" loading="lazy"></div>
 
       <div class="org-info">
 
@@ -4190,6 +4340,58 @@
 
 <div class="projects-grid fade-in">
 
+  <article class="project-card" onclick="openModal('p8')" role="button" tabindex="0"
+           aria-label="View VBA Macro for Export Balance project details"
+           onkeypress="if(event.key==='Enter')openModal('p8')">
+    <div class="project-thumb t8" aria-hidden="true">
+      <img src="assets/VBA_Export_Balance.jpg" alt="VBA Macro for Export Balance" decoding="async" loading="lazy">
+    </div>
+    <div class="project-body">
+      <div class="project-type">PPIC Automation</div>
+      <h3 class="project-title" data-i18n="p8.title">VBA Macro for Export Balance</h3>
+      <p class="project-desc" data-i18n="p8.desc">Excel VBA automation developed in the PPIC function to streamline export balance reporting by consolidating planning and shipment data into a structured report.</p>
+      <div class="project-tools">
+        <span class="tool-tag">Microsoft Excel</span><span class="tool-tag">VBA Macro</span><span class="tool-tag">Advanced Formulas</span><span class="tool-tag">Pivot Tables</span>
+      </div>
+      <div class="project-more" aria-hidden="true"><span data-i18n="proj.viewDetails">View Details</span> <i class="fa-solid fa-arrow-right"></i></div>
+    </div>
+  </article>
+
+  <article class="project-card" onclick="openModal('p9')" role="button" tabindex="0"
+           aria-label="View footwear component vendor shipment recap automation project details"
+           onkeypress="if(event.key==='Enter')openModal('p9')">
+    <div class="project-thumb t9" aria-hidden="true">
+      <img src="assets/VBA_Footwear_Component_Vendor_Shipments.jpg" alt="VBA Macro for Recap of Footwear Component Production Shipments to Vendors" decoding="async" loading="lazy">
+    </div>
+    <div class="project-body">
+      <div class="project-type">PPIC Automation</div>
+      <h3 class="project-title" data-i18n="p9.title">VBA Macro for Recap of Footwear Component Production Shipments to Vendors</h3>
+      <p class="project-desc" data-i18n="p9.desc">Excel VBA automation for recapitalizing footwear component production shipments to vendors by consolidating shipment information from the Primary PIC into a standardized report.</p>
+      <div class="project-tools">
+        <span class="tool-tag">Microsoft Excel</span><span class="tool-tag">VBA Macro</span><span class="tool-tag">Data Processing</span><span class="tool-tag">Reporting Automation</span>
+      </div>
+      <div class="project-more" aria-hidden="true"><span data-i18n="proj.viewDetails">View Details</span> <i class="fa-solid fa-arrow-right"></i></div>
+    </div>
+  </article>
+
+  <article class="project-card" onclick="openModal('p10')" role="button" tabindex="0"
+           aria-label="View footwear bottom component vendor shipment automation project details"
+           onkeypress="if(event.key==='Enter')openModal('p10')">
+    <div class="project-thumb t10" aria-hidden="true">
+      <img src="assets/VBA_Footwear_Bottom_Component_Shipments.jpg" alt="VBA Macro for Shipments of Footwear Bottom Component Production to Vendors" decoding="async" loading="lazy">
+    </div>
+    <div class="project-body">
+      <div class="project-type">PPIC Automation</div>
+      <h3 class="project-title" data-i18n="p10.title">VBA Macro for Shipments of Footwear Bottom Component Production to Vendors</h3>
+      <p class="project-desc" data-i18n="p10.desc">Excel VBA automation for footwear bottom component production shipments to vendors, structuring source data into a standardized output to support order, production, and delivery planning.</p>
+      <div class="project-tools">
+        <span class="tool-tag">Microsoft Excel</span><span class="tool-tag">VBA Macro</span><span class="tool-tag">Production Planning</span><span class="tool-tag">Vendor Shipment Data</span>
+      </div>
+      <div class="project-more" aria-hidden="true"><span data-i18n="proj.viewDetails">View Details</span> <i class="fa-solid fa-arrow-right"></i></div>
+    </div>
+  </article>
+
+
 
 
 
@@ -4202,7 +4404,7 @@
 
     <div class="project-thumb t1" aria-hidden="true">
 
-      <img src="assets/Netflix Dashboard.jpg" alt="Netflix BI Dashboard">
+      <img src="assets/Netflix Dashboard.jpg" alt="Netflix BI Dashboard" decoding="async" loading="lazy">
 
     </div>
 
@@ -4238,7 +4440,7 @@
 
     <div class="project-thumb t2" aria-hidden="true">
 
-      <img src="assets/P2_Gambar.png" alt="Customer Churn Prediction Model"></div>
+      <img src="assets/P2_Gambar.png" alt="Customer Churn Prediction Model" decoding="async" loading="lazy"></div>
 
     <div class="project-body">
 
@@ -4272,7 +4474,7 @@
 
     <div class="project-thumb t3" aria-hidden="true">
 
-      <img src="assets/Spatial_Gambar.jpeg" alt="Spatial Analysis of Poverty Indicators"></div>
+      <img src="assets/Spatial_Gambar.jpeg" alt="Spatial Analysis of Poverty Indicators" decoding="async" loading="lazy"></div>
 
     <div class="project-body">
 
@@ -4306,7 +4508,7 @@
 
       <div class="project-thumb t4" aria-hidden="true">
 
-        <img src="assets/Plot-Penduduk.jpg" alt="Final Project Image"></div>
+        <img src="assets/Plot-Penduduk.jpg" alt="Final Project Image" decoding="async" loading="lazy"></div>
 
       <div class="project-body">
 
@@ -4340,7 +4542,7 @@
 
       <div class="project-thumb t5" aria-hidden="true">
 
-        <img src="assets/Gambar_IMDB.jpg" alt="Final Project Image"></div>
+        <img src="assets/Gambar_IMDB.jpg" alt="Final Project Image" decoding="async" loading="lazy"></div>
 
       <div class="project-body">
 
@@ -4374,7 +4576,7 @@
 
       <div class="project-thumb t6" aria-hidden="true">
 
-        <img src="assets/Gambar_Publikasi.jpeg" alt="Final Project Image"></div>
+        <img src="assets/Gambar_Publikasi.jpeg" alt="Final Project Image" decoding="async" loading="lazy"></div>
 
       <div class="project-body">
 
@@ -4408,7 +4610,7 @@
 
       <div class="project-thumb t7" aria-hidden="true">
 
-        <img src="assets/Prediksi_Diare.png" alt="Internship Report"></div>
+        <img src="assets/Prediksi_Diare.png" alt="Internship Report" decoding="async" loading="lazy"></div>
 
       <div class="project-body">
 
@@ -4476,7 +4678,7 @@
 
        onkeypress="if(event.key==='Enter')openCertModal(this)">
 
-    <div class="cert-thumb" aria-hidden="true"><img src="assets/Sertif_Course.jpg" alt="RevoU Certificate"></div>
+    <div class="cert-thumb" aria-hidden="true"><img src="assets/Sertif_Course.jpg" alt="RevoU Certificate" decoding="async" loading="lazy"></div>
 
     <div class="cert-body">
 
@@ -4500,7 +4702,7 @@
 
        onkeypress="if(event.key==='Enter')openCertModal(this)">
 
-    <div class="cert-thumb" aria-hidden="true"><img src="assets/Sertif_Toefl.jpg" alt="TOEFL Certificate"></div>
+    <div class="cert-thumb" aria-hidden="true"><img src="assets/Sertif_Toefl.jpg" alt="TOEFL Certificate" decoding="async" loading="lazy"></div>
 
     <div class="cert-body">
 
@@ -4524,7 +4726,7 @@
 
        onkeypress="if(event.key==='Enter')openCertModal(this)">
 
-    <div class="cert-thumb" aria-hidden="true"><img src="assets/Sertif_Asprak_DL.jpg" alt="Deep Learning Certificate"></div>
+    <div class="cert-thumb" aria-hidden="true"><img src="assets/Sertif_Asprak_DL.jpg" alt="Deep Learning Certificate" decoding="async" loading="lazy"></div>
 
     <div class="cert-body">
 
@@ -4548,7 +4750,7 @@
 
        onkeypress="if(event.key==='Enter')openCertModal(this)">
 
-    <div class="cert-thumb" aria-hidden="true"><img src="assets/Sertif_Asprak_ADSP.jpg" alt="Spatial Data Certificate"></div>
+    <div class="cert-thumb" aria-hidden="true"><img src="assets/Sertif_Asprak_ADSP.jpg" alt="Spatial Data Certificate" decoding="async" loading="lazy"></div>
 
     <div class="cert-body">
 
@@ -4574,7 +4776,7 @@
 
        onkeypress="if(event.key==='Enter')openCertSlider(this)">
 
-    <div class="cert-thumb" aria-hidden="true"><img src="assets/Sertif_HIMARSKAP.jpg" alt="Leadership Certificate"></div>
+    <div class="cert-thumb" aria-hidden="true"><img src="assets/Sertif_HIMARSKAP.jpg" alt="Leadership Certificate" decoding="async" loading="lazy"></div>
 
     <div class="cert-body">
 
@@ -4598,7 +4800,7 @@
 
        onkeypress="if(event.key==='Enter')openCertModal(this)">
 
-    <div class="cert-thumb" aria-hidden="true"><img src="assets/Sertif_Kadep.jpg" alt="Department Head Certificate"></div>
+    <div class="cert-thumb" aria-hidden="true"><img src="assets/Sertif_Kadep.jpg" alt="Department Head Certificate" decoding="async" loading="lazy"></div>
 
     <div class="cert-body">
 
@@ -4622,7 +4824,7 @@
 
        onkeypress="if(event.key==='Enter')openCertModal(this)">
 
-    <div class="cert-thumb" aria-hidden="true"><img src="assets/Sertif_BPS.jpg" alt="BPS Certificate"></div>
+    <div class="cert-thumb" aria-hidden="true"><img src="assets/Sertif_BPS.jpg" alt="BPS Certificate" decoding="async" loading="lazy"></div>
 
     <div class="cert-body">
 
@@ -4646,7 +4848,7 @@
 
        onkeypress="if(event.key==='Enter')openCertModal(this)">
 
-    <div class="cert-thumb" aria-hidden="true"><img src="assets/Sertif_Pelatihan.jpg" alt="LKMM Training Certificate"></div>
+    <div class="cert-thumb" aria-hidden="true"><img src="assets/Sertif_Pelatihan.jpg" alt="LKMM Training Certificate" decoding="async" loading="lazy"></div>
 
     <div class="cert-body">
 
@@ -4670,7 +4872,7 @@
 
        onkeypress="if(event.key==='Enter')openCertModal(this)">
 
-    <div class="cert-thumb" aria-hidden="true"><img src="assets/Sertif_Ketuplak.jpg" alt="PEMIRA Certificate"></div>
+    <div class="cert-thumb" aria-hidden="true"><img src="assets/Sertif_Ketuplak.jpg" alt="PEMIRA Certificate" decoding="async" loading="lazy"></div>
 
     <div class="cert-body">
 
@@ -4694,7 +4896,7 @@
 
        onkeypress="if(event.key==='Enter')openCertModal(this)">
 
-    <div class="cert-thumb" aria-hidden="true"><img src="assets/Sertif_KRTI.jpg" alt="KRTI Certificate"></div>
+    <div class="cert-thumb" aria-hidden="true"><img src="assets/Sertif_KRTI.jpg" alt="KRTI Certificate" decoding="async" loading="lazy"></div>
 
     <div class="cert-body">
 
@@ -4718,7 +4920,7 @@
 
        onkeypress="if(event.key==='Enter')openCertModal(this)">
 
-    <div class="cert-thumb" aria-hidden="true"><img src="assets/Sertif_Peserta_LKMM.jpg" alt="LKMM Certificate"></div>
+    <div class="cert-thumb" aria-hidden="true"><img src="assets/Sertif_Peserta_LKMM.jpg" alt="LKMM Certificate" decoding="async" loading="lazy"></div>
 
     <div class="cert-body">
 
@@ -4856,7 +5058,7 @@
 
 
 
-    <a href="https://drive.google.com/file/d/14UgbDBkcpicb9aoI_NiibYJvjqP2ufVf/view?usp=sharing"
+    <a href="https://drive.google.com/file/d/1SodHGXSBx79HV9xUouYZ0-MZn2X3qGyD/view?usp=sharing"
 
        class="btn btn-ghost" style="width:fit-content;"
 
@@ -5056,9 +5258,9 @@
 
   </a>
 
-<a href="mailto:.ramadhani011@gmail.com"
+<a href="#contact"
 
- class="social-sidebar-btn em" data-tooltip="Email Me" aria-label="Send Email">
+ class="social-sidebar-btn em" data-tooltip="Email Me" aria-label="Go to Contact">
 
 <i class="fa-solid fa-envelope" aria-hidden="true"></i>
 
@@ -5289,25 +5491,25 @@ const translations = {
 
     'nav.skills':'Skills','nav.experience':'Experience','nav.projects':'Projects',
 
-    'nav.certifications':'Certifications','nav.contact':'Contact','nav.downloadCV':'Download CV',
+    'nav.certifications':'Certifications','nav.organizations':'Organizations','nav.contact':'Contact','nav.downloadCV':'Download CV',
 
     'hero.badge':'Open to Opportunities — Data Analytics & Corporate Management Trainee Roles',
 
-    'hero.tagline':'Data-Driven Professional | Business Intelligence | Data Analytics | Machine Learning | Statistics | Analytical Thinking',
+    'hero.tagline':'Data-Driven Professional | PPIC | Business Intelligence | Data Analytics | Machine Learning | Statistics',
 
-    'hero.statement':'Integrating data analysis and leadership to produce measurable impact aligned with strategic industry needs in data analytics and machine learning.',
+    'hero.statement':'Data Science graduate with professional experience in Production Planning and Inventory Control (PPIC), data processing, and reporting. Experienced in developing Excel-VBA automation and working with production, order, forecast, and shipment data to support structured, data-driven operational planning.',
 
     'hero.downloadCV':'Download CV','hero.viewProjects':'View Projects','hero.contactMe':'Contact Me',
 
-    'hero.stat1':'Professional Experience','hero.stat2':'Organization<br>Roles','hero.stat3':'Projects<br>Completed',
+    'hero.stat1':'Professional Experience','hero.stat2':'Organization<br>Roles','hero.stat3':'Projects<br>Featured',
 
     'about.label':'About Me','about.accentLabel':'Fresh Graduate<br>Data Science',
 
     'about.heading':'Analytical Mindset.<br>Leadership Backbone.',
 
-    'about.p1':'A Data Science graduate with academic and practical experience in data processing and analysis. Through an internship at <strong>Badan Pusat Statistik (BPS) Kota Bandar Lampung</strong>, I was involved in managing and validating official-scale data and understanding structured reporting governance in the financial accounts and analytics division.',
+    'about.p1':'Bachelor of Science in Data Science from Institut Teknologi Sumatera (ITERA) with professional experience in <strong>Production Planning and Inventory Control (PPIC)</strong> and <strong>Badan Pusat Statistik (BPS)</strong> in data processing, analysis, and reporting. Developed three Excel-VBA automation systems to support PPIC workflows, including export balance and vendor shipment reporting, with a focus on reducing repetitive data-processing tasks and improving report consistency.',
 
-    'about.p2':'During my studies at Institut Teknologi Sumatera, I actively served as a lab assistant for <strong>Spatial Data Analysis</strong> and <strong>Deep Learning</strong> courses, strengthening technical competence while developing communication and academic mentoring skills. Proficient in Python, R, SQL, and Tableau for systematically exploring, cleaning, and analyzing data to generate measurable and strategically valuable recommendations.',
+    'about.p2':'Alongside professional experience, I strengthened technical and coordination skills through <strong>Deep Learning</strong> and <strong>Spatial Data Analysis</strong> lab assistant roles, as well as cross-team organizational leadership. Skilled in Microsoft Excel, VBA, Python, R, QGIS, and Tableau, with experience in data processing, analysis, reporting, project coordination, communication, and stakeholder coordination.',
 
     'edu.label':'Education','edu.title':'Academic ','edu.titleSpan':'Foundation',
 
@@ -5367,19 +5569,19 @@ const translations = {
 
     'exp3.b2':'Completed data input, verification, and reconciliation using BPS official systems. Produced regional statistics publications including the Complete Census of Agriculture 2023 for Bandar Lampung City and a final report on Linear Regression Analysis of Diarrhea Factors in Lampung Province in 2022.',
 
-    'exp4.role':'Staff Production Planning & Inventory Control (PPIC)','exp4.period':'June 2026 - Now',
+    'exp4.role':'Production Planning and Inventory Control (PPIC) Staff','exp4.period':'July 2026 - September 2026',
 
-    'exp4.b1':'Prepared and controlled Production Plans based on demand, production capacity, material availability, and delivery requirements.',
+    'exp4.b1':'Produced 3 automation systems using Excel VBA macros.',
 
-    'exp4.b2':'Performed capacity planning, monitored daily production progress, and adjusted production schedules in response to changes in demand, capacity, and production constraints.',
+    'exp4.b2':'Applied Microsoft Excel functions such as SUM, SUMIF, SUBTOTAL, VLOOKUP, IF, IFERROR, TEXT, LEFT, RIGHT, AVERAGE, ROUND, and INT for data processing.',
 
-    'exp4.b3':'Coordinated with Production, Warehouse, Material, IE, QA, and related functions to maintain smooth production flow and support on-time delivery.',
+    'exp4.b3':'Compiled vendor shipment summaries from the Primary PIC, weekly production capacity summaries, and monthly daily production capacity for the Load Plan Assembling at one of the plants.',
 
-    'exp4.b4':'Analyzed production achievement, backlog, and potential bottlenecks as a basis for corrective action and rescheduling to minimize delivery delay risks.',
+    'exp4.b4':'Successfully increased data-processing efficiency for the Upper division by 75% through an automation system. Worked with production capacity, orders, forecasts, POs, and export/ex-factory planning across quarterly, monthly, weekly, and daily horizons.',
 
     'proj.label':'Selected Projects','proj.title':'Work That ','proj.titleSpan':'Speaks',
 
-    'proj.sub':'A selection of analytical, BI, and leadership-driven projects demonstrating end-to-end problem-solving ability.',
+    'proj.sub':'A selection of analytical, business intelligence, automation, and applied data projects demonstrating end-to-end problem-solving ability.',
 
     'proj.viewDetails':'View Details',
 
@@ -5404,6 +5606,16 @@ const translations = {
     'p6.desc':'Contribution in compiling and validating official statistical publications of the Complete Census of Agriculture 2023 for Bandar Lampung City as part of the process of processing and verifying sectoral statistical data within the Badan Pusat Statistik (BPS) environment.','p7.title':'Linear Regression Analysis in Analyzing the Impact of Diarrhea in Lampung Province in 2022',
 
     'p7.desc':'This project is a work report from the Central Statistics Agency (BPS) of Bandar Lampung City that focuses on analyzing the factors that influence cases of diarrhea in Lampung Province in 2022 using a linear regression approach. The analysis was conducted to support data-driven decision-making in the context of public health and regional policy planning.',
+
+    'p8.title':'VBA Macro for Export Balance',
+    'p8.desc':'Excel VBA automation developed in the PPIC function to streamline export balance reporting by consolidating planning and shipment data into a structured report, reducing repetitive manual data preparation within the reporting workflow.',
+
+    'p9.title':'VBA Macro for Recap of Footwear Component Production Shipments to Vendors',
+    'p9.desc':'Excel VBA automation for recapitalizing footwear component production shipments to vendors by consolidating shipment information from the Primary PIC into a standardized report, supporting faster and more structured PPIC data processing.',
+
+    'p10.title':'VBA Macro for Shipments of Footwear Bottom Component Production to Vendors',
+    'p10.desc':'Excel VBA automation for footwear bottom component production shipments to vendors, structuring source data into a standardized output to support order, production, and delivery planning within the PPIC workflow.',
+
 
     'cert.label':'Certificates','cert.title':'Certifications & ','cert.titleSpan':'Licenses',
     'cert1.title':'Mini Course - Intro to Data Analytics','cert1.year':'January 2026',
@@ -5440,13 +5652,13 @@ const translations = {
 
     'nav.skills':'Keterampilan','nav.experience':'Pengalaman','nav.projects':'Proyek',
 
-    'nav.certifications':'Sertifikasi','nav.contact':'Kontak','nav.downloadCV':'Unduh CV',
+    'nav.certifications':'Sertifikasi','nav.organizations':'Organisasi','nav.contact':'Kontak','nav.downloadCV':'Unduh CV',
 
     'hero.badge':'Terbuka untuk Peluang — Peran Analitik Data & Magang Manajemen',
 
     'hero.tagline':'Profesional Berbasis Data | Kecerdasan Bisnis | Data Analytics | Machine Learning | Statistika | Berfikir Analitis',
 
-    'hero.statement':'Mengintegrasikan analisis data dan kepemimpinan untuk menghasilkan dampak terukur yang selaras dengan kebutuhan strategis industri di bidang data analytics dan machine learning',
+    'hero.statement':'Lulusan Sains Data dengan pengalaman profesional di bidang Production Planning and Inventory Control (PPIC), pengolahan data, dan pelaporan. Berpengalaman mengembangkan otomatisasi menggunakan Excel-VBA serta mengolah data produksi, order, forecast, dan pengiriman untuk mendukung perencanaan operasional yang terstruktur dan berbasis data.',
 
     'hero.downloadCV':'Unduh CV','hero.viewProjects':'Lihat Proyek','hero.contactMe':'Hubungi Saya',
 
@@ -5456,9 +5668,9 @@ const translations = {
 
     'about.heading':'Pola Pikir Analitis.<br>Kepemimpinan Solid.',
 
-    'about.p1':'Lulusan Sains Data dengan pengalaman akademik dan praktis dalam pengolahan serta analisis data. Melalui program magang di <strong>Badan Pusat Statistik (BPS) Kota Bandar Lampung</strong>, terlibat dalam pengelolaan dan validasi data berskala resmi serta memahami tata kelola pelaporan pada bidang neraca dan analitik secara terstruktur.',
+    'about.p1':'Meraih gelar S1 Sains Data dari Institut Teknologi Sumatera (ITERA) dengan pengalaman profesional di bidang <strong>Production Planning and Inventory Control (PPIC)</strong> serta <strong>Badan Pusat Statistik (BPS)</strong> dalam pengolahan, analisis, dan pelaporan data. Mengembangkan tiga sistem otomatisasi berbasis Excel-VBA untuk mendukung alur kerja PPIC, termasuk pelaporan export balance dan pengiriman vendor, dengan fokus mengurangi pekerjaan pengolahan data yang berulang dan meningkatkan konsistensi laporan.',
 
-    'about.p2':'Selama menempuh pendidikan di Institut Teknologi Sumatera, aktif sebagai asisten praktikum untuk mata kuliah <strong>Analisis Data Spasial</strong> dan <strong>Deep Learning</strong>, yang memperkuat kompetensi teknis sekaligus mengembangkan kemampuan komunikasi dan pendampingan akademik. Terbiasa menggunakan Python, R, SQL, dan Tableau dalam mengeksplorasi, membersihkan, serta menganalisis data secara sistematis guna menghasilkan rekomendasi yang terukur dan bernilai strategis.',
+    'about.p2':'Selain pengalaman profesional, memperkuat kemampuan teknis dan koordinasi melalui peran sebagai asisten praktikum <strong>Deep Learning</strong> dan <strong>Analisis Data Spasial</strong>, serta pengalaman memimpin kegiatan organisasi lintas tim. Menguasai Microsoft Excel, VBA, Python, R, QGIS, dan Tableau, dengan fokus pada pengolahan data, analisis, pelaporan, project coordination, komunikasi, dan stakeholder coordination.',
 
     'edu.label':'Pendidikan','edu.title':'Landasan ','edu.titleSpan':'Akademis',
 
@@ -5518,7 +5730,7 @@ const translations = {
 
     'exp3.b2':'Menyelesaikan input, pengecekan, dan rekonsiliasi data menggunakan sistem resmi BPS. Dengan menghasilkan publikasi statistik daerah, termasuk Publikasi Hasil Pencacahan Lengkap Sensus Pertanian 2023 Kota Bandar Lampung dan laporan akhir Analisis Regresi Linear Dalam Menganalisis Pengaruhi Diare Di Provinsi Lampung Pada Tahun 2022.',
 
-    'exp4.role':'Staff Production Planning & Inventory Control (PPIC)','exp4.period':'June 2026 - Now',
+    'exp4.role':'Production Planning and Inventory Control (PPIC) Staff','exp4.period':'July 2026 - September 2026',
 
     'exp4.b1':'Menyusun dan mengendalikan Production Plan berdasarkan demand, kapasitas produksi, ketersediaan material, dan target delivery.',
 
@@ -5530,7 +5742,7 @@ const translations = {
 
     'proj.label':'Proyek Pilihan','proj.title':'Karya yang ','proj.titleSpan':'Berbicara',
 
-    'proj.sub':'Pilihan proyek analitis, BI, dan berbasis kepemimpinan yang menunjukkan kemampuan pemecahan masalah end-to-end.',
+    'proj.sub':'Pilihan proyek analitis, business intelligence, otomatisasi, dan penerapan data yang menunjukkan kemampuan pemecahan masalah end-to-end.',
 
     'proj.viewDetails':'Lihat Detail',
 
@@ -5555,6 +5767,16 @@ const translations = {
     'p6.desc':'Kontribusi dalam penyusunan dan validasi publikasi resmi Hasil Pencacahan Lengkap Sensus Pertanian 2023 Kota Bandar Lampung sebagai bagian dari proses pengolahan dan verifikasi data statistik sektoral di lingkungan Badan Pusat Statistik (BPS).','p7.title':'Analisis Regresi Linear Dalam Menganalisis Pengaruhi Diare Di Provinsi Lampung Pada Tahun 2022',
 
     'p7.desc':'Proyek ini merupakan laporan kerja praktik di Badan Pusat Statistik (BPS) Kota Bandar Lampung yang berfokus pada analisis faktor-faktor yang memengaruhi kasus diare di Provinsi Lampung tahun 2022 menggunakan pendekatan regresi linear. Analisis dilakukan untuk mendukung pengambilan keputusan berbasis data dalam konteks kesehatan masyarakat dan perencanaan kebijakan daerah.',
+
+    'p8.title':'VBA Macro Kekurangan Export',
+    'p8.desc':'Otomatisasi Excel VBA yang dikembangkan dalam fungsi PPIC untuk mempercepat pelaporan kekurangan/export balance melalui pengolahan data perencanaan dan pengiriman menjadi laporan yang terstruktur, sekaligus mengurangi pekerjaan persiapan data yang berulang.',
+
+    'p9.title':'VBA Macro Rekapitulasi Pengiriman Pembuatan Komponen Alas Kaki kepada Vendor',
+    'p9.desc':'Otomatisasi Excel VBA untuk merekapitulasi pengiriman pembuatan komponen alas kaki kepada vendor dengan mengonsolidasikan informasi pengiriman dari PIC Utama menjadi laporan yang terstandar, sehingga proses pengolahan data PPIC menjadi lebih cepat dan terstruktur.',
+
+    'p10.title':'VBA Macro Pengiriman Pembuatan Komponen Bottom Alas Kaki kepada Vendor',
+    'p10.desc':'Otomatisasi Excel VBA untuk pengiriman pembuatan komponen bottom alas kaki kepada vendor dengan menyusun data sumber menjadi output yang terstandar untuk mendukung perencanaan order, produksi, dan pengiriman dalam alur kerja PPIC.',
+
 
     'cert.label':'Sertifikat','cert.title':'Sertifikasi & ','cert.titleSpan':'Lisensi',
     'cert1.title':'Mini Course - Intro to Data Analytics','cert1.year':'Januari 2026',
@@ -5644,79 +5866,89 @@ document.addEventListener('DOMContentLoaded', () => setLang(currentLang));
 ──────────────────────────────────────────── */
 
 const navbar    = document.getElementById('navbar');
-
 const backTop   = document.getElementById('back-top');
-
 const sidebar   = document.getElementById('socialSidebar');
-
 const hamburger = document.getElementById('hamburger');
 
+const sections = [...document.querySelectorAll('section[id]')];
+const navLinks = [...document.querySelectorAll('.nav-link')];
 
-
-
-
-window.addEventListener('scroll', () => {
-
-  navbar.classList.toggle('scrolled', window.scrollY > 40);
-
-  backTop.classList.toggle('show',    window.scrollY > 400);
-
-  if (sidebar) sidebar.classList.toggle('visible', window.scrollY > 300);
-
-  updateActiveNav();
-
-});
-
-
-
-
-
-hamburger.addEventListener('click', () => {
-
-  const navLinks = document.getElementById('navLinks');
-
-  const isOpen = navLinks.classList.toggle('open');
-
-  hamburger.setAttribute('aria-expanded', isOpen);
-
-});
-
-
-
-
-
-document.querySelectorAll('.nav-link').forEach(l => {
-
-  l.addEventListener('click', () => {
-
-    document.getElementById('navLinks').classList.remove('open');
-
-    hamburger.setAttribute('aria-expanded', 'false');
-
-  });
-
-});
-
-
-
-
-
-const sections = document.querySelectorAll('section[id]');
-
-const navLinks  = document.querySelectorAll('.nav-link');
+let scrollFrame = null;
 
 function updateActiveNav() {
+  if (!sections.length || !navLinks.length) return;
 
-  let current = '';
+  const navOffset = (navbar?.offsetHeight || 66) + 24;
+  const marker = window.scrollY + navOffset;
 
-  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+  let current = sections[0].id;
 
-  navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + current));
+  for (const section of sections) {
+    if (section.offsetTop <= marker) {
+      current = section.id;
+    } else {
+      break;
+    }
+  }
 
+  navLinks.forEach(link => {
+    const isActive = link.getAttribute('href') === '#' + current;
+    link.classList.toggle('active', isActive);
+
+    if (isActive) {
+      link.setAttribute('aria-current', 'page');
+    } else {
+      link.removeAttribute('aria-current');
+    }
+  });
 }
 
+function handleScrollState() {
+  navbar?.classList.toggle('scrolled', window.scrollY > 40);
+  backTop?.classList.toggle('show', window.scrollY > 400);
 
+  if (sidebar) {
+    sidebar.classList.toggle('visible', window.scrollY > 300);
+  }
 
+  updateActiveNav();
+}
+
+function requestScrollUpdate() {
+  if (scrollFrame !== null) return;
+
+  scrollFrame = window.requestAnimationFrame(() => {
+    handleScrollState();
+    scrollFrame = null;
+  });
+}
+
+window.addEventListener('scroll', requestScrollUpdate, { passive: true });
+
+if (hamburger) {
+  hamburger.addEventListener('click', () => {
+    const navLinksEl = document.getElementById('navLinks');
+    if (!navLinksEl) return;
+
+    const isOpen = navLinksEl.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+  });
+}
+
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    const navLinksEl = document.getElementById('navLinks');
+
+    navLinksEl?.classList.remove('open');
+    hamburger?.setAttribute('aria-expanded', 'false');
+  });
+});
+
+window.addEventListener('resize', updateActiveNav, { passive: true });
+
+document.addEventListener('DOMContentLoaded', () => {
+  handleScrollState();
+});
 
 
 /* ────────────────────────────────────────────
@@ -5855,6 +6087,54 @@ const projects = {
 
     outcome:'⚡ Outcome: Hasil analisis menunjukkan bahwa terdapat variabel-variabel yang secara signifikan memengaruhi jumlah kasus diare di Provinsi Lampung tahun 2022. Model regresi yang dibangun mampu memberikan gambaran hubungan antar variabel secara kuantitatif dan dapat digunakan sebagai dasar pertimbangan dalam evaluasi kebijakan kesehatan daerah.'
 
+  },
+
+  p8: {
+
+    type:'PPIC Automation',
+
+    title:'VBA Macro for Export Balance',
+
+    context:'Dikembangkan sebagai bagian dari pekerjaan PPIC di PT Pratama Abadi Industri untuk mengotomatisasi proses pelaporan kekurangan/export balance. Macro mengonsolidasikan data sumber perencanaan dan pengiriman, memproses data yang relevan, dan menghasilkan laporan terstruktur untuk mengurangi pekerjaan persiapan data yang berulang.',
+
+    tools:'Microsoft Excel (Advanced Formulas & Pivot Tables), VBA Macro Development',
+
+    recomendation:'Pengembangan berikutnya dapat menambahkan validasi data, template sumber yang terstandar, dan integrasi log proses untuk meningkatkan traceability serta mengurangi aktivitas manual.',
+
+    outcome:'⚡ Outcome: Menjadi salah satu dari 3 sistem otomatisasi Excel VBA yang dikembangkan pada fungsi PPIC. Secara keseluruhan, sistem otomatisasi tersebut meningkatkan efisiensi waktu pengolahan data divisi Upper sebesar 75%.'
+
+  },
+
+  p9: {
+
+    type:'PPIC Automation',
+
+    title:'VBA Macro for Recap of Footwear Component Production Shipments to Vendors',
+
+    context:'Dikembangkan untuk mengotomatisasi rekapitulasi pengiriman pembuatan komponen alas kaki kepada vendor. Sistem mengonsolidasikan data pengiriman dari PIC Utama menjadi rekap dan laporan yang terstruktur sehingga informasi pengiriman dapat diproses dengan lebih cepat dalam alur kerja PPIC.',
+
+    tools:'Microsoft Excel (Advanced Formulas & Pivot Tables), VBA Macro Development',
+
+    recomendation:'Pengembangan berikutnya dapat menambahkan filter berbasis tanggal, validasi otomatis, dan kontrol konsistensi data untuk memperkuat monitoring pengiriman serta proses pembentukan final report.',
+
+    outcome:'⚡ Outcome: Menghasilkan rekapitulasi pengiriman vendor yang lebih terstruktur dari data PIC Utama, sehingga informasi pengiriman lebih mudah ditelusuri dan digunakan dalam proses pelaporan PPIC.'
+
+  },
+
+  p10: {
+
+    type:'PPIC Automation',
+
+    title:'VBA Macro for Shipments of Footwear Bottom Component Production to Vendors',
+
+    context:'Dikembangkan untuk mengotomatisasi pengolahan data pengiriman pembuatan komponen bottom alas kaki kepada vendor. Macro menyusun data sumber menjadi output terstandar untuk mendukung alur informasi order, produksi, dan pengiriman pada proses PPIC.',
+
+    tools:'Microsoft Excel (Advanced Formulas & Pivot Tables), VBA Macro Development',
+
+    recomendation:'Pengembangan berikutnya dapat mengintegrasikan pengecekan status produksi dan pengiriman agar monitoring progres vendor lebih terstruktur serta mudah ditelusuri.',
+
+    outcome:'⚡ Outcome: Menghasilkan output pengiriman komponen bottom yang terstandar untuk mendukung alur informasi order, produksi, dan pengiriman dalam proses PPIC serta mengurangi pekerjaan penyusunan data yang berulang.'
+
   }
 
 };
@@ -5919,6 +6199,33 @@ const projectModalEN = {
     tools:'Python (data modelling), Excel (data checking & preparation)',
     recomendation:'The findings can support data-driven health intervention planning, particularly in improving health facilities and region-based disease prevention. Future work can add supporting variables and use more advanced analytical methods to improve model accuracy.',
     outcome:'⚡ Outcome: The regression analysis identified variables that significantly influenced the number of diarrhea cases in Lampung Province in 2022. The model quantified relationships among variables and can support evaluation of regional health policies.'
+  },
+
+  p8: {
+    type:'PPIC Automation',
+    title:'VBA Macro for Export Balance',
+    context:'Developed as part of PPIC work at PT Pratama Abadi Industri to automate export balance reporting. The macro consolidates source planning and shipment data, processes relevant fields, and produces a structured report to reduce repetitive manual data preparation.',
+    tools:'Microsoft Excel (Advanced Formulas & Pivot Tables), VBA Macro Development',
+    recomendation:'A future extension could add standardized source templates, automated validation checks, and process logging to improve traceability and further reduce manual handling.',
+    outcome:'⚡ Outcome: One of three Excel VBA automation systems developed in the PPIC function. Across the automation portfolio, data-processing efficiency for the Upper division increased by 75%.'
+  },
+
+  p9: {
+    type:'PPIC Automation',
+    title:'VBA Macro for Recap of Footwear Component Production Shipments to Vendors',
+    context:'Developed to automate the recap of footwear component production shipments to vendors. The system consolidates shipment information from the Primary PIC into a structured recap and report, making the PPIC shipment-data workflow more efficient and consistent.',
+    tools:'Microsoft Excel (Advanced Formulas & Pivot Tables), VBA Macro Development',
+    recomendation:'A future extension could add date-based filters, automated validation, and consistency checks to strengthen shipment monitoring and final-report generation.',
+    outcome:'⚡ Outcome: Produced a more structured vendor-shipment recap from Primary PIC data, making shipment information easier to track and use within PPIC reporting workflows.'
+  },
+
+  p10: {
+    type:'PPIC Automation',
+    title:'VBA Macro for Shipments of Footwear Bottom Component Production to Vendors',
+    context:'Developed to automate shipment-data processing for footwear bottom component production to vendors. The macro structures source data into a standardized output to support order, production, and delivery information within the PPIC workflow.',
+    tools:'Microsoft Excel (Advanced Formulas & Pivot Tables), VBA Macro Development',
+    recomendation:'A future extension could integrate production and shipment status checks to make vendor-progress monitoring more structured and traceable.',
+    outcome:'⚡ Outcome: Produced a standardized shipment output for footwear bottom components, supporting order, production, and delivery information within the PPIC workflow while reducing repetitive data preparation.'
   }
 };
 
@@ -6241,8 +6548,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 </script>
-
-
 
 
 
